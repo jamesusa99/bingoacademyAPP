@@ -8,9 +8,8 @@ export default function Home() {
         专家团队 · 合作赛事授权 · 正品保障
       </div>
 
-      {/* 三大课程体系 + 学材物资入口 */}
+      {/* 三大课程体系 + 商城入口 */}
       <section className="py-10">
-        <h2 className="section-title text-center">核心入口</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Link to="/courses?type=ai" className="card p-6 text-center hover:shadow-md transition">
             <div className="text-primary font-semibold">AI通识课</div>
@@ -24,9 +23,9 @@ export default function Home() {
             <div className="text-primary font-semibold">升学赋能课</div>
             <div className="text-sm text-gray-500 mt-1">科技特长生</div>
           </Link>
-          <Link to="/materials" className="card p-6 text-center hover:shadow-md transition border-primary/30">
-            <div className="text-primary font-semibold">学材物资中心</div>
-            <div className="text-sm text-gray-500 mt-1">教材·教具·工具包</div>
+          <Link to="/mall" className="card p-6 text-center hover:shadow-md transition border-primary/30">
+            <div className="text-primary font-semibold">AI智能商城</div>
+            <div className="text-sm text-gray-500 mt-1">课程·教材·教具·工具包</div>
           </Link>
         </div>
       </section>
@@ -61,14 +60,14 @@ export default function Home() {
           <div className="card p-5 text-center">
             <div className="text-lg font-semibold text-primary">19.9元</div>
             <div className="text-gray-600">基础教具秒杀</div>
-            <Link to="/materials?deal=19.9" className="btn-primary mt-3 w-full text-sm">去抢购</Link>
+            <Link to="/mall/materials?deal=19.9" className="btn-primary mt-3 w-full text-sm">去抢购</Link>
           </div>
         </div>
       </section>
 
-      {/* 一级导航快捷入口 */}
+      {/* 快捷入口 */}
       <section className="py-8 border-t">
-        <h2 className="section-title">更多板块</h2>
+        <h2 className="section-title">探索更多</h2>
         <div className="flex flex-wrap gap-2">
           <Link to="/showcase" className="px-4 py-2 rounded-lg bg-white border hover:border-primary hover:text-primary">AI成果展</Link>
           <Link to="/community" className="px-4 py-2 rounded-lg bg-white border hover:border-primary hover:text-primary">AI学习社</Link>

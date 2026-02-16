@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { mainNav, utilNav } from '../config/nav'
+import { mainNav, authNav } from '../config/nav'
 
 export default function Layout({ children }) {
   const loc = useLocation()
@@ -27,12 +27,12 @@ export default function Layout({ children }) {
               ))}
             </nav>
             <div className="flex items-center gap-1 shrink-0">
-              {utilNav.map(({ path, label }) => (
+              {authNav.map(({ path, label }) => (
                 <Link
                   key={path}
                   to={path}
-                  className={`px-2 py-2 rounded-md text-sm whitespace-nowrap ${
-                    loc.pathname === path ? 'bg-primary text-white' : 'text-gray-300 hover:text-white'
+                  className={`px-3 py-2 rounded-md text-sm whitespace-nowrap ${
+                    loc.pathname === path ? 'bg-primary text-white' : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {label}
@@ -45,7 +45,9 @@ export default function Layout({ children }) {
             {mainNav.slice(0, 6).map(({ path, label }) => (
               <Link key={path} to={path} className="px-2 py-1 text-xs rounded bg-white/10">{label}</Link>
             ))}
-            <Link to="/materials" className="px-2 py-1 text-xs rounded bg-primary">学材物资</Link>
+            <Link to="/mall" className="px-2 py-1 text-xs rounded bg-white/10">AI智能商城</Link>
+            <Link to="/profile" className="px-2 py-1 text-xs rounded bg-primary">个人中心</Link>
+            <Link to="/login" className="px-2 py-1 text-xs rounded bg-white/10">登录</Link>
           </div>
         </div>
       </header>
@@ -61,7 +63,7 @@ export default function Layout({ children }) {
               <div className="text-white font-medium mb-2">C端</div>
               <Link to="/courses" className="block hover:text-white">AI精品课</Link>
               <Link to="/events" className="block hover:text-white">赛事中心</Link>
-              <Link to="/materials" className="block hover:text-white">学材物资</Link>
+              <Link to="/mall" className="block hover:text-white">AI智能商城</Link>
               <Link to="/profile" className="block hover:text-white">个人中心</Link>
             </div>
             <div>

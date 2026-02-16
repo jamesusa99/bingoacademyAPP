@@ -14,6 +14,9 @@ import Charity from './pages/Charity'
 import Materials from './pages/Materials'
 import Study from './pages/Study'
 import Profile from './pages/Profile'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import ForgotPassword from './pages/ForgotPassword'
 
 export default function App() {
   return (
@@ -29,10 +32,13 @@ export default function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/cert" element={<Certification />} />
         <Route path="/mall" element={<Mall />} />
+        <Route path="/mall/materials" element={<Materials />} />
         <Route path="/charity" element={<Charity />} />
-        <Route path="/materials" element={<Materials />} />
-        <Route path="/study" element={<Study />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/study" element={<Study />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </Layout>
   )

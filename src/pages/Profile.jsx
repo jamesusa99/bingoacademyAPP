@@ -1,9 +1,19 @@
-// 个人中心 - 资料、服务入口、分佣管理中心（PDF2）
+import { Link } from 'react-router-dom'
+
+// 个人中心（含学习中心入口、分佣管理）
 export default function Profile() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">个人中心</h1>
-      <p className="text-gray-600 mb-8">用户沉淀、服务入口、分佣管理</p>
+      <p className="text-gray-600 mb-8">我的学习、订单与分佣管理</p>
+
+      <section className="mb-10">
+        <h2 className="section-title">学习中心</h2>
+        <Link to="/profile/study" className="block card p-6 hover:shadow-md transition">
+          <div className="font-semibold text-primary">进入学习中心</div>
+          <p className="text-sm text-gray-600 mt-1">直播回放、虚拟实验室、学习进度、成果分享</p>
+        </Link>
+      </section>
 
       <section id="commission" className="mb-10">
         <h2 className="section-title">分享分佣</h2>
