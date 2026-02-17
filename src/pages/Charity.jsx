@@ -1,4 +1,4 @@
-// 缤果公益行 - 公益助学、公益赛事、打卡、成果
+// 缤果公益与报道
 export default function Charity() {
   const items = [
     { title: '公益助学活动', desc: '捐赠教材/教具、免费公益课，面向青少年/弱势群体' },
@@ -8,7 +8,7 @@ export default function Charity() {
   ]
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-bingo-dark mb-2">缤果公益行</h1>
+      <h1 className="text-2xl font-bold text-bingo-dark mb-2">缤果公益与报道</h1>
       <p className="text-gray-600 mb-8">提升品牌美誉度，传递社会责任，带动品牌传播</p>
       <div className="grid md:grid-cols-2 gap-4">
         {items.map((item, i) => (

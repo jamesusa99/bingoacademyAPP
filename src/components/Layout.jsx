@@ -63,6 +63,7 @@ export default function Layout({ children }) {
               <div className="text-white font-medium mb-2">C端</div>
               <Link to="/courses" className="block hover:text-white">AI精品课</Link>
               <Link to="/events" className="block hover:text-white">赛事中心</Link>
+              <Link to="/career" className="block hover:text-white">就业直通车</Link>
               <Link to="/mall" className="block hover:text-white">AI智能商城</Link>
               <Link to="/profile" className="block hover:text-white">个人中心</Link>
             </div>

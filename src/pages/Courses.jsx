@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-// AI精品课 - 体验课、职业教育、教材教具配套、定制课
+// AI精品课（含 AI工具库 整合）
 const tabs = [
   { key: 'experience', name: '低价体验课', desc: '9.9元/19.9元 AI基础、职场入门' },
   { key: 'career', name: '职业教育精品课', desc: 'AI+岗位技能、学历提升' },
@@ -8,7 +8,6 @@ const tabs = [
   { key: 'custom', name: '定制化AI课程', desc: '依托OEM基座，个性化学习' },
 ]
 
-// 课程中心分层 - PDF2
 const stages = [
   { path: '/courses?stage=enlighten', name: '启蒙班', range: '3-12岁' },
   { path: '/courses?stage=advance', name: '进阶班', range: '10-14岁' },
@@ -17,11 +16,18 @@ const stages = [
   { path: '/courses?stage=career', name: '就业衔接班', range: '18+' },
 ]
 
+const toolItems = [
+  { title: '免费基础工具', desc: 'AI题库、知识点检索、作业批改、教材配套工具' },
+  { title: '付费进阶工具', desc: 'AI论文辅助、技能实训、赛事答题工具' },
+  { title: '教具联动工具', desc: '适配自有教具的AI实操工具' },
+  { title: 'OEM工具定制', desc: '面向C端轻量化AI工具定制' },
+]
+
 export default function Courses() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI精品课</h1>
-      <p className="text-gray-600 mb-8">核心流量入口，低门槛引流+首单转化，联动教材/教具销售</p>
+      <p className="text-gray-600 mb-8">按阶段选课、课程类型与AI工具库一站式呈现</p>
 
       <section className="mb-10">
         <h2 className="section-title">按阶段选课</h2>
@@ -35,14 +41,26 @@ export default function Courses() {
         </div>
       </section>
 
-      <section>
+      <section className="mb-10">
         <h2 className="section-title">课程类型</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {tabs.map((t) => (
             <div key={t.key} className="card p-6">
               <h3 className="font-semibold text-primary">{t.name}</h3>
               <p className="text-sm text-gray-600 mt-1">{t.desc}</p>
-              <p className="text-xs text-primary mt-3">分享本课程可得 10%-20% 分佣</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 className="section-title">AI工具库</h2>
+        <p className="text-gray-600 text-sm mb-4">免费/付费工具、教具联动、OEM定制，与课程学习配套使用</p>
+        <div className="grid md:grid-cols-2 gap-4">
+          {toolItems.map((item, i) => (
+            <div key={i} className="card p-6">
+              <h3 className="font-semibold text-primary">{item.title}</h3>
+              <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
             </div>
           ))}
         </div>
