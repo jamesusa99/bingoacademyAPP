@@ -1,25 +1,71 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
+const heroImages = ['/hero-1.png', '/hero-2.png', '/hero-3.png']
+
 export default function Home() {
+  const [heroIndex, setHeroIndex] = useState(0)
+
+  useEffect(() => {
+    const t = setInterval(() => {
+      setHeroIndex((i) => (i + 1) % heroImages.length)
+    }, 4500)
+    return () => clearInterval(t)
+  }, [])
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* 首屏轮播 */}
+      <section className="relative rounded-xl overflow-hidden mb-8 shadow-lg aspect-[2.2/1] max-h-[420px] bg-slate-100">
+        {heroImages.map((src, i) => (
+          <div
+            key={src}
+            className="absolute inset-0 h-full w-full transition-opacity duration-700 ease-in-out"
+            style={{
+              opacity: i === heroIndex ? 1 : 0,
+              zIndex: i === heroIndex ? 1 : 0,
+            }}
+          >
+            <img
+              src={src}
+              alt=""
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+        <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">
+          {heroImages.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`切换到第 ${i + 1} 张`}
+              className={`h-2 rounded-full transition-all ${
+                i === heroIndex ? 'w-6 bg-white' : 'w-2 bg-white/60 hover:bg-white/80'
+              }`}
+              onClick={() => setHeroIndex(i)}
+            />
+          ))}
+        </div>
+      </section>
+
       {/* 信任背书 */}
       <div className="text-center text-gray-500 text-sm py-4 border-b">
         专家团队 · 合作赛事授权 · 正品保障
       </div>
 
-      {/* 使命与痛点 */}
+      {/* 使命与愿景 */}
       <section className="py-8">
-        <h2 className="section-title text-center">人工智能教育的未来新范式</h2>
-        <p className="text-gray-600 text-center max-w-2xl mx-auto mb-4">
-          怎样的教育属于未来？面对 AI，家长怎么做？让孩子会用手上的工具，而不是被工具带着走——
-          缤果AI学院致力于成为家庭与学校在人工智能时代的教育伙伴。
-        </p>
-        <ul className="text-gray-600 text-sm space-y-2 max-w-xl mx-auto">
-          <li>· 怎样的教育属于未来？</li>
-          <li>· 面对AI，家长怎么做？</li>
-          <li>· 如何让孩子驾驭AI，而不是被AI替代？</li>
-        </ul>
+        <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-6">
+          驾驭AI未来：缤果AI学院，您的人工智能教育新范式
+        </h2>
+        <div className="max-w-3xl mx-auto space-y-4 text-gray-600 leading-relaxed">
+          <p>
+            在人工智能浪潮席卷全球的当下，我们不禁要问：何为面向未来的教育？面对日新月异的AI技术，家长又该如何引导孩子成长？
+          </p>
+          <p>
+            缤果AI学院坚信，真正的未来教育，是赋予孩子驾驭工具而非被工具奴役的能力。我们致力于成为家庭与学校在人工智能时代的核心教育伙伴，让每个孩子都能主动探索、创新实践，真正驾驭AI，而非被AI所替代。
+          </p>
+        </div>
       </section>
 
       {/* 课程 + 商城 + 赛事 + 就业（首页六大入口） */}
@@ -66,7 +112,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 限时福利：特色主打课、学院主打活动、AI岗位招聘、赛事指导 */}
+      {/* 限时福利 */}
       <section className="py-6">
         <h2 className="section-title">限时福利</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
