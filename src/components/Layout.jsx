@@ -9,9 +9,8 @@ export default function Layout({ children }) {
       <header className="sticky top-0 z-50 bg-bingo-dark text-white shadow-lg">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-4 lg:gap-6 min-h-14 flex-nowrap">
-            <Link to="/" className="shrink-0 flex items-center gap-1 font-semibold text-base sm:text-lg whitespace-nowrap">
-              <span className="text-primary">缤果</span>
-              <span>AI学院</span>
+            <Link to="/" className="shrink-0 flex items-center gap-2">
+              <img src="/logo.png" alt="缤果AI学院" className="h-8 sm:h-9 w-auto" />
             </Link>
             <nav className="hidden lg:flex flex-1 items-center justify-evenly min-w-0 flex-nowrap">
               {mainNav.map(({ path, label }) => (
