@@ -76,7 +76,7 @@ export default function Layout({ children }) {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 mt-6 pt-6 border-t border-gray-700 text-center">
-          专家团队 · 赛事授权 · 正品保障 · 分享分佣
+          专家团队 · 合作赛事授权 · 正品保障
         </div>
       </footer>
     </div>

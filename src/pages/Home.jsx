@@ -1,25 +1,8 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-const heroImages = ['/hero-1.png', '/hero-2.png', '/hero-3.png']
-
 export default function Home() {
-  const [heroIndex, setHeroIndex] = useState(0)
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setHeroIndex((i) => (i + 1) % heroImages.length)
-    }, 4500)
-    return () => clearInterval(t)
-  }, [])
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* 信任背书 */}
-      <div className="text-center text-gray-500 text-sm py-4 border-b">
-        专家团队 · 合作赛事授权 · 正品保障
-      </div>
-
       {/* 使命与愿景 */}
       <section className="py-8">
         <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-6">
@@ -32,41 +15,6 @@ export default function Home() {
           <p>
             缤果AI学院坚信，真正的未来教育，是赋予孩子驾驭工具而非被工具奴役的能力。我们致力于成为家庭与学校在人工智能时代的核心教育伙伴，让每个孩子都能主动探索、创新实践，真正驾驭AI，而非被AI所替代。
           </p>
-        </div>
-      </section>
-
-      {/* 轮播图：居中，放在介绍下方 */}
-      <section className="flex justify-center mb-8">
-        <div className="relative rounded-xl overflow-hidden shadow-lg aspect-[2.2/1] w-full max-w-4xl max-h-[380px] bg-slate-100">
-          {heroImages.map((src, i) => (
-            <div
-              key={src}
-              className="absolute inset-0 h-full w-full transition-opacity duration-700 ease-in-out"
-              style={{
-                opacity: i === heroIndex ? 1 : 0,
-                zIndex: i === heroIndex ? 1 : 0,
-              }}
-            >
-              <img
-                src={src}
-                alt=""
-                className="w-full h-full object-cover object-center"
-              />
-            </div>
-          ))}
-          <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">
-            {heroImages.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                aria-label={`切换到第 ${i + 1} 张`}
-                className={`h-2 rounded-full transition-all ${
-                  i === heroIndex ? 'w-6 bg-white' : 'w-2 bg-white/60 hover:bg-white/80'
-                }`}
-                onClick={() => setHeroIndex(i)}
-              />
-            ))}
-          </div>
         </div>
       </section>
 
