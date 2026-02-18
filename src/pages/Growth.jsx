@@ -1,5 +1,11 @@
-// 成长计划 - 套餐、AI测评、打卡积分、导师
+// 成长计划 - 学员认证、套餐、AI测评、打卡积分、导师
 export default function Growth() {
+  const learnerItems = [
+    { title: '学员认证', desc: '面向学员的AI技能与素养认证体系' },
+    { title: 'AI技能等级认证', desc: '分等级考核，配套认证教材、辅导课程' },
+    { title: '认证考核报名、备考资料、模拟测评', desc: '' },
+    { title: '认证证书查询、展示', desc: '增强成就感，带动分享裂变' },
+  ]
   const items = [
     { title: '分阶段成长套餐', desc: '入门-进阶-精通，配套教材、课程、教具' },
     { title: '个性化成长规划', desc: 'AI测评+定制学习方案' },
@@ -15,23 +21,17 @@ export default function Growth() {
         <p className="text-slate-600 text-sm">学习过程中按阶段形成AI创作作品集，系统自动汇总为个人AI能力档案，与认证中心打通，可对应认证等级与证书，助力升学与就业展示。</p>
       </div>
 
-      {/* 慧师计划：针对教师的学习、培训与能力提升 */}
+      {/* 学员认证（由认证中心移入，面向学员） */}
       <section className="mb-10">
-        <h2 className="section-title">慧师计划</h2>
-        <p className="text-slate-600 text-sm mb-6">面向教师的学习、培训与能力提升，助力老师掌握AI教学、赛事指导与素养课程落地</p>
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="card p-6 border-primary/20 hover:shadow-md transition">
-            <h3 className="font-semibold text-primary">教师学习</h3>
-            <p className="text-sm text-slate-600 mt-1">AI素养与元认知课程、AI工具在教学中的应用，支持按阶段进阶学习</p>
-          </div>
-          <div className="card p-6 border-primary/20 hover:shadow-md transition">
-            <h3 className="font-semibold text-primary">师资培训</h3>
-            <p className="text-sm text-slate-600 mt-1">线下/线上师训、教材教具使用培训、赛事带赛能力培训、双师课实操</p>
-          </div>
-          <div className="card p-6 border-primary/20 hover:shadow-md transition">
-            <h3 className="font-semibold text-primary">能力提升与认证</h3>
-            <p className="text-sm text-slate-600 mt-1">教师认证、教学法认证、AI工具认证，与认证中心衔接，提升教学与带赛能力</p>
-          </div>
+        <h2 className="section-title">学员认证</h2>
+        <p className="text-slate-600 text-sm mb-4">面向学员的AI技能与素养认证，与成长路径、作品集、能力档案衔接</p>
+        <div className="grid md:grid-cols-2 gap-4">
+          {learnerItems.map((item, i) => (
+            <div key={i} className="card p-6">
+              <h3 className="font-semibold text-primary">{item.title}</h3>
+              {item.desc && <p className="text-sm text-slate-600 mt-1">{item.desc}</p>}
+            </div>
+          ))}
         </div>
       </section>
 
