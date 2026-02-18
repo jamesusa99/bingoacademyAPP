@@ -90,9 +90,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 核心业务入口（卡片式）：通识→素养 */}
+      {/* 核心产品和服务 */}
       <section className="py-6">
-        <h2 className="section-title mb-4">核心业务入口</h2>
+        <h2 className="section-title mb-4">核心产品和服务</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           <Link to="/courses?type=literacy" className="card p-6 text-center hover:shadow-md transition">
             <div className="text-primary font-semibold">AI素养课</div>
@@ -135,9 +135,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 转化钩子区 */}
+      {/* 限时福利 */}
       <section className="py-6">
-        <h2 className="section-title mb-4">转化钩子</h2>
+        <h2 className="section-title mb-4">限时福利</h2>
         <div className="card p-6 bg-gradient-to-r from-cyan-50/90 to-sky-50/90 border-cyan-200/50 shadow-glow mb-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
