@@ -5,7 +5,7 @@ export const mainNav = [
   { path: '/courses', label: 'AI精品课' },
   { path: '/research', label: '科学研学' },
   { path: '/events', label: '赛事中心' },
-  { path: '/community', label: 'AI学习社（精英圈）' },
+  { path: '/community', label: 'AI学习社' },
   { path: '/growth', label: '成长计划' },
   { path: '/cert', label: '能力认证中心' },
   { path: '/mall', label: 'AI智能商城' },

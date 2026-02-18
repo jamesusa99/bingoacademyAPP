@@ -29,7 +29,7 @@ function MentorAvatar({ src, name }) {
 export default function Community() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI学习社（精英圈）</h1>
+      <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI学习社</h1>
       <p className="text-slate-600 mb-6">社群列表 → 社群详情 → 群聊/直播/文件。按课程/赛事/地域/年级创建或加入；群公告、群文件、群直播、专属推广福利；导师答疑、学员互评、打卡积分排行榜；邀请入群产生转化可赚佣金</p>
 
       <section className="mb-10">
