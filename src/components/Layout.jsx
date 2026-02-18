@@ -13,13 +13,13 @@ export default function Layout({ children }) {
             <Link to="/" className="shrink-0 flex items-center gap-2">
               <img src="/logo.png" alt="缤果AI学院" className="h-8 sm:h-9 w-auto brightness-0 invert" />
             </Link>
-            <nav className="hidden lg:flex flex-1 items-center min-w-0 flex-nowrap">
+            <nav className="hidden lg:flex flex-1 items-center justify-evenly gap-2 min-w-0 flex-nowrap">
               {allNavGroups.map((group, gi) => (
                 <React.Fragment key={gi}>
                   {gi > 0 && (
-                    <span className="w-0.5 h-5 bg-cyan-400/80 mx-0.5 shrink-0 rounded-full flex-shrink-0" aria-hidden />
+                    <span className="w-0.5 h-5 bg-cyan-400/80 shrink-0 rounded-full" aria-hidden />
                   )}
-                  <div className="flex flex-1 items-center justify-center gap-1 min-w-0 py-1">
+                  <div className="flex items-center justify-center gap-1 shrink-0 py-1">
                     {group.map(({ path, label }) => (
                       <Link
                         key={path}
