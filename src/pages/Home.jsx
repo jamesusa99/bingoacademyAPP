@@ -21,23 +21,23 @@ export default function Home() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Banner 轮播 */}
-      <section className="mb-8">
-        <div className="rounded-2xl overflow-hidden bg-gradient-to-r from-primary/90 to-cyan-600 text-white shadow-lg">
-          <Link to={BANNERS[bannerIndex].to} className="block p-8 sm:p-12 min-h-[160px] flex flex-col justify-center">
-            <div className="text-sm opacity-90">{BANNERS[bannerIndex].desc}</div>
-            <h2 className="text-2xl sm:text-3xl font-bold mt-2">{BANNERS[bannerIndex].title}</h2>
-            <span className="mt-2 inline-block text-sm underline">点击进入 →</span>
+      {/* Banner 轮播：收窄宽度，更精致 */}
+      <section className="mb-8 max-w-4xl mx-auto">
+        <div className="rounded-xl overflow-hidden bg-gradient-to-r from-primary/90 to-cyan-600 text-white shadow-md">
+          <Link to={BANNERS[bannerIndex].to} className="block px-6 py-5 sm:px-8 sm:py-6 min-h-[120px] flex flex-col justify-center">
+            <div className="text-xs sm:text-sm opacity-90">{BANNERS[bannerIndex].desc}</div>
+            <h2 className="text-xl sm:text-2xl font-bold mt-1.5">{BANNERS[bannerIndex].title}</h2>
+            <span className="mt-1.5 inline-block text-xs sm:text-sm opacity-90">点击进入 →</span>
           </Link>
         </div>
-        <div className="flex justify-center gap-2 mt-3">
+        <div className="flex justify-center gap-1.5 mt-2">
           {BANNERS.map((_, i) => (
             <button
               key={i}
               type="button"
               aria-label={`轮播 ${i + 1}`}
               onClick={() => setBannerIndex(i)}
-              className={`w-2 h-2 rounded-full transition ${i === bannerIndex ? 'bg-primary scale-125' : 'bg-slate-300'}`}
+              className={`h-1.5 w-1.5 sm:w-2 sm:h-2 rounded-full transition ${i === bannerIndex ? 'bg-primary scale-125' : 'bg-slate-300'}`}
             />
           ))}
         </div>
