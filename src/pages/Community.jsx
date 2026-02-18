@@ -16,6 +16,16 @@ const items = [
   { title: '裂变活动', desc: '邀请好友进群领免费课、解锁教具体验装' },
 ]
 
+// 授牌合作机构（示例数据，可替换为接口）
+const partnerInstitutions = [
+  { name: 'XX市青少年科技教育中心', region: '江苏·南京', logo: null },
+  { name: 'XX区人工智能教育实践基地', region: '广东·深圳', logo: null },
+  { name: 'XX教育集团科创学院', region: '北京', logo: null },
+  { name: 'XX外国语学校AI实验室', region: '上海', logo: null },
+  { name: 'XX培训学校', region: '浙江·杭州', logo: null },
+  { name: 'XX创客教育', region: '四川·成都', logo: null },
+]
+
 function MentorAvatar({ src, name }) {
   const [failed, setFailed] = useState(false)
   return (
@@ -49,13 +59,36 @@ export default function Community() {
         </div>
       </section>
 
+      {/* 授牌合作机构 */}
+      <section className="mb-10">
+        <h2 className="section-title">授牌合作机构</h2>
+        <p className="text-slate-600 text-sm mb-6">与缤果AI学院正式签约的教培机构、学校及实践基地，共同推进AI素养教育落地</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {partnerInstitutions.map((p, i) => (
+            <div
+              key={i}
+              className="card p-5 flex flex-col items-center text-center hover:shadow-md hover:border-primary/30 transition group"
+            >
+              <div className="w-16 h-16 rounded-xl bg-slate-100 flex items-center justify-center text-2xl font-bold text-primary/60 group-hover:bg-primary/10 mb-3">
+                {p.logo ? <img src={p.logo} alt="" className="w-full h-full object-contain rounded-xl" /> : p.name.charAt(0)}
+              </div>
+              <div className="font-medium text-bingo-dark text-sm leading-tight line-clamp-2">{p.name}</div>
+              <div className="text-xs text-slate-500 mt-1">{p.region}</div>
+              <span className="mt-2 inline-block text-[10px] px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30">
+                授牌合作
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section>
         <h2 className="section-title">学习社栏目</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {items.map((item, i) => (
             <div key={i} className="card p-6">
               <h3 className="font-semibold text-primary">{item.title}</h3>
-              {item.desc && <p className="text-sm text-gray-600 mt-1">{item.desc}</p>}
+              {item.desc && <p className="text-sm text-slate-600 mt-1">{item.desc}</p>}
             </div>
           ))}
         </div>

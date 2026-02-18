@@ -1,4 +1,4 @@
-// 能力认证中心 - 学员认证、教师认证、等级认证、考核、证书
+// 认证中心 - 学员认证、教师认证、等级认证、考核、证书
 export default function Certification() {
   const learnerItems = [
     { title: '学员认证', desc: '面向学员的AI技能与素养认证体系' },
@@ -13,7 +13,7 @@ export default function Certification() {
   ]
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-bingo-dark mb-2">能力认证中心</h1>
+      <h1 className="text-2xl font-bold text-bingo-dark mb-2">认证中心</h1>
       <p className="text-slate-600 mb-4">认证列表 → 认证详情 → 报名 → 备考 → 考核 → 证书。技能认证（AI工具/编程）、职业认证（AI工程师/教育师）；认证辅导课佣金比例、备考资料/课程分享；证书查询/下载/分享；认证与就业/升学挂钩（产教融合企业优先录用）</p>
       <div className="card p-6 bg-amber-50/60 border-amber-200/50 mb-8">
         <h3 className="font-semibold text-bingo-dark mb-2">权威性与国际性</h3>
