@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Showcase from './pages/Showcase'
+import ShowcaseCase from './pages/ShowcaseCase'
 import Courses from './pages/Courses'
 import Community from './pages/Community'
 import Tools from './pages/Tools'
@@ -25,6 +26,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/showcase" element={<Showcase />} />
+        <Route path="/showcase/venture/:id" element={<ShowcaseCase />} />
+        <Route path="/showcase/award/:id" element={<ShowcaseCase />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/community" element={<Community />} />
         <Route path="/tools" element={<Tools />} />

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 // 缤纷成果 - 小小AI创业家（优秀学员）、10万奖金（获奖者）、成果展示
 const outstandingStudents = [
@@ -70,6 +71,7 @@ export default function Showcase() {
                 <Avatar src={s.photo} name={s.name} alt={s.name} />
                 <span className="text-xs text-primary font-medium mt-2">优秀缤果学员</span>
                 <span className="font-medium text-bingo-dark mt-1">{s.name}</span>
+                <Link to={`/showcase/venture/${i + 1}`} className="text-xs text-primary hover:underline mt-2">创业成果</Link>
               </li>
             ))}
           </ul>
@@ -87,6 +89,7 @@ export default function Showcase() {
                 <span className="text-lg font-bold text-primary mb-2">第{w.rank}名</span>
                 <Avatar src={w.photo} name={w.name} alt={w.name} />
                 <span className="font-medium text-bingo-dark mt-2">{w.name}</span>
+                <Link to={`/showcase/award/${w.rank}`} className="text-xs text-primary hover:underline mt-2">获奖案例</Link>
               </li>
             ))}
           </ul>
