@@ -4,8 +4,10 @@ import Home from './pages/Home'
 import Showcase from './pages/Showcase'
 import ShowcaseCase from './pages/ShowcaseCase'
 import Courses from './pages/Courses'
+import CourseDetail from './pages/CourseDetail'
 import Community from './pages/Community'
 import Tools from './pages/Tools'
+import ToolDetail from './pages/ToolDetail'
 import Research from './pages/Research'
 import Career from './pages/Career'
 import Growth from './pages/Growth'
@@ -29,8 +31,10 @@ export default function App() {
         <Route path="/showcase/venture/:id" element={<ShowcaseCase />} />
         <Route path="/showcase/award/:id" element={<ShowcaseCase />} />
         <Route path="/courses" element={<Courses />} />
+        <Route path="/courses/detail/:id" element={<CourseDetail />} />
         <Route path="/community" element={<Community />} />
         <Route path="/tools" element={<Tools />} />
+        <Route path="/tools/detail/:id" element={<ToolDetail />} />
         <Route path="/research" element={<Research />} />
         <Route path="/career" element={<Career />} />
         <Route path="/growth" element={<Growth />} />
