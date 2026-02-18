@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 const BANNERS = [
@@ -9,37 +8,70 @@ const BANNERS = [
   { title: '推广赚佣金', to: '/profile#promo', desc: '分享课程/商品赚佣金活动专场' },
 ]
 
+const PAIN_POINTS = [
+  '孩子总玩AI工具，会不会耽误学习？',
+  'AI时代，到底该学什么才不被淘汰？',
+  '学校没有AI课，我们该从哪里入手？',
+  '孩子对AI感兴趣，但不知道如何系统学？',
+  '担心孩子只会用AI，不会思考与创造？',
+  '竞赛、升学、素养，AI教育该怎么选？',
+  'AI工具那么多，哪些适合青少年？',
+  '如何判断孩子适不适合走AI/科创路线？',
+  '家长自己不懂AI，怎么引导孩子？',
+  '学完AI课程，如何证明能力、对接升学？',
+]
+
+const HOT_COURSES = [
+  { name: 'AI素养启蒙·面向未来的第一课', to: '/courses?type=literacy', tag: '独门爆款' },
+  { name: '白名单赛事通关营', to: '/courses?type=contest', tag: '竞赛' },
+  { name: '科技特长生路径课', to: '/courses?type=exam', tag: '升学' },
+]
+
 export default function Home() {
-  const [bannerIndex, setBannerIndex] = useState(0)
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setBannerIndex((i) => (i + 1) % BANNERS.length)
-    }, 4500)
-    return () => clearInterval(t)
-  }, [])
-
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Banner 轮播：收窄宽度，更精致 */}
+      {/* 欢迎与痛点：让我猜猜您面对AI遇到的问题 */}
       <section className="mb-8 max-w-4xl mx-auto">
-        <div className="rounded-xl overflow-hidden bg-gradient-to-r from-primary/90 to-cyan-600 text-white shadow-md">
-          <Link to={BANNERS[bannerIndex].to} className="block px-6 py-5 sm:px-8 sm:py-6 min-h-[120px] flex flex-col justify-center">
-            <div className="text-xs sm:text-sm opacity-90">{BANNERS[bannerIndex].desc}</div>
-            <h2 className="text-xl sm:text-2xl font-bold mt-1.5">{BANNERS[bannerIndex].title}</h2>
-            <span className="mt-1.5 inline-block text-xs sm:text-sm opacity-90">点击进入 →</span>
-          </Link>
-        </div>
-        <div className="flex justify-center gap-1.5 mt-2">
-          {BANNERS.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`轮播 ${i + 1}`}
-              onClick={() => setBannerIndex(i)}
-              className={`h-1.5 w-1.5 sm:w-2 sm:h-2 rounded-full transition ${i === bannerIndex ? 'bg-primary scale-125' : 'bg-slate-300'}`}
-            />
+        <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-4">
+          欢迎来到缤果AI学院
+        </h2>
+        <p className="text-slate-600 text-center mb-6">让我猜猜您面对AI遇到的问题</p>
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+          {PAIN_POINTS.map((q, i) => (
+            <li key={i} className="card px-4 py-3 text-slate-700 hover:border-primary/30 hover:shadow-sm transition">
+              {q}
+            </li>
           ))}
+        </ul>
+      </section>
+
+      {/* 广告区：排列式（非轮播） */}
+      <section className="mb-8">
+        <h2 className="section-title mb-4">热门活动</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          {BANNERS.map((b, i) => (
+            <Link
+              key={i}
+              to={b.to}
+              className="rounded-xl overflow-hidden bg-gradient-to-r from-primary/85 to-cyan-600 text-white shadow-md hover:shadow-lg transition p-4 sm:p-5 min-h-[100px] flex flex-col justify-center"
+            >
+              <div className="text-xs opacity-90">{b.desc}</div>
+              <div className="font-semibold mt-1.5 text-sm sm:text-base">{b.title}</div>
+              <span className="text-xs opacity-90 mt-1">点击进入 →</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* AI能力测评 + 对应推荐课程 */}
+      <section className="mb-8">
+        <h2 className="section-title mb-4">AI能力测评 · 推荐适合您的课程</h2>
+        <div className="card p-6 bg-gradient-to-r from-cyan-50 to-sky-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="text-slate-600">测一测孩子的AI素养与潜力，根据结果智能推荐课程与学习路径。</p>
+            <Link to="/growth" className="text-primary font-medium mt-2 inline-block">去测评 →</Link>
+          </div>
+          <Link to="/courses" className="btn-primary shrink-0">查看推荐课程</Link>
         </div>
       </section>
 
@@ -58,13 +90,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 核心业务入口（卡片式） */}
+      {/* 核心业务入口（卡片式）：通识→素养 */}
       <section className="py-6">
         <h2 className="section-title mb-4">核心业务入口</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-          <Link to="/courses?type=ai" className="card p-6 text-center hover:shadow-md transition">
-            <div className="text-primary font-semibold">AI通识课</div>
-            <div className="text-sm text-slate-500 mt-1">启蒙·进阶</div>
+          <Link to="/courses?type=literacy" className="card p-6 text-center hover:shadow-md transition">
+            <div className="text-primary font-semibold">AI素养课</div>
+            <div className="text-sm text-slate-500 mt-1">面向未来·素养与元认知</div>
           </Link>
           <Link to="/courses?type=contest" className="card p-6 text-center hover:shadow-md transition">
             <div className="text-primary font-semibold">竞赛培优课</div>
@@ -89,7 +121,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 转化钩子区：家长必读课 + 限时福利 */}
+      {/* 独门爆款课程 */}
+      <section className="py-6">
+        <h2 className="section-title mb-4">独门爆款课程</h2>
+        <p className="text-slate-600 text-sm mb-4">核心打造的几款独家课程，从素养到竞赛到升学一站式覆盖</p>
+        <div className="grid sm:grid-cols-3 gap-4">
+          {HOT_COURSES.map((c, i) => (
+            <Link key={i} to={c.to} className="card p-6 hover:shadow-md transition border-primary/20">
+              <span className="text-xs px-2 py-0.5 rounded bg-primary/20 text-primary">{c.tag}</span>
+              <div className="font-semibold text-primary mt-2">{c.name}</div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 转化钩子区 */}
       <section className="py-6">
         <h2 className="section-title mb-4">转化钩子</h2>
         <div className="card p-6 bg-gradient-to-r from-cyan-50/90 to-sky-50/90 border-cyan-200/50 shadow-glow mb-6">
@@ -128,7 +174,7 @@ export default function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <Link to="/courses" className="card p-5 hover:shadow-md transition">
             <div className="text-sm text-slate-500">热门课程</div>
-            <div className="font-semibold text-primary mt-1">精选AI与素养课</div>
+            <div className="font-semibold text-primary mt-1">精选AI素养与培优课</div>
             <p className="text-sm text-slate-600 mt-1">进入详情可分享赚佣金</p>
           </Link>
           <Link to="/events" className="card p-5 hover:shadow-md transition">

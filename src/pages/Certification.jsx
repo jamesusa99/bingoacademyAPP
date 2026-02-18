@@ -14,7 +14,11 @@ export default function Certification() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">能力认证中心</h1>
-      <p className="text-slate-600 mb-6">认证列表 → 认证详情 → 报名 → 备考 → 考核 → 证书。技能认证（AI工具/编程）、职业认证（AI工程师/教育师）；认证辅导课佣金比例、备考资料/课程分享；证书查询/下载/分享；认证与就业/升学挂钩（产教融合企业优先录用）</p>
+      <p className="text-slate-600 mb-4">认证列表 → 认证详情 → 报名 → 备考 → 考核 → 证书。技能认证（AI工具/编程）、职业认证（AI工程师/教育师）；认证辅导课佣金比例、备考资料/课程分享；证书查询/下载/分享；认证与就业/升学挂钩（产教融合企业优先录用）</p>
+      <div className="card p-6 bg-amber-50/60 border-amber-200/50 mb-8">
+        <h3 className="font-semibold text-bingo-dark mb-2">权威性与国际性</h3>
+        <p className="text-slate-600 text-sm">认证体系对接教育部白名单赛事与行业标准，部分认证获国际机构认可，证书可在升学综评、留学与就业场景中作为能力证明。合作机构与认证背书持续更新，详见各认证详情页。</p>
+      </div>
 
       <section className="mb-10">
         <h2 className="section-title">学员认证</h2>

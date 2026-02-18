@@ -27,7 +27,23 @@ export default function Courses() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI精品课</h1>
-      <p className="text-slate-600 mb-6">课程分类（通识/培优/升学/就业/家长）→ 课程列表 → 课程详情 → 学习中心；大纲/讲师/评价/试看、佣金比例与分享、微信支付/优惠券/拼团、教具联动</p>
+      <p className="text-slate-600 mb-6">课程分类（素养/培优/升学/就业/家长）→ 课程列表 → 课程详情 → 学习中心；大纲/讲师/评价/试看、佣金比例与分享、微信支付/优惠券/拼团、教具联动</p>
+
+      <section className="mb-10">
+        <h2 className="section-title">竞赛培优课 · 升学赋能课 · 与精品课对应</h2>
+        <div className="card p-6 bg-slate-50 mb-6">
+          <p className="text-slate-600 text-sm mb-2"><strong>竞赛培优课</strong>：交付形式为「集训营 + 模拟赛 + 真题精讲 + 一对一答疑」，在精品课中对应「竞赛班」阶段及「赛事集训营」专题课，支持按赛事/等级筛选。</p>
+          <p className="text-slate-600 text-sm"><strong>升学赋能课</strong>：交付形式为「科技特长生路径课 + 综评/强基材料辅导 + 真题与模拟」，在精品课中对应「升学护航班」阶段及「科技特长生」标签，与成长计划中的升学套餐可组合购买。</p>
+        </div>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="section-title">AI精品课与成长计划的对应与区别</h2>
+        <div className="card p-6 border-primary/20">
+          <p className="text-slate-600 text-sm"><strong>AI精品课</strong>：单课选购，按阶段/类型选课，即买即学，适合有明确单课需求的用户。</p>
+          <p className="text-slate-600 text-sm mt-2"><strong>成长计划</strong>：先做AI能力测评 → 生成个性化学习路径 → 购买阶段套餐（启蒙/进阶/竞赛/升学/就业）→ 学习跟踪、打卡、1v1导师。适合希望「测评+路径+套餐+长期跟进」一站式服务的用户。成长计划中的套餐会包含多门精品课，并配套教材/教具与导师服务。</p>
+        </div>
+      </section>
 
       <section className="mb-10">
         <h2 className="section-title">按阶段选课</h2>
@@ -51,6 +67,7 @@ export default function Courses() {
             </div>
           ))}
         </div>
+        <p className="text-slate-500 text-xs mt-2">* 原「通识课」升级为面向未来、指向素养的AI素养课（不止于工具课，强调元认知与素养）</p>
       </section>
 
       <section className="mb-10">

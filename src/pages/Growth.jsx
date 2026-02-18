@@ -10,6 +10,10 @@ export default function Growth() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">成长计划</h1>
       <p className="text-slate-600 mb-6">AI能力测评 → 学习方案生成 → 阶段套餐 → 学习跟踪。入门/进阶/高阶测评、个性化学习路径、启蒙/进阶/竞赛/升学/就业套餐（套餐佣金比例与分享）、学习日历/任务打卡/积分兑换、1v1导师跟进（导师可分享学员方案赚佣金）</p>
+      <div className="card p-6 bg-cyan-50/50 border-primary/20 mb-8">
+        <h3 className="font-semibold text-primary mb-2">AI创作作品集 · 个人能力档案</h3>
+        <p className="text-slate-600 text-sm">学习过程中按阶段形成AI创作作品集，系统自动汇总为个人AI能力档案，与能力认证中心打通，可对应认证等级与证书，助力升学与就业展示。</p>
+      </div>
       <div className="grid md:grid-cols-2 gap-4">
         {items.map((item, i) => (
           <div key={i} className="card p-6">
