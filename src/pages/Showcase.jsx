@@ -34,17 +34,36 @@ function Avatar({ src, name, alt }) {
   )
 }
 
+const CATEGORIES = [
+  { key: 'works', name: '学员作品' },
+  { key: 'awards', name: '赛事获奖' },
+  { key: 'school', name: '校企合作' },
+  { key: 'materials', name: '教材教具' },
+]
+
 export default function Showcase() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI成果展</h1>
-      <p className="text-gray-600 mb-8">打造可视化信任背书，降低决策成本，激发学习/消费意愿</p>
+      <p className="text-slate-600 mb-6">成果分类 → 成果列表 → 成果详情；图文/短视频展示、点赞/评论/分享，作品关联课程/工具购买，定制化成果服务，详情页分享转化可赚佣金</p>
+
+      {/* 成果分类 */}
+      <section className="mb-8">
+        <h2 className="section-title">成果分类</h2>
+        <div className="flex flex-wrap gap-3">
+          {CATEGORIES.map((c) => (
+            <a key={c.key} href={`#${c.key}`} className="card px-5 py-3 hover:shadow-md hover:border-primary/30">
+              {c.name}
+            </a>
+          ))}
+        </div>
+      </section>
 
       <section className="mb-10">
         <h2 className="section-title">小小AI创业家</h2>
         <div className="card p-6 border-primary/20">
-          <p className="text-gray-600 mb-6">展示青少年在AI应用与创新项目中的创业实践与成果。</p>
-          <h3 className="text-sm font-semibold text-gray-500 mb-4">优秀学员列表</h3>
+          <p className="text-slate-600 mb-6">展示青少年在AI应用与创新项目中的创业实践与成果。</p>
+          <h3 className="text-sm font-semibold text-slate-500 mb-4">优秀学员列表</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {outstandingStudents.map((s, i) => (
               <li key={i} className="flex flex-col items-center text-center">
@@ -60,8 +79,8 @@ export default function Showcase() {
       <section className="mb-10">
         <h2 className="section-title">缤果AI学院10万奖金</h2>
         <div className="card p-6 border-primary/20 bg-cyan-50/50">
-          <p className="text-gray-600 mb-6">年度重磅激励计划，总奖金10万元，激励学员与教师参与赛事、认证与成果产出。</p>
-          <h3 className="text-sm font-semibold text-gray-500 mb-4">获奖者名单</h3>
+          <p className="text-slate-600 mb-6">年度重磅激励计划，总奖金10万元，激励学员与教师参与赛事、认证与成果产出。</p>
+          <h3 className="text-sm font-semibold text-slate-500 mb-4">获奖者名单</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {prizeWinners.map((w, i) => (
               <li key={i} className="flex flex-col items-center text-center">
@@ -75,12 +94,13 @@ export default function Showcase() {
       </section>
 
       <section>
-        <h2 className="section-title">成果展示</h2>
+        <h2 className="section-title">成果列表与详情</h2>
+        <p className="text-slate-600 text-sm mb-4">详情页支持：图文/短视频展示、点赞/评论/分享；作品关联课程/工具购买入口；定制化成果服务提交入口；分享按钮，分享后产生转化可赚佣金</p>
         <div className="grid md:grid-cols-2 gap-6">
           {sections.map((s, i) => (
             <div key={i} className="card p-6">
               <h3 className="font-semibold text-primary">{s.title}</h3>
-              {s.desc && <p className="text-sm text-gray-500 mt-1">{s.desc}</p>}
+              {s.desc && <p className="text-sm text-slate-500 mt-1">{s.desc}</p>}
             </div>
           ))}
         </div>

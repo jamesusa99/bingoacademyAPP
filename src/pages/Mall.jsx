@@ -23,14 +23,14 @@ export default function Mall() {
             key={path}
             to={path}
             className={`px-4 py-2 rounded-lg text-sm font-medium ${
-              loc.pathname === path ? 'bg-primary text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              loc.pathname === path ? 'bg-primary text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
             {label}
           </Link>
         ))}
       </div>
-      <p className="text-gray-600 mb-8">课程、教材、教具、工具包一站式选购</p>
+      <p className="text-slate-600 mb-6">商品分类（课程/教材/教具/工具/1v1辅导）→ 商品列表 → 详情（佣金比例+分享）→ 购物车 → 结算。组合套餐、会员专属价/秒杀/拼团/满减、会员推广佣金翻倍；分享订单自动绑定推广人</p>
       <div className="mb-6">
         <Link to="/mall/materials" className="btn-primary">进入学材物资中心 →</Link>
       </div>
@@ -38,7 +38,7 @@ export default function Mall() {
         {items.map((item, i) => (
           <div key={i} className="card p-6">
             <h3 className="font-semibold text-primary">{item.title}</h3>
-            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+            <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
           </div>
         ))}
       </div>

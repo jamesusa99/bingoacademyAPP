@@ -9,12 +9,12 @@ export default function Growth() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">成长计划</h1>
-      <p className="text-gray-600 mb-8">阶梯式学习体系，提升用户生命周期价值</p>
+      <p className="text-slate-600 mb-6">AI能力测评 → 学习方案生成 → 阶段套餐 → 学习跟踪。入门/进阶/高阶测评、个性化学习路径、启蒙/进阶/竞赛/升学/就业套餐（套餐佣金比例与分享）、学习日历/任务打卡/积分兑换、1v1导师跟进（导师可分享学员方案赚佣金）</p>
       <div className="grid md:grid-cols-2 gap-4">
         {items.map((item, i) => (
           <div key={i} className="card p-6">
             <h3 className="font-semibold text-primary">{item.title}</h3>
-            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+            <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
           </div>
         ))}
       </div>

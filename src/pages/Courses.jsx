@@ -27,7 +27,7 @@ export default function Courses() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI精品课</h1>
-      <p className="text-gray-600 mb-8">按阶段选课、课程类型与AI工具库一站式呈现</p>
+      <p className="text-slate-600 mb-6">课程分类（通识/培优/升学/就业/家长）→ 课程列表 → 课程详情 → 学习中心；大纲/讲师/评价/试看、佣金比例与分享、微信支付/优惠券/拼团、教具联动</p>
 
       <section className="mb-10">
         <h2 className="section-title">按阶段选课</h2>
@@ -35,7 +35,7 @@ export default function Courses() {
           {stages.map((s) => (
             <Link key={s.name} to={s.path} className="card px-5 py-3 hover:shadow-md hover:border-primary/30">
               <span className="font-medium">{s.name}</span>
-              <span className="text-gray-500 text-sm ml-2">{s.range}</span>
+              <span className="text-slate-500 text-sm ml-2">{s.range}</span>
             </Link>
           ))}
         </div>
@@ -47,20 +47,25 @@ export default function Courses() {
           {tabs.map((t) => (
             <div key={t.key} className="card p-6">
               <h3 className="font-semibold text-primary">{t.name}</h3>
-              <p className="text-sm text-gray-600 mt-1">{t.desc}</p>
+              <p className="text-sm text-slate-600 mt-1">{t.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      <section>
-        <h2 className="section-title">AI工具库</h2>
-        <p className="text-gray-600 text-sm mb-4">免费/付费工具、教具联动、OEM定制，与课程学习配套使用</p>
+      <section className="mb-10">
+        <h2 className="section-title">课程详情与学习中心</h2>
+        <p className="text-slate-600 text-sm mb-4">课程详情：大纲、讲师、评价、试看、课程佣金比例展示、分享按钮（生成海报/链接）。购买：微信支付、优惠券、拼团。学习中心：播放、倍速、笔记、答疑、作业提交；已学/未学、完成度、证书获取条件。</p>
+      </section>
+
+      <section className="mb-10">
+        <h2 className="section-title">AI工具库 · 教具联动</h2>
+        <p className="text-slate-600 text-sm mb-4">课程页可跳转商城购买配套教具，教具同步展示佣金比例；免费/付费工具、OEM定制</p>
         <div className="grid md:grid-cols-2 gap-4">
           {toolItems.map((item, i) => (
             <div key={i} className="card p-6">
               <h3 className="font-semibold text-primary">{item.title}</h3>
-              <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+              <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
             </div>
           ))}
         </div>

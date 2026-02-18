@@ -17,7 +17,7 @@ export default function Events() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">赛事中心</h1>
-      <p className="text-gray-600 mb-8">打造赛事IP，带动赛事服务、教材/教具、集训营多维度变现</p>
+      <p className="text-slate-600 mb-6">赛事列表 → 赛事详情 → 报名 → 集训营 → 赛事进行 → 成绩查询。时间/组别/报名条件/奖项、集训营佣金比例；报名缴费与资格审核、赛前辅导与直播答疑、成绩与证书下载；赛事定制服务（机构/教师可享推广佣金）</p>
 
       <section className="mb-10">
         <h2 className="section-title">赛事分类</h2>
@@ -36,7 +36,7 @@ export default function Events() {
           {services.map((s, i) => (
             <li key={i} className="card p-4 flex items-center">
               <span className="text-primary font-medium">{s}</span>
-              <span className="text-xs text-gray-500 ml-2">分享报名/备赛物资有分佣</span>
+              <span className="text-xs text-slate-500 ml-2">分享报名/备赛物资有分佣</span>
             </li>
           ))}
         </ul>

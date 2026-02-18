@@ -6,6 +6,7 @@ import Courses from './pages/Courses'
 import Community from './pages/Community'
 import Tools from './pages/Tools'
 import Research from './pages/Research'
+import Career from './pages/Career'
 import Growth from './pages/Growth'
 import Events from './pages/Events'
 import Certification from './pages/Certification'
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/community" element={<Community />} />
         <Route path="/tools" element={<Tools />} />
         <Route path="/research" element={<Research />} />
+        <Route path="/career" element={<Career />} />
         <Route path="/growth" element={<Growth />} />
         <Route path="/events" element={<Events />} />
         <Route path="/cert" element={<Certification />} />

@@ -9,12 +9,12 @@ export default function Charity() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">缤果公益与报道</h1>
-      <p className="text-gray-600 mb-8">提升品牌美誉度，传递社会责任，带动品牌传播</p>
+      <p className="text-slate-600 mb-6">公益项目列表 → 项目详情 → 参与入口 → 成果展示。公益课、公益赛事、教具捐赠（分享无佣金，仅增加公益积分）；报名/打卡捐赠、受助案例与数据；机构/企业公益合作申请入口</p>
       <div className="grid md:grid-cols-2 gap-4">
         {items.map((item, i) => (
           <div key={i} className="card p-6">
             <h3 className="font-semibold text-primary">{item.title}</h3>
-            <p className="text-sm text-gray-600 mt-1">{item.desc}</p>
+            <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
           </div>
         ))}
       </div>

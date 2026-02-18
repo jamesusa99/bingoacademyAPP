@@ -30,13 +30,13 @@ export default function Community() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI学习社（精英圈）</h1>
-      <p className="text-gray-600 mb-8">提升粘性、促进留存复购，私域流量池，社群裂变</p>
+      <p className="text-slate-600 mb-6">社群列表 → 社群详情 → 群聊/直播/文件。按课程/赛事/地域/年级创建或加入；群公告、群文件、群直播、专属推广福利；导师答疑、学员互评、打卡积分排行榜；邀请入群产生转化可赚佣金</p>
 
       <section className="mb-10">
         <h2 className="section-title">AI牛人社</h2>
         <div className="card p-6 border-primary/20">
-          <p className="text-gray-600 mb-6">汇聚AI教育领域的牛人导师与优秀学员，分享实战经验、答疑解惑、共创内容。</p>
-          <h3 className="text-sm font-semibold text-gray-500 mb-4">优秀导师列表</h3>
+          <p className="text-slate-600 mb-6">汇聚AI教育领域的牛人导师与优秀学员，分享实战经验、答疑解惑、共创内容。</p>
+          <h3 className="text-sm font-semibold text-slate-500 mb-4">优秀导师列表</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {certifiedMentors.map((m, i) => (
               <li key={i} className="flex flex-col items-center text-center">

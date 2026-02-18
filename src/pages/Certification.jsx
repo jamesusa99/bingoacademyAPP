@@ -14,7 +14,7 @@ export default function Certification() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">能力认证中心</h1>
-      <p className="text-gray-600 mb-8">学习-考核-认证闭环，学员认证与教师认证双轨并进</p>
+      <p className="text-slate-600 mb-6">认证列表 → 认证详情 → 报名 → 备考 → 考核 → 证书。技能认证（AI工具/编程）、职业认证（AI工程师/教育师）；认证辅导课佣金比例、备考资料/课程分享；证书查询/下载/分享；认证与就业/升学挂钩（产教融合企业优先录用）</p>
 
       <section className="mb-10">
         <h2 className="section-title">学员认证</h2>
@@ -22,7 +22,7 @@ export default function Certification() {
           {learnerItems.map((item, i) => (
             <div key={i} className="card p-6">
               <h3 className="font-semibold text-primary">{item.title}</h3>
-              {item.desc && <p className="text-sm text-gray-600 mt-1">{item.desc}</p>}
+              {item.desc && <p className="text-sm text-slate-600 mt-1">{item.desc}</p>}
             </div>
           ))}
         </div>
@@ -34,7 +34,7 @@ export default function Certification() {
           {teacherItems.map((item, i) => (
             <div key={i} className="card p-6">
               <h3 className="font-semibold text-primary">{item.title}</h3>
-              {item.desc && <p className="text-sm text-gray-600 mt-1">{item.desc}</p>}
+              {item.desc && <p className="text-sm text-slate-600 mt-1">{item.desc}</p>}
             </div>
           ))}
         </div>

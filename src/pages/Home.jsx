@@ -5,8 +5,8 @@ const BANNERS = [
   { title: '课程促销', to: '/courses', desc: '精品课限时优惠' },
   { title: '赛事报名', to: '/events', desc: '权威赛事火热报名中' },
   { title: '公益活动', to: '/charity', desc: '缤果公益与报道' },
-  { title: '科学研学', to: '/research', desc: '科学实践与AI+科创研学' },
-  { title: '推广赚佣金', to: '/profile#promo', desc: '分享课程/商品赚佣金' },
+  { title: '产教融合合作', to: '/career', desc: '企业实训与就业对接' },
+  { title: '推广赚佣金', to: '/profile#promo', desc: '分享课程/商品赚佣金活动专场' },
 ]
 
 export default function Home() {
@@ -82,9 +82,9 @@ export default function Home() {
             <div className="text-primary font-semibold">赛事中心</div>
             <div className="text-sm text-slate-500 mt-1">报名·集训·证书</div>
           </Link>
-          <Link to="/research" className="card p-6 text-center hover:shadow-md transition border-primary/30">
-            <div className="text-primary font-semibold">科学研学</div>
-            <div className="text-sm text-slate-500 mt-1">实践·营地·科创</div>
+          <Link to="/career" className="card p-6 text-center hover:shadow-md transition border-primary/30">
+            <div className="text-primary font-semibold">产教融合</div>
+            <div className="text-sm text-slate-500 mt-1">岗位·实训·就业</div>
           </Link>
         </div>
       </section>
