@@ -1,3 +1,5 @@
+import React from 'react'
+
 // 认证中心 - 面向教师、机构、学校；机构认证、教师认证、慧师计划
 const INSTITUTION_STEPS = [
   { step: 1, title: '提交申请', desc: '机构在线填写认证申请，提交资质与办学信息' },
@@ -22,21 +24,31 @@ export default function Certification() {
         <p className="text-slate-600 text-sm">认证体系对接教育部白名单赛事与行业标准，部分认证获国际机构认可，证书可在升学综评、留学与就业场景中作为能力证明。合作机构与认证背书持续更新，详见各认证详情页。</p>
       </div>
 
-      {/* 机构认证：步骤与流程 */}
+      {/* 机构认证：模块化流程（一模块 → 下一模块） */}
       <section className="mb-10">
         <h2 className="section-title">机构认证</h2>
         <p className="text-slate-600 text-sm mb-6">教培机构、学校申请成为缤果AI学院认证合作机构，获得授牌与课程/赛事授权</p>
-        <div className="flex flex-col gap-0">
+        <div className="flex flex-col lg:flex-row lg:items-stretch lg:gap-2">
           {INSTITUTION_STEPS.map((item, i) => (
-            <div key={item.step} className="flex gap-4 items-start">
-              <div className="shrink-0 w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">
-                {item.step}
+            <React.Fragment key={item.step}>
+              {/* 模块 */}
+              <div className="card p-5 flex-1 min-w-0 border-primary/20 bg-white hover:shadow-md transition mb-4 lg:mb-0">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="w-7 h-7 rounded-full bg-primary text-white flex items-center justify-center text-xs font-bold shrink-0">
+                    {item.step}
+                  </span>
+                  <h3 className="font-semibold text-primary">{item.title}</h3>
+                </div>
+                <p className="text-sm text-slate-600 pl-9">{item.desc}</p>
               </div>
-              <div className={`card flex-1 p-5 ${i < INSTITUTION_STEPS.length - 1 ? 'mb-2' : ''}`}>
-                <h3 className="font-semibold text-primary">{item.title}</h3>
-                <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
-              </div>
-            </div>
+              {/* 衔接：到下一模块 */}
+              {i < INSTITUTION_STEPS.length - 1 && (
+                <div className="flex items-center justify-center lg:flex-col lg:w-10 lg:shrink-0 text-slate-400">
+                  <span className="lg:rotate-90 lg:mb-1">→</span>
+                  <span className="text-xs ml-2 lg:ml-0">下一步</span>
+                </div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </section>
