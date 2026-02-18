@@ -16,6 +16,14 @@ const items = [
   { title: '裂变活动', desc: '邀请好友进群领免费课、解锁教具体验装' },
 ]
 
+// 认证合作课程（学习社栏目内）
+const certifiedCourses = [
+  { name: '错题帮AI', desc: '智能错题本与个性化巩固' },
+  { name: '梅林口语', desc: 'AI口语练习与测评' },
+  { name: '家庭教育', desc: '家长课堂与亲子共学' },
+  { name: '推荐必读书目', desc: '素养与科创阅读书单' },
+]
+
 // 授牌合作机构（示例数据，可替换为接口）
 const partnerInstitutions = [
   { name: 'XX市青少年科技教育中心', region: '江苏·南京', logo: null },
@@ -84,11 +92,21 @@ export default function Community() {
 
       <section>
         <h2 className="section-title">学习社栏目</h2>
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
           {items.map((item, i) => (
             <div key={i} className="card p-6">
               <h3 className="font-semibold text-primary">{item.title}</h3>
               {item.desc && <p className="text-sm text-slate-600 mt-1">{item.desc}</p>}
+            </div>
+          ))}
+        </div>
+        <h3 className="text-base font-semibold text-bingo-dark mb-3">认证合作课程</h3>
+        <p className="text-slate-600 text-sm mb-4">与优质内容方合作的认证课程，纳入学习社推荐与共学</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {certifiedCourses.map((c, i) => (
+            <div key={i} className="card p-5 hover:shadow-md hover:border-primary/30 transition">
+              <div className="font-semibold text-primary">{c.name}</div>
+              <p className="text-sm text-slate-600 mt-1">{c.desc}</p>
             </div>
           ))}
         </div>

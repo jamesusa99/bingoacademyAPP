@@ -9,7 +9,7 @@ export const mainNav = [
   { path: '/growth', label: '成长计划' },
   { path: '/cert', label: '认证中心' },
   { path: '/mall', label: 'AI智能商城' },
-  { path: '/charity', label: '缤果公益' },
+  { path: '/charity', label: '荣誉与公益' },
   { path: '/profile', label: '个人中心' },
 ]
 
