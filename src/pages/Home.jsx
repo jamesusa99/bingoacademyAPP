@@ -4,11 +4,11 @@ export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       {/* 使命与愿景 */}
-      <section className="py-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-6">
+      <section className="py-8 section-tech max-w-4xl mx-auto">
+        <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-6 tracking-tight">
           驾驭AI未来：缤果AI学院，您的人工智能教育新范式
         </h2>
-        <div className="max-w-3xl mx-auto space-y-4 text-gray-600 leading-relaxed">
+        <div className="max-w-3xl mx-auto space-y-4 text-slate-600 leading-relaxed">
           <p>
             在人工智能浪潮席卷全球的当下，我们不禁要问：何为面向未来的教育？面对日新月异的AI技术，家长又该如何引导孩子成长？
           </p>
@@ -50,7 +50,7 @@ export default function Home() {
 
       {/* 家长必读课 */}
       <section className="py-6">
-        <div className="card p-6 bg-gradient-to-r from-cyan-50 to-sky-50 border-primary/20">
+        <div className="card p-6 bg-gradient-to-r from-cyan-50/90 to-sky-50/90 border-cyan-200/50 shadow-glow">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="text-sm text-gray-500">家长必读课</div>

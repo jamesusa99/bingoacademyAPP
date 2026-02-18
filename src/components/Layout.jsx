@@ -6,7 +6,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="sticky top-0 z-50 bg-bingo-dark text-white shadow-lg">
+      <header className="sticky top-0 z-50 bg-bingo-dark text-white shadow-lg border-b border-cyan-500/20 bg-gradient-to-r from-[#0f172a] to-[#1e293b]">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-4 lg:gap-6 min-h-14 flex-nowrap">
             <Link to="/" className="shrink-0 flex items-center gap-2">
@@ -17,8 +17,8 @@ export default function Layout({ children }) {
                 <Link
                   key={path}
                   to={path}
-                  className={`px-2 py-2 rounded-md text-sm whitespace-nowrap shrink-0 ${
-                    loc.pathname === path ? 'bg-primary text-white' : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  className={`px-2 py-2 rounded-lg text-sm whitespace-nowrap shrink-0 transition-colors ${
+                    loc.pathname === path ? 'bg-cyan-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {label}
@@ -30,8 +30,8 @@ export default function Layout({ children }) {
                 <Link
                   key={path}
                   to={path}
-                  className={`px-3 py-2 rounded-md text-sm whitespace-nowrap ${
-                    loc.pathname === path ? 'bg-primary text-white' : 'text-gray-300 hover:text-white hover:bg-white/10'
+                  className={`px-3 py-2 rounded-lg text-sm whitespace-nowrap transition-colors ${
+                    loc.pathname === path ? 'bg-cyan-500 text-white' : 'text-slate-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
                   {label}
@@ -51,10 +51,10 @@ export default function Layout({ children }) {
         </div>
       </header>
       <main className="flex-1">{children}</main>
-      <footer className="bg-bingo-dark text-gray-400 text-sm py-8">
+      <footer className="bg-bingo-dark text-slate-400 text-sm py-8 border-t border-cyan-500/20 bg-gradient-to-r from-[#0f172a] to-[#1e293b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap justify-between gap-6">
           <div>
-            <span className="text-primary font-semibold">缤果AI学院</span>
+            <span className="text-cyan-400 font-semibold">缤果AI学院</span>
             <p className="mt-1">AI课程 + 权威赛事 · 启蒙-进阶-竞赛-升学-就业</p>
           </div>
           <div className="flex gap-6">
