@@ -15,10 +15,14 @@ export const mainNavGroups = [
   [{ path: '/profile', label: '个人中心' }],
 ]
 
-// 扁平列表（用于移动端等）
-export const mainNav = mainNavGroups.flat()
-
+// 第 8 组：登录、注册
 export const authNav = [
   { path: '/login', label: '登录' },
   { path: '/register', label: '注册' },
 ]
+
+// 全部 8 组（含登录注册，用于顶栏分栏展示）
+export const allNavGroups = [...mainNavGroups, authNav]
+
+// 扁平列表（用于移动端等，不含登录注册）
+export const mainNav = mainNavGroups.flat()
