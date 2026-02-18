@@ -203,6 +203,23 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* 线下机构课程合作 / OEM合作 推广入口 */}
+      <section className="py-8 border-t">
+        <h2 className="section-title mb-4">机构合作</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <a href="/#/join" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
+            <div className="font-semibold text-primary">线下机构课程合作</div>
+            <p className="text-sm text-slate-600 mt-1">教培机构、学校引入缤果AI课程与赛事，授牌合作、师训与运营支持</p>
+            <span className="text-sm text-primary mt-3">了解合作 →</span>
+          </a>
+          <a href="/#/oem" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
+            <div className="font-semibold text-primary">OEM合作</div>
+            <p className="text-sm text-slate-600 mt-1">课程/教具/工具定制、品牌联名、技术输出，共建AI教育产品</p>
+            <span className="text-sm text-primary mt-3">了解合作 →</span>
+          </a>
+        </div>
+      </section>
     </div>
   )
 }

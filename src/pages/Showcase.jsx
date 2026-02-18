@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-// AI成果展 - 小小AI创业家（优秀学员）、10万奖金（获奖者）、成果展示
+// 缤纷成果 - 小小AI创业家（优秀学员）、10万奖金（获奖者）、成果展示
 const outstandingStudents = [
   { name: '张小明', photo: 'https://ui-avatars.com/api/?name=张小明&background=0891b2&color=fff&size=120' },
   { name: '李思涵', photo: 'https://ui-avatars.com/api/?name=李思涵&background=0891b2&color=fff&size=120' },
@@ -44,7 +44,7 @@ const CATEGORIES = [
 export default function Showcase() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-bingo-dark mb-2">AI成果展</h1>
+      <h1 className="text-2xl font-bold text-bingo-dark mb-2">缤纷成果</h1>
       <p className="text-slate-600 mb-6">成果分类 → 成果列表 → 成果详情；图文/短视频展示、点赞/评论/分享，作品关联课程/工具购买，定制化成果服务，详情页分享转化可赚佣金</p>
 
       {/* 成果分类 */}

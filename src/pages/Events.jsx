@@ -30,7 +30,7 @@ export default function Events() {
         </div>
       </section>
 
-      <section>
+      <section className="mb-10">
         <h2 className="section-title">赛事服务</h2>
         <ul className="space-y-2">
           {services.map((s, i) => (
@@ -40,6 +40,21 @@ export default function Events() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section>
+        <h2 className="section-title">案例与成果展示</h2>
+        <p className="text-slate-600 text-sm mb-4">历届赛事获奖学员、集训营成果、合作学校/机构赛事落地案例</p>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="card p-6">
+            <h3 className="font-semibold text-primary">获奖案例</h3>
+            <p className="text-sm text-slate-600 mt-1">白名单赛事、缤果杯等获奖名单与作品展示，可关联学员成果与认证</p>
+          </div>
+          <div className="card p-6">
+            <h3 className="font-semibold text-primary">集训营与落地成果</h3>
+            <p className="text-sm text-slate-600 mt-1">赛前集训营出分情况、合作校/机构办赛案例与数据成果</p>
+          </div>
+        </div>
       </section>
     </div>
   )
