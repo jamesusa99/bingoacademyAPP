@@ -35,13 +35,6 @@ function Avatar({ src, name, alt }) {
   )
 }
 
-const CATEGORIES = [
-  { key: 'works', name: '学员作品' },
-  { key: 'awards', name: '赛事获奖' },
-  { key: 'school', name: '校企合作' },
-  { key: 'materials', name: '教材教具' },
-]
-
 export default function Showcase() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -52,11 +45,11 @@ export default function Showcase() {
       <section className="mb-8">
         <h2 className="section-title">成果分类</h2>
         <div className="flex flex-wrap gap-3">
-          {CATEGORIES.map((c) => (
-            <a key={c.key} href={`#${c.key}`} className="card px-5 py-3 hover:shadow-md hover:border-primary/30">
-              {c.name}
-            </a>
-          ))}
+          <Link to="/showcase/works" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">学员作品</Link>
+          <Link to="/showcase/awards" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">赛事获奖</Link>
+          <Link to="/showcase/school" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">校企合作</Link>
+          <Link to="/showcase/materials" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">教材教具</Link>
+        </div>
         </div>
       </section>
 

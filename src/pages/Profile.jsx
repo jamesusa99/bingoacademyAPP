@@ -26,6 +26,7 @@ export default function Profile() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <Link to="/profile#orders" className="card p-4 text-center hover:shadow-md transition">我的订单</Link>
           <Link to="/profile/study" className="card p-4 text-center hover:shadow-md transition">学习中心</Link>
+          <Link to="/profile/works" className="card p-4 text-center hover:shadow-md transition">个人作品</Link>
           <Link to="/profile#events" className="card p-4 text-center hover:shadow-md transition">我的赛事</Link>
           <Link to="/profile#cert" className="card p-4 text-center hover:shadow-md transition">我的认证</Link>
           <Link to="/growth" className="card p-4 text-center hover:shadow-md transition">我的能力档案</Link>
