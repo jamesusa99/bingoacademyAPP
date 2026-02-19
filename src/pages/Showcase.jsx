@@ -30,7 +30,7 @@ function Avatar({ src, name, alt }) {
   return (
     <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-slate-200 flex items-center justify-center text-xl font-semibold text-slate-500">
       {!failed && <img src={src} alt={alt} className="w-full h-full object-cover" onError={() => setFailed(true)} />}
-      <span className={`w-full h-full flex items-center justify-center bg-primary/20 text-primary ${failed ? '' : 'hidden'}`}>{name.charAt(0)}</span>
+      <span className={'w-full h-full flex items-center justify-center bg-primary/20 text-primary' + (failed ? '' : ' hidden')}>{name.charAt(0)}</span>
     </div>
   )
 }

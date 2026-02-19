@@ -30,7 +30,6 @@ export default function Profile() {
           <Link to="/profile#events" className="card p-4 text-center hover:shadow-md transition">我的赛事</Link>
           <Link to="/profile#cert" className="card p-4 text-center hover:shadow-md transition">我的认证</Link>
           <Link to="/growth" className="card p-4 text-center hover:shadow-md transition">我的能力档案</Link>
-          <Link to="/profile#favorite" className="card p-4 text-center hover:shadow-md transition">我的收藏</Link>
           <Link to="/profile#messages" className="card p-4 text-center hover:shadow-md transition">消息通知</Link>
           <Link to="/profile#settings" className="card p-4 text-center hover:shadow-md transition">设置</Link>
         </div>
