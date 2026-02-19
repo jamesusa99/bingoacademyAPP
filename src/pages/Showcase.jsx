@@ -50,7 +50,6 @@ export default function Showcase() {
           <Link to="/showcase/school" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">校企合作</Link>
           <Link to="/showcase/materials" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">教材教具</Link>
         </div>
-        </div>
       </section>
 
       <section className="mb-10">
@@ -59,14 +58,16 @@ export default function Showcase() {
           <p className="text-slate-600 mb-6">展示青少年在AI应用与创新项目中的创业实践与成果。</p>
           <h3 className="text-sm font-semibold text-slate-500 mb-4">优秀学员列表</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-            {outstandingStudents.map((s, i) => (
-              <li key={i} className="flex flex-col items-center text-center">
-                <Avatar src={s.photo} name={s.name} alt={s.name} />
-                <span className="text-xs text-primary font-medium mt-2">优秀缤果学员</span>
-                <span className="font-medium text-bingo-dark mt-1">{s.name}</span>
-                <Link to={`/showcase/venture/${i + 1}`} className="text-xs text-primary hover:underline mt-2">创业成果</Link>
-              </li>
-            ))}
+            {outstandingStudents.map((s, i) => {
+              return (
+                <li key={i} className="flex flex-col items-center text-center">
+                  <Avatar src={s.photo} name={s.name} alt={s.name} />
+                  <span className="text-xs text-primary font-medium mt-2">优秀缤果学员</span>
+                  <span className="font-medium text-bingo-dark mt-1">{s.name}</span>
+                  <Link to={'/showcase/venture/' + (i + 1)} className="text-xs text-primary hover:underline mt-2">创业成果</Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </section>
@@ -77,14 +78,16 @@ export default function Showcase() {
           <p className="text-slate-600 mb-6">年度重磅激励计划，总奖金10万元，激励学员与教师参与赛事、认证与成果产出。</p>
           <h3 className="text-sm font-semibold text-slate-500 mb-4">获奖者名单</h3>
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
-            {prizeWinners.map((w, i) => (
-              <li key={i} className="flex flex-col items-center text-center">
-                <span className="text-lg font-bold text-primary mb-2">第{w.rank}名</span>
-                <Avatar src={w.photo} name={w.name} alt={w.name} />
-                <span className="font-medium text-bingo-dark mt-2">{w.name}</span>
-                <Link to={`/showcase/award/${w.rank}`} className="text-xs text-primary hover:underline mt-2">获奖案例</Link>
-              </li>
-            ))}
+            {prizeWinners.map((w, i) => {
+              return (
+                <li key={i} className="flex flex-col items-center text-center">
+                  <span className="text-lg font-bold text-primary mb-2">第{w.rank}名</span>
+                  <Avatar src={w.photo} name={w.name} alt={w.name} />
+                  <span className="font-medium text-bingo-dark mt-2">{w.name}</span>
+                  <Link to={'/showcase/award/' + w.rank} className="text-xs text-primary hover:underline mt-2">获奖案例</Link>
+                </li>
+              )
+            })}
           </ul>
         </div>
       </section>
@@ -93,12 +96,14 @@ export default function Showcase() {
         <h2 className="section-title">成果列表与详情</h2>
         <p className="text-slate-600 text-sm mb-4">详情页支持：图文/短视频展示、点赞/评论/分享；作品关联课程/工具购买入口；定制化成果服务提交入口；分享按钮，分享后产生转化可赚佣金</p>
         <div className="grid md:grid-cols-2 gap-6">
-          {sections.map((s, i) => (
-            <div key={i} className="card p-6">
-              <h3 className="font-semibold text-primary">{s.title}</h3>
-              {s.desc && <p className="text-sm text-slate-500 mt-1">{s.desc}</p>}
-            </div>
-          ))}
+          {sections.map((s, i) => {
+            return (
+              <div key={i} className="card p-6">
+                <h3 className="font-semibold text-primary">{s.title}</h3>
+                {s.desc && <p className="text-sm text-slate-500 mt-1">{s.desc}</p>}
+              </div>
+            )
+          })}
         </div>
       </section>
     </div>
