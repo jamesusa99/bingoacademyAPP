@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
 // AI学习社（含 AI牛人社 - 优秀导师列表）- 顶尖师资来自 bingoacademy.cn
+// 照片存放：web/public/images/team/ 下放入 chenjianwen.jpg、wangwenyi.jpg、xufeng.jpg、wangshuang.jpg
 const certifiedMentors = [
-  { name: '陈建文博士', photo: 'https://bingoacademy.cn/images/team/chenjianwen.jpg', fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120' },
-  { name: '王文一博士', photo: 'https://bingoacademy.cn/images/team/wangwenyi.jpg', fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120' },
-  { name: '徐枫博士', photo: 'https://bingoacademy.cn/images/team/xufeng.jpg', fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120' },
-  { name: '王爽博士', photo: 'https://bingoacademy.cn/images/team/wangshuang.jpg', fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120' },
+  { name: '陈建文博士', photo: '/images/team/chenjianwen.jpg', fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120' },
+  { name: '王文一博士', photo: '/images/team/wangwenyi.jpg', fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120' },
+  { name: '徐枫博士', photo: '/images/team/xufeng.jpg', fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120' },
+  { name: '王爽博士', photo: '/images/team/wangshuang.jpg', fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120' },
 ]
 
 const items = [
