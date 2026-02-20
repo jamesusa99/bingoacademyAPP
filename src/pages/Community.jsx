@@ -1,12 +1,11 @@
 import { useState } from 'react'
 
-// AI学习社（含 AI牛人社 - 优秀导师列表）
+// AI学习社（含 AI牛人社 - 优秀导师列表）- 顶尖师资来自 bingoacademy.cn
 const certifiedMentors = [
-  { name: '林教授', photo: 'https://ui-avatars.com/api/?name=林教授&background=0891b2&color=fff&size=120' },
-  { name: '黄老师', photo: 'https://ui-avatars.com/api/?name=黄老师&background=0891b2&color=fff&size=120' },
-  { name: '何导师', photo: 'https://ui-avatars.com/api/?name=何导师&background=0891b2&color=fff&size=120' },
-  { name: '徐老师', photo: 'https://ui-avatars.com/api/?name=徐老师&background=0891b2&color=fff&size=120' },
-  { name: '马导师', photo: 'https://ui-avatars.com/api/?name=马导师&background=0891b2&color=fff&size=120' },
+  { name: '陈建文博士', photo: 'https://bingoacademy.cn/images/team/chenjianwen.jpg', fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120' },
+  { name: '王文一博士', photo: 'https://bingoacademy.cn/images/team/wangwenyi.jpg', fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120' },
+  { name: '徐枫博士', photo: 'https://bingoacademy.cn/images/team/xufeng.jpg', fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120' },
+  { name: '王爽博士', photo: 'https://bingoacademy.cn/images/team/wangshuang.jpg', fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120' },
 ]
 
 const items = [
@@ -34,12 +33,20 @@ const partnerInstitutions = [
   { name: 'XX创客教育', region: '四川·成都', logo: null },
 ]
 
-function MentorAvatar({ src, name }) {
+function MentorAvatar({ src, name, fallback }) {
+  const [currentSrc, setCurrentSrc] = useState(src)
   const [failed, setFailed] = useState(false)
+  const handleError = () => {
+    if (fallback && currentSrc === src) {
+      setCurrentSrc(fallback)
+    } else {
+      setFailed(true)
+    }
+  }
   return (
     <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden bg-slate-200 flex items-center justify-center text-xl font-semibold text-slate-500">
-      {!failed && <img src={src} alt={name} className="w-full h-full object-cover" onError={() => setFailed(true)} />}
-      <span className={`w-full h-full flex items-center justify-center bg-primary/20 text-primary ${failed ? '' : 'hidden'}`}>{name.charAt(0)}</span>
+      {!failed && <img src={currentSrc} alt={name} className="w-full h-full object-cover" onError={handleError} />}
+      <span className={'w-full h-full flex items-center justify-center bg-primary/20 text-primary' + (failed ? '' : ' hidden')}>{name.charAt(0)}</span>
     </div>
   )
 }
@@ -58,7 +65,7 @@ export default function Community() {
           <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
             {certifiedMentors.map((m, i) => (
               <li key={i} className="flex flex-col items-center text-center">
-                <MentorAvatar src={m.photo} name={m.name} />
+                <MentorAvatar src={m.photo} name={m.name} fallback={m.fallback} />
                 <span className="text-xs text-primary font-medium mt-2">缤果认证导师</span>
                 <span className="font-medium text-bingo-dark mt-1">{m.name}</span>
               </li>
