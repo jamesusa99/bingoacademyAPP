@@ -1,47 +1,63 @@
 import { Link, useParams } from 'react-router-dom'
 
 const COURSES = {
-  'literacy-1': {
-    name: 'AI素养启蒙·面向未来的第一课',
-    poster: 'https://placehold.co/1400x600/0891b2/ffffff?text=AI%E7%B4%A0%E5%85%BB%E8%AF%BE',
+  'ai-enlighten': {
+    name: 'AI 启蒙通识课',
+    poster: 'https://placehold.co/1400x600/0891b2/ffffff?text=AI%E5%90%AF%E8%92%99%E9%80%9A%E8%AF%86%E8%AF%BE',
     teacher: '缤果讲师团',
-    outline: ['AI素养与元认知', 'AI工具正确使用与边界', '创作实践：从想法到作品', '能力档案与认证衔接'],
+    audience: '8-14岁',
+    learningGoal: '建立对人工智能的科学认知框架，理解AI与人类社会的协作关系，培养未来的数字公民素养。',
+    keyDesc: '体系化涵盖机器感知、知识表征推理、机器学习与自然交互四大核心模块。课程摒弃枯燥理论，搭配人脸识别、语音控制等丰富的AI互动实验，通过动手实验与互动项目，引导孩子建立对 AI 工作方式的直观理解。',
+    outline: ['机器感知', '知识表征与推理', '机器学习入门', '自然交互与AI实验'],
     trial: true,
     commission: '10%',
-    price: '¥199',
+    price: '咨询',
+    priceNote: null,
   },
-  'contest-1': {
-    name: '白名单赛事通关营',
-    poster: 'https://placehold.co/1400x600/0f172a/ffffff?text=%E7%AB%9E%E8%B5%9B%E5%9F%B9%E4%BC%98%E8%AF%BE',
-    teacher: '竞赛教练组',
-    outline: ['赛制与评审标准', '真题精讲与题型拆解', '模拟赛与讲评', '一对一答疑与复盘'],
+  'ai-programming': {
+    name: 'AI编程入门课',
+    poster: 'https://placehold.co/1400x600/0f172a/ffffff?text=AI%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E8%AF%BE',
+    teacher: '缤果讲师团',
+    audience: '10-15岁',
+    learningGoal: '掌握 Python 核心语法，初步建立计算思维，具备开发独立小型软件的能力。',
+    keyDesc: '采用Python编程基础+AI场景应用的双重教学法。通过项目制学习，带领学生亲手编写计算器、智能贪吃蛇、迷宫寻路算法等应用程序。在编程项目中引入基础的算法思想与问题拆解方法，为后续学习人工智能打下认知基础。',
+    outline: ['Python 核心语法', '计算器项目', '智能贪吃蛇', '迷宫寻路算法与算法思想'],
     trial: true,
-    commission: '15%',
-    price: '¥1299',
+    commission: '10%',
+    price: '咨询',
+    priceNote: null,
   },
-  'exam-1': {
-    name: '科技特长生路径课',
-    poster: 'https://placehold.co/1400x600/155e75/ffffff?text=%E5%8D%87%E5%AD%A6%E8%B5%8B%E8%83%BD%E8%AF%BE',
-    teacher: '升学规划导师',
-    outline: ['路径规划与时间线', '综评/强基材料辅导', '真题与模拟面试', '作品集与证书规划'],
-    trial: false,
-    commission: '12%',
-    price: '¥1999',
+  'ai-art': {
+    name: 'AI 艺术创意工坊',
+    poster: 'https://placehold.co/1400x600/155e75/ffffff?text=AI%E8%89%BA%E6%9C%AF%E5%88%9B%E6%84%8F%E5%B7%A5%E5%9D%8A',
+    teacher: '缤果讲师团',
+    audience: '8-15岁',
+    learningGoal: '掌握生成式AI（AIGC）工具的使用，培养「提示词工程」能力与审美表达。',
+    keyDesc: '融合即梦、豆包、通义、ComfyUI等工具，带领孩子从零开始构建自己的数字画展或绘本。课程核心不在于绘画技巧，而在于如何将脑中的创意转化为精准的指令，培养跨学科的表达力。',
+    outline: ['AIGC 工具入门', '提示词工程', '数字画展创作', '绘本制作与实践'],
+    trial: true,
+    commission: '10%',
+    price: '咨询',
+    priceNote: null,
   },
-  'career-1': {
-    name: 'AI岗位项目实训·就业衔接',
-    poster: 'https://placehold.co/1400x600/0e7490/ffffff?text=%E5%B0%B1%E4%B8%9A%E8%A1%94%E6%8E%A5%E8%AF%BE',
-    teacher: '企业导师',
-    outline: ['岗位能力模型', '项目实训与代码评审', '简历优化与面试辅导', '内推与产教融合对接'],
+  'ai-robot': {
+    name: '智能机器人实战营',
+    poster: 'https://placehold.co/1400x600/0e7490/ffffff?text=%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E6%88%98%E8%90%A5',
+    teacher: '缤果讲师团',
+    audience: '9-15岁',
+    learningGoal: '理解传感器原理与嵌入式编程，实现AI算法在物理世界的落地。',
+    keyDesc: '使用 Arduino 或树莓派硬件平台，亲手组装具备避障、人脸追踪、自动巡航功能的智能小车。让代码走出屏幕，让孩子在动手拆装中理解工业 4.0 的基本逻辑。',
+    outline: ['传感器原理与嵌入式编程', 'Arduino/树莓派入门', '避障与自动巡航', '人脸追踪智能小车'],
     trial: false,
-    commission: '8%',
-    price: '¥2999',
+    commission: '10%',
+    price: '¥4500',
+    priceNote: '含器材包',
   },
 }
 
 export default function CourseDetail() {
   const { id } = useParams()
-  const course = COURSES[id] || COURSES['literacy-1']
+  const course = COURSES[id] || COURSES['ai-enlighten']
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
@@ -56,13 +72,28 @@ export default function CourseDetail() {
         <div className="p-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-bingo-dark">{course.name}</h1>
           <p className="text-slate-600 mt-2">讲师：{course.teacher}</p>
+          {course.audience && <p className="text-slate-600 mt-1">面向人群：{course.audience}</p>}
           <div className="flex flex-wrap gap-3 mt-4">
             <span className="text-sm px-3 py-1 rounded-full bg-primary/10 text-primary">佣金比例 {course.commission}</span>
-            <span className="text-sm px-3 py-1 rounded-full bg-slate-100 text-slate-700">价格 {course.price}</span>
+            <span className="text-sm px-3 py-1 rounded-full bg-slate-100 text-slate-700">价格 {course.price}{course.priceNote ? `（${course.priceNote}）` : ''}</span>
             {course.trial && <span className="text-sm px-3 py-1 rounded-full bg-amber-50 text-amber-700">支持试看</span>}
           </div>
         </div>
       </div>
+
+      <section className="mb-8">
+        <h2 className="section-title mb-4">学习目标</h2>
+        <div className="card p-6">
+          <p className="text-slate-700 leading-relaxed">{course.learningGoal}</p>
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <h2 className="section-title mb-4">课程特色</h2>
+        <div className="card p-6">
+          <p className="text-slate-700 leading-relaxed">{course.keyDesc}</p>
+        </div>
+      </section>
 
       <section className="mb-8">
         <h2 className="section-title mb-4">课程大纲</h2>

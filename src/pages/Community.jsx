@@ -2,12 +2,31 @@ import { useState } from 'react'
 
 // AI学习社（含 AI牛人社 - 优秀导师列表）- 顶尖师资来自 bingoacademy.cn
 // 照片存放：web/public/images/team/ 下放入 chenjianwen.jpg、wangwenyi.jpg、xufeng.jpg、wangshuang.jpg
-// 导师介绍：请从 https://bingoacademy.cn/ 顶尖师资团队复制每位导师的完整介绍填入 intro 字段
 const certifiedMentors = [
-  { name: '陈建文博士', photo: '/images/team/chenjianwen.jpg', fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制陈建文博士的介绍' },
-  { name: '王文一博士', photo: '/images/team/wangwenyi.jpg', fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制王文一博士的介绍' },
-  { name: '徐枫博士', photo: '/images/team/xufeng.jpg', fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制徐枫博士的介绍' },
-  { name: '王爽博士', photo: '/images/team/wangshuang.jpg', fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制王爽博士的介绍' },
+  {
+    name: '陈建文教授/博士',
+    photo: '/images/team/chenjianwen.jpg',
+    fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120',
+    intro: '超过20年视频处理、人工智能算法研究；多模态特征融合情感计算研究；深度内容合成和驱动算法的研究。电子科技大学教授、博士生导师，电子科技大学视觉智能研究中心主任。',
+  },
+  {
+    name: '王文一博士',
+    photo: '/images/team/wangwenyi.jpg',
+    fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120',
+    intro: 'AI专家，电子科技大学副教授。研究涉及数据挖掘、人工智能及算法优化等方面。加拿大渥太华大学电子工程与计算机科学硕士、博士。',
+  },
+  {
+    name: '徐枫博士',
+    photo: '/images/team/xufeng.jpg',
+    fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120',
+    intro: '人工智能科学家，北京人工智能研究院研究员，北京市海外高层次人才。曾任三星(美国)研发中心研究员、Thomson汤姆逊公司研究员。美国宾夕法尼亚大学博士后，清华大学电子工程系博士。',
+  },
+  {
+    name: '王爽博士',
+    photo: '/images/team/wangshuang.jpg',
+    fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120',
+    intro: '人工智能科学家，美国 Lava Education 与 ScholarOne LLC 联合创始人。主导教育、医疗与AI项目落地，拥有美国人工智能传感网络专利（授权并产生版税）。专注大语言模型、多模态智能与深度学习系统研发，指导学生参与国际竞赛与科研。密苏里大学电子工程与计算机科学博士。',
+  },
 ]
 
 const items = [

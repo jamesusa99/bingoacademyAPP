@@ -1,27 +1,10 @@
 import { Link } from 'react-router-dom'
 
 const posterBanners = [
-  {
-    id: 'literacy-1',
-    title: 'AI素养课',
-    desc: '面向未来·素养与元认知',
-    img: 'https://placehold.co/1200x500/0891b2/ffffff?text=AI%E7%B4%A0%E5%85%BB%E8%AF%BE',
-    to: '/courses/detail/literacy-1',
-  },
-  {
-    id: 'contest-1',
-    title: '竞赛培优课',
-    desc: '集训营·模拟赛·真题精讲',
-    img: 'https://placehold.co/1200x500/0f172a/ffffff?text=%E7%AB%9E%E8%B5%9B%E5%9F%B9%E4%BC%98%E8%AF%BE',
-    to: '/courses/detail/contest-1',
-  },
-  {
-    id: 'exam-1',
-    title: '升学赋能课',
-    desc: '科技特长生路径·综评强基',
-    img: 'https://placehold.co/1200x500/155e75/ffffff?text=%E5%8D%87%E5%AD%A6%E8%B5%8B%E8%83%BD%E8%AF%BE',
-    to: '/courses/detail/exam-1',
-  },
+  { id: 'ai-enlighten', title: 'AI 启蒙通识课', desc: '面向8-14岁 · 建立AI科学认知框架', img: 'https://placehold.co/1200x500/0891b2/ffffff?text=AI%E5%90%AF%E8%92%99%E9%80%9A%E8%AF%86%E8%AF%BE', to: '/courses/detail/ai-enlighten' },
+  { id: 'ai-programming', title: 'AI编程入门课', desc: '面向10-15岁 · Python核心语法与计算思维', img: 'https://placehold.co/1200x500/0f172a/ffffff?text=AI%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8%E8%AF%BE', to: '/courses/detail/ai-programming' },
+  { id: 'ai-art', title: 'AI 艺术创意工坊', desc: '面向8-15岁 · AIGC工具与提示词工程', img: 'https://placehold.co/1200x500/155e75/ffffff?text=AI%E8%89%BA%E6%9C%AF%E5%88%9B%E6%84%8F%E5%B7%A5%E5%9D%8A', to: '/courses/detail/ai-art' },
+  { id: 'ai-robot', title: '智能机器人实战营', desc: '面向9-15岁 · 含器材包 ¥4500', img: 'https://placehold.co/1200x500/0e7490/ffffff?text=%E6%99%BA%E8%83%BD%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AE%9E%E6%88%98%E8%90%A5', to: '/courses/detail/ai-robot' },
 ]
 
 const categories = [
@@ -66,44 +49,57 @@ const courseTypes = [
 
 const courseList = [
   {
-    id: 'literacy-1',
-    name: 'AI素养启蒙·面向未来的第一课',
+    id: 'ai-enlighten',
+    name: 'AI 启蒙通识课',
     cat: '素养',
-    stage: '启蒙/进阶',
+    stage: '8-14岁',
     teacher: '缤果讲师团',
-    price: '¥199',
+    price: '咨询',
     commission: '10%',
     hasTrial: true,
+    audience: '8-14岁',
+    learningGoal: '建立对人工智能的科学认知框架，理解AI与人类社会的协作关系，培养未来的数字公民素养。',
+    keyDesc: '体系化涵盖机器感知、知识表征推理、机器学习与自然交互四大核心模块。课程摒弃枯燥理论，搭配人脸识别、语音控制等丰富的AI互动实验，通过动手实验与互动项目，引导孩子建立对 AI 工作方式的直观理解。',
   },
   {
-    id: 'contest-1',
-    name: '白名单赛事通关营',
-    cat: '培优',
-    stage: '竞赛班',
-    teacher: '竞赛教练组',
-    price: '¥1299',
-    commission: '15%',
+    id: 'ai-programming',
+    name: 'AI编程入门课',
+    cat: '编程',
+    stage: '10-15岁',
+    teacher: '缤果讲师团',
+    price: '咨询',
+    commission: '10%',
     hasTrial: true,
+    audience: '10-15岁',
+    learningGoal: '掌握 Python 核心语法，初步建立计算思维，具备开发独立小型软件的能力。',
+    keyDesc: '采用Python编程基础+AI场景应用的双重教学法。通过项目制学习，带领学生亲手编写计算器、智能贪吃蛇、迷宫寻路算法等应用程序。在编程项目中引入基础的算法思想与问题拆解方法，为后续学习人工智能打下认知基础。',
   },
   {
-    id: 'exam-1',
-    name: '科技特长生路径课',
-    cat: '升学',
-    stage: '升学护航班',
-    teacher: '升学规划导师',
-    price: '¥1999',
-    commission: '12%',
-    hasTrial: false,
+    id: 'ai-art',
+    name: 'AI 艺术创意工坊',
+    cat: '创意',
+    stage: '8-15岁',
+    teacher: '缤果讲师团',
+    price: '咨询',
+    commission: '10%',
+    hasTrial: true,
+    audience: '8-15岁',
+    learningGoal: '掌握生成式AI（AIGC）工具的使用，培养「提示词工程」能力与审美表达。',
+    keyDesc: '融合即梦、豆包、通义、ComfyUI等工具，带领孩子从零开始构建自己的数字画展或绘本。课程核心不在于绘画技巧，而在于如何将脑中的创意转化为精准的指令，培养跨学科的表达力。',
   },
   {
-    id: 'career-1',
-    name: 'AI岗位项目实训·就业衔接',
-    cat: '就业',
-    stage: '就业衔接班',
-    teacher: '企业导师',
-    price: '¥2999',
-    commission: '8%',
+    id: 'ai-robot',
+    name: '智能机器人实战营',
+    cat: '硬件',
+    stage: '9-15岁',
+    teacher: '缤果讲师团',
+    price: '¥4500',
+    priceNote: '含器材包',
+    commission: '10%',
     hasTrial: false,
+    audience: '9-15岁',
+    learningGoal: '理解传感器原理与嵌入式编程，实现AI算法在物理世界的落地。',
+    keyDesc: '使用 Arduino 或树莓派硬件平台，亲手组装具备避障、人脸追踪、自动巡航功能的智能小车。让代码走出屏幕，让孩子在动手拆装中理解工业 4.0 的基本逻辑。',
   },
 ]
 
@@ -123,7 +119,7 @@ export default function Courses() {
       {/* 海报板（后台可配置） */}
       <section className="mb-10">
         <h2 className="section-title mb-4">课程海报</h2>
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {posterBanners.map((p) => (
             <Link key={p.id} to={p.to} className="card overflow-hidden p-0 hover:shadow-md transition">
               <div className="aspect-[16/9] bg-slate-100">
@@ -189,11 +185,11 @@ export default function Courses() {
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <h3 className="font-semibold text-bingo-dark line-clamp-2">{c.name}</h3>
-                  <p className="text-sm text-slate-600 mt-1">分类：{c.cat} · 阶段：{c.stage}</p>
-                  <p className="text-sm text-slate-600 mt-1">讲师：{c.teacher}</p>
+                  <p className="text-sm text-slate-600 mt-1">面向人群：{c.audience} · {c.cat}</p>
+                  <p className="text-sm text-slate-600 mt-1 line-clamp-2">{c.keyDesc}</p>
                 </div>
                 <div className="shrink-0 text-right">
-                  <div className="text-primary font-semibold">{c.price}</div>
+                  <div className="text-primary font-semibold">{c.price}{c.priceNote ? <span className="text-xs font-normal">（{c.priceNote}）</span> : ''}</div>
                   <div className="text-xs text-slate-500 mt-1">佣金比例 {c.commission}</div>
                 </div>
               </div>
