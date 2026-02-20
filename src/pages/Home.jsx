@@ -75,17 +75,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 使命与愿景 */}
+      {/* 缤果AI学院介绍 - 来源 bingoacademy.cn */}
       <section className="py-6 section-tech max-w-4xl mx-auto">
         <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-6 tracking-tight">
           驾驭AI未来：缤果AI学院，您的人工智能教育新范式
         </h2>
         <div className="max-w-3xl mx-auto space-y-4 text-slate-600 leading-relaxed">
           <p>
-            在人工智能浪潮席卷全球的当下，我们不禁要问：何为面向未来的教育？面对日新月异的AI技术，家长又该如何引导孩子成长？
-          </p>
-          <p>
-            缤果AI学院坚信，真正的未来教育，是赋予孩子驾驭工具而非被工具奴役的能力。我们致力于成为家庭与学校在人工智能时代的核心教育伙伴，让每个孩子都能主动探索、创新实践，真正驾驭AI，而非被AI所替代。
+            缤果 AI 学院，以「AI+竞赛+全链条教育生态」为核心，为每一位学员打造专属成长路径。我们打破传统教育边界，通过分层产品精准覆盖不同学习阶段需求，从入门夯实到高阶提升一站式满足；依托赛事资源构建核心优势，为学员提供丰富的实战舞台与展示机会。在这里，你不仅能学到前沿的 AI 知识与技能，更能在竞赛实战中锤炼能力，在全链条的教育生态里实现稳步成长！
           </p>
         </div>
       </section>
@@ -204,20 +201,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 线下机构课程合作 / OEM合作 推广入口 */}
+      {/* 线下机构课程合作 / 线下加盟商 / OEM合作 */}
       <section className="py-8 border-t">
         <h2 className="section-title mb-4">机构合作</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          <a href="/#/join" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
+        <div className="grid sm:grid-cols-3 gap-4">
+          <Link to="/#/join" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
             <div className="font-semibold text-primary">线下机构课程合作</div>
             <p className="text-sm text-slate-600 mt-1">教培机构、学校引入缤果AI课程与赛事，授牌合作、师训与运营支持</p>
             <span className="text-sm text-primary mt-3">了解合作 →</span>
-          </a>
-          <a href="/#/oem" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
+          </Link>
+          <Link to="/franchise" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
+            <div className="font-semibold text-primary">线下加盟商</div>
+            <p className="text-sm text-slate-600 mt-1">携手缤果AI学院，品牌授权、课程体系、师训与赛事资源，共创AI教育未来</p>
+            <span className="text-sm text-primary mt-3">加盟合作 →</span>
+          </Link>
+          <Link to="/#/oem" className="card p-6 border-primary/30 hover:shadow-md transition flex flex-col">
             <div className="font-semibold text-primary">OEM合作</div>
             <p className="text-sm text-slate-600 mt-1">课程/教具/工具定制、品牌联名、技术输出，共建AI教育产品</p>
             <span className="text-sm text-primary mt-3">了解合作 →</span>
-          </a>
+          </Link>
+        </div>
+      </section>
+
+      {/* 联系我们 */}
+      <section className="py-8 border-t">
+        <h2 className="section-title mb-4">联系我们</h2>
+        <div className="card p-8 bg-gradient-to-r from-cyan-50 to-sky-50 border-primary/20">
+          <p className="text-slate-600 mb-6">如有课程咨询、赛事报名、加盟合作等需求，欢迎通过以下方式与我们联系</p>
+          <div className="flex flex-wrap gap-8">
+            <a href="tel:400-xxx-xxxx" className="flex items-center gap-3 group">
+              <span className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-xl group-hover:bg-primary/30">📞</span>
+              <div>
+                <div className="text-sm text-slate-500">电话</div>
+                <div className="font-semibold text-primary">400-xxx-xxxx</div>
+              </div>
+            </a>
+            <a href="javascript:void(0)" className="flex items-center gap-3 group">
+              <span className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-xl group-hover:bg-primary/30">💬</span>
+              <div>
+                <div className="text-sm text-slate-500">微信</div>
+                <div className="font-semibold text-primary">bingoacademy</div>
+              </div>
+            </a>
+            <a href="mailto:contact@bingoacademy.cn" className="flex items-center gap-3 group">
+              <span className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-xl group-hover:bg-primary/30">✉️</span>
+              <div>
+                <div className="text-sm text-slate-500">邮箱</div>
+                <div className="font-semibold text-primary">contact@bingoacademy.cn</div>
+              </div>
+            </a>
+          </div>
         </div>
       </section>
     </div>

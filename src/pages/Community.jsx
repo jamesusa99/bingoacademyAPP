@@ -2,11 +2,12 @@ import { useState } from 'react'
 
 // AI学习社（含 AI牛人社 - 优秀导师列表）- 顶尖师资来自 bingoacademy.cn
 // 照片存放：web/public/images/team/ 下放入 chenjianwen.jpg、wangwenyi.jpg、xufeng.jpg、wangshuang.jpg
+// 导师介绍：请从 https://bingoacademy.cn/ 顶尖师资团队复制每位导师的完整介绍填入 intro 字段
 const certifiedMentors = [
-  { name: '陈建文博士', photo: '/images/team/chenjianwen.jpg', fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120' },
-  { name: '王文一博士', photo: '/images/team/wangwenyi.jpg', fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120' },
-  { name: '徐枫博士', photo: '/images/team/xufeng.jpg', fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120' },
-  { name: '王爽博士', photo: '/images/team/wangshuang.jpg', fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120' },
+  { name: '陈建文博士', photo: '/images/team/chenjianwen.jpg', fallback: 'https://ui-avatars.com/api/?name=陈建文&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制陈建文博士的介绍' },
+  { name: '王文一博士', photo: '/images/team/wangwenyi.jpg', fallback: 'https://ui-avatars.com/api/?name=王文一&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制王文一博士的介绍' },
+  { name: '徐枫博士', photo: '/images/team/xufeng.jpg', fallback: 'https://ui-avatars.com/api/?name=徐枫&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制徐枫博士的介绍' },
+  { name: '王爽博士', photo: '/images/team/wangshuang.jpg', fallback: 'https://ui-avatars.com/api/?name=王爽&background=0891b2&color=fff&size=120', intro: '请从 bingoacademy.cn 复制王爽博士的介绍' },
 ]
 
 const items = [
@@ -63,15 +64,21 @@ export default function Community() {
         <div className="card p-6 border-primary/20">
           <p className="text-slate-600 mb-6">汇聚AI教育领域的牛人导师与优秀学员，分享实战经验、答疑解惑、共创内容。</p>
           <h3 className="text-sm font-semibold text-slate-500 mb-4">优秀导师列表</h3>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {certifiedMentors.map((m, i) => (
-              <li key={i} className="flex flex-col items-center text-center">
-                <MentorAvatar src={m.photo} name={m.name} fallback={m.fallback} />
-                <span className="text-xs text-primary font-medium mt-2">缤果认证导师</span>
-                <span className="font-medium text-bingo-dark mt-1">{m.name}</span>
-              </li>
+              <div key={i} className="card p-6 flex flex-col sm:flex-row gap-4 hover:shadow-md hover:border-primary/30 transition">
+                <div className="flex flex-col items-center sm:items-start shrink-0">
+                  <MentorAvatar src={m.photo} name={m.name} fallback={m.fallback} />
+                  <span className="text-xs text-primary font-medium mt-2">缤果认证导师</span>
+                  <span className="font-semibold text-bingo-dark">{m.name}</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-sm font-semibold text-slate-500 mb-2">导师介绍</h4>
+                  <p className="text-sm text-slate-600 leading-relaxed">{m.intro}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 

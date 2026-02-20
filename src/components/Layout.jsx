@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { allNavGroups, mainNav } from '../config/nav'
+import ChatPopup from './ChatPopup'
 
 export default function Layout({ children }) {
   const loc = useLocation()
@@ -48,6 +49,7 @@ export default function Layout({ children }) {
         </div>
       </header>
       <main className="flex-1">{children}</main>
+      <ChatPopup />
       <footer className="bg-bingo-dark text-slate-400 text-sm py-8 border-t border-cyan-500/20 bg-gradient-to-r from-[#0f172a] to-[#1e293b]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-wrap justify-between gap-6">
           <div>
@@ -67,7 +69,7 @@ export default function Layout({ children }) {
             <div>
               <div className="text-white font-medium mb-2">B端合作</div>
               <a href="/#/b" className="block hover:text-white">学校/机构</a>
-              <a href="/#/b" className="block hover:text-white">加盟商</a>
+              <Link to="/franchise" className="block hover:text-white">加盟商</Link>
               <a href="/#/b" className="block hover:text-white">赛事合作方</a>
             </div>
           </div>

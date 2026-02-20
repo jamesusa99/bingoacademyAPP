@@ -19,6 +19,7 @@ import Events from './pages/Events'
 import Certification from './pages/Certification'
 import Mall from './pages/Mall'
 import Charity from './pages/Charity'
+import Franchise from './pages/Franchise'
 import Materials from './pages/Materials'
 import Study from './pages/Study'
 import Profile from './pages/Profile'
@@ -52,6 +53,7 @@ export default function App() {
         <Route path="/mall" element={<Mall />} />
         <Route path="/mall/materials" element={<Materials />} />
         <Route path="/charity" element={<Charity />} />
+        <Route path="/franchise" element={<Franchise />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/study" element={<Study />} />
         <Route path="/profile/works" element={<ProfileWorks />} />
