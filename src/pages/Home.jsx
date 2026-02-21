@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const BANNERS = [
@@ -27,9 +28,33 @@ const HOT_COURSES = [
   { name: '科技特长生路径课', to: '/courses?type=exam', tag: '升学' },
 ]
 
+function CheckInFloat() {
+  const [checked, setChecked] = useState(false)
+  const [hidden, setHidden] = useState(false)
+
+  if (hidden) return null
+
+  return (
+    <div className="fixed right-4 bottom-32 z-40 flex flex-col items-end gap-2">
+      <button
+        onClick={() => { setChecked(true) }}
+        disabled={checked}
+        className={'flex items-center gap-2 px-4 py-2.5 rounded-2xl shadow-lg text-sm font-medium transition ' + (checked ? 'bg-slate-400 text-white cursor-default' : 'bg-primary text-white hover:bg-cyan-600')}
+      >
+        <span className="text-base">{checked ? '✓' : '🏅'}</span>
+        {checked ? '今日已打卡' : '今日打卡 +10分'}
+      </button>
+      <button onClick={() => setHidden(true)} className="text-xs text-slate-400 hover:text-slate-600 mr-1">不再提示</button>
+    </div>
+  )
+}
+
 export default function Home() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
+      {/* 今日打卡悬浮按钮 */}
+      <CheckInFloat />
+
       {/* 欢迎与痛点：让我猜猜您面对AI遇到的问题 */}
       <section className="mb-8 max-w-4xl mx-auto">
         <h2 className="text-xl sm:text-2xl font-bold text-bingo-dark text-center mb-4">

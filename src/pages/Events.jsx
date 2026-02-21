@@ -59,6 +59,33 @@ export default function Events() {
             </div>
           </section>
 
+          {/* 缤果学分 · 备赛打卡入口 */}
+          <section className="mb-10">
+            <h2 className="section-title mb-1">🏅 备赛打卡领学分</h2>
+            <p className="text-slate-600 text-sm mb-4">备赛资料下载、备赛作业完成、赛事报名成功均可获得缤果学分，获奖学员额外赠荣誉学分</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+              {[
+                { action: '赛事报名成功', score: '+20分', note: '报名即到账' },
+                { action: '下载备赛资料', score: '+5分', note: '每次限1次' },
+                { action: '完成备赛作业打卡', score: '+15分', note: '每日1次' },
+                { action: '赛事获奖', score: '+100分', note: '荣誉学分·可兑换高端赛事资格' },
+              ].map((s, i) => (
+                <div key={i} className="card p-5 border-primary/20 hover:shadow-md transition">
+                  <p className="text-sm font-medium text-slate-700">{s.action}</p>
+                  <p className="text-primary font-bold text-lg mt-1">{s.score}</p>
+                  <p className="text-xs text-slate-400 mt-1">{s.note}</p>
+                </div>
+              ))}
+            </div>
+            <div className="card p-5 bg-cyan-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <p className="font-medium text-bingo-dark">学分可抵扣赛事报名费</p>
+                <p className="text-sm text-slate-600 mt-0.5">100学分=10元抵扣，赛事成果分享至朋友圈额外 +5分</p>
+              </div>
+              <Link to="/profile#score-bank" className="btn-primary text-sm px-4 py-2">查看我的学分</Link>
+            </div>
+          </section>
+
           <section>
             <h2 className="section-title mb-4">往届获奖学员风采</h2>
             <p className="text-slate-600 text-sm mb-4">历届赛事获奖学员与集训营成果，强化信任，助力报名转化</p>

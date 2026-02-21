@@ -258,6 +258,35 @@ export default function Courses() {
           <Link to="/cert" className="rounded-lg border border-primary text-primary px-4 py-2 text-sm hover:bg-primary/10">关联认证中心 →</Link>
         </div>
       </section>
+
+      {/* 缤果学分 · 学习领学分入口 */}
+      <section className="mb-10 border-t pt-8">
+        <h2 className="section-title mb-1">
+          <span className="inline-flex items-center gap-1.5">🏅 学习领学分</span>
+        </h2>
+        <p className="text-slate-600 text-sm mb-4">完成课程学习、打卡任务，积累「缤果学分」，可兑换优惠券/课程/赛事报名折扣</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { action: '完成课程试听', score: '+5分', note: '每门课每天1次' },
+            { action: '完成课程章节', score: '+15分', note: '章节完成自动到账' },
+            { action: '课程考试满分', score: '+30分', note: '完课率100%学分翻倍' },
+            { action: '成长计划阶段达成', score: '+50分', note: '阶段越高奖励越多' },
+          ].map((s, i) => (
+            <div key={i} className="card p-5 border-primary/20 hover:shadow-md transition">
+              <p className="text-sm font-medium text-slate-700">{s.action}</p>
+              <p className="text-primary font-bold text-lg mt-1">{s.score}</p>
+              <p className="text-xs text-slate-400 mt-1">{s.note}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-4 card p-5 bg-cyan-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="font-medium text-bingo-dark">学分可抵扣课程学费</p>
+            <p className="text-sm text-slate-600 mt-0.5">100学分 = 10元课程抵扣，课程分享至朋友圈额外 +5分</p>
+          </div>
+          <Link to="/profile#score-bank" className="btn-primary text-sm px-4 py-2">查看我的学分</Link>
+        </div>
+      </section>
     </div>
   )
 }

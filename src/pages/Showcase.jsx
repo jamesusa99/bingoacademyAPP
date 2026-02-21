@@ -167,6 +167,38 @@ export default function Showcase() {
       </>
       )}
 
+      {/* 缤果学分 · 成果可视化（C端共用） */}
+      {tab === 'c' && (
+        <section className="mb-10 border-t pt-8">
+          <h2 className="section-title mb-1">🏅 学分成果展示</h2>
+          <p className="text-slate-600 text-sm mb-4">学员累计缤果学分、等级与成就，与课程/赛事/研学成果并列展示，强化"学习数字资产"价值</p>
+          <div className="grid md:grid-cols-3 gap-4 mb-4">
+            {[
+              { name: '张小明', level: '学分之星 ⭐⭐⭐⭐', total: 3420, badge: '本月学分榜 No.1' },
+              { name: '李思涵', level: '学分达人 ⭐⭐⭐', total: 2180, badge: '课程完课率 100%' },
+              { name: '王梓轩', level: '进阶学员 ⭐⭐', total: 1560, badge: '赛事获奖荣誉分' },
+            ].map((s, i) => (
+              <div key={i} className="card p-5 flex items-center gap-4 hover:shadow-md hover:border-primary/30 transition">
+                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-lg shrink-0">{s.name.charAt(0)}</div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-bingo-dark text-sm">{s.name}</p>
+                  <p className="text-xs text-slate-500">{s.level}</p>
+                  <p className="text-primary font-bold mt-1">{s.total.toLocaleString()} 分</p>
+                </div>
+                <span className="text-[10px] px-2 py-1 rounded bg-amber-100 text-amber-700 shrink-0 text-center leading-tight">{s.badge}</span>
+              </div>
+            ))}
+          </div>
+          <div className="card p-5 bg-cyan-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="font-medium text-bingo-dark">学分等级达「学分之星」可获专属展示位</p>
+              <p className="text-sm text-slate-600 mt-0.5">分享学分成果至朋友圈，分享成功额外 +5分，助力品牌传播</p>
+            </div>
+            <Link to="/profile#score-bank" className="btn-primary text-sm px-4 py-2">查看我的学分</Link>
+          </div>
+        </section>
+      )}
+
       {/* 荣誉与公益：两端共用 */}
       <section id="honor" className="mb-10 border-t pt-8">
         <h2 className="section-title mb-1">品牌背书 · 荣誉与公益</h2>

@@ -1,4 +1,198 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+
+// 缤果学分 - 打卡签到子模块
+function ScoreBank() {
+  const [checkedIn, setCheckedIn] = useState(false)
+  const [activeTab, setActiveTab] = useState('overview')
+
+  return (
+    <section id="score-bank" className="mb-10">
+      <h2 className="section-title mb-1">缤果学分银行</h2>
+      <p className="text-slate-600 text-sm mb-4">打卡签到 · 学习任务 · 积分兑换 · 成长资产</p>
+
+      {/* 学分概览卡 */}
+      <div className="card p-6 bg-gradient-to-r from-primary/90 to-cyan-600 text-white mb-4">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <p className="text-white/80 text-sm">我的缤果学分</p>
+            <p className="text-4xl font-bold mt-1">1,280</p>
+            <p className="text-white/70 text-xs mt-1">学分等级：学分达人 ⭐⭐⭐</p>
+          </div>
+          <div className="text-right">
+            <p className="text-white/80 text-sm">连续打卡</p>
+            <p className="text-2xl font-bold">7 天</p>
+            <p className="text-white/70 text-xs mt-1">明日继续可得翻倍学分</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-3 mt-5">
+          <button
+            onClick={() => setCheckedIn(true)}
+            disabled={checkedIn}
+            className={'px-5 py-2 rounded-lg text-sm font-medium transition ' + (checkedIn ? 'bg-white/20 text-white/60 cursor-default' : 'bg-white text-primary hover:bg-white/90')}
+          >
+            {checkedIn ? '今日已打卡 ✓' : '立即打卡 +10分'}
+          </button>
+          <button onClick={() => setActiveTab('exchange')} className="px-5 py-2 rounded-lg text-sm font-medium bg-white/20 text-white hover:bg-white/30 transition">学分兑换</button>
+          <button onClick={() => setActiveTab('detail')} className="px-5 py-2 rounded-lg text-sm font-medium bg-white/20 text-white hover:bg-white/30 transition">学分明细</button>
+        </div>
+      </div>
+
+      {/* 子标签切换 */}
+      <div className="flex gap-2 mb-4 flex-wrap">
+        {[['overview', '积分中心'], ['checkin', '打卡中心'], ['detail', '学分明细'], ['exchange', '积分兑换'], ['rank', '排行榜']].map(([key, label]) => (
+          <button key={key} onClick={() => setActiveTab(key)}
+            className={'px-4 py-1.5 rounded-full text-xs font-medium transition ' + (activeTab === key ? 'bg-primary text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}>
+            {label}
+          </button>
+        ))}
+      </div>
+
+      {/* 积分中心 */}
+      {activeTab === 'overview' && (
+        <div className="grid md:grid-cols-3 gap-4">
+          {[
+            { label: '今日可获学分', value: '+30', note: '课程学习·打卡·分享' },
+            { label: '本月累计', value: '420', note: '连续打卡翻倍中' },
+            { label: '累计兑换', value: '500', note: '已兑换课程券2张' },
+          ].map((s, i) => (
+            <div key={i} className="card p-5">
+              <p className="text-xs text-slate-500">{s.label}</p>
+              <p className="text-2xl font-bold text-primary mt-1">{s.value}</p>
+              <p className="text-xs text-slate-400 mt-1">{s.note}</p>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* 打卡中心 */}
+      {activeTab === 'checkin' && (
+        <div className="space-y-4">
+          <div className="card p-6">
+            <h3 className="font-semibold text-bingo-dark mb-3">每日签到打卡</h3>
+            <div className="flex gap-2 flex-wrap mb-4">
+              {['一', '二', '三', '四', '五', '六', '七'].map((d, i) => (
+                <div key={i} className={'w-10 h-10 rounded-full flex items-center justify-center text-xs font-medium ' + (i < 7 ? 'bg-primary text-white' : 'bg-slate-100 text-slate-400')}>
+                  {d}
+                </div>
+              ))}
+            </div>
+            <p className="text-sm text-slate-600">连续签到7天：基础 +10分/天，连续7天额外 +30分</p>
+          </div>
+          <div className="card p-6">
+            <h3 className="font-semibold text-bingo-dark mb-3">学习任务打卡</h3>
+            <ul className="space-y-3">
+              {[
+                { task: '完成课程章节学习', score: '+15分', done: true },
+                { task: '提交社群作业', score: '+10分', done: false },
+                { task: '完成赛事备赛练习', score: '+20分', done: false },
+                { task: '分享学习成果至朋友圈', score: '+5分', done: false },
+              ].map((t, i) => (
+                <li key={i} className="flex items-center justify-between p-3 rounded-lg bg-slate-50">
+                  <span className={'text-sm ' + (t.done ? 'line-through text-slate-400' : 'text-slate-700')}>{t.task}</span>
+                  <span className={'text-xs font-medium px-2 py-1 rounded-full ' + (t.done ? 'bg-slate-200 text-slate-400' : 'bg-primary/10 text-primary')}>{t.done ? '已完成' : t.score}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+
+      {/* 学分明细 */}
+      {activeTab === 'detail' && (
+        <div className="card overflow-hidden">
+          <div className="px-4 py-3 bg-slate-50 border-b border-slate-100 flex gap-2 text-xs text-slate-500">
+            <span>全部</span><span>·</span><span>打卡获取</span><span>·</span><span>学习获取</span><span>·</span><span>分享获取</span><span>·</span><span>兑换消耗</span>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {[
+              { type: '打卡', desc: '每日签到打卡 第7天翻倍', score: '+20', date: '今日' },
+              { type: '学习', desc: 'AI启蒙通识课 第3章 完课', score: '+15', date: '今日' },
+              { type: '分享', desc: '分享课程至朋友圈成功', score: '+5', date: '昨日' },
+              { type: '兑换', desc: '兑换课程优惠券×1（-100元）', score: '-100', date: '3天前' },
+              { type: '学习', desc: '完成AI能力测评', score: '+30', date: '5天前' },
+            ].map((r, i) => (
+              <li key={i} className="px-4 py-3 flex items-center justify-between">
+                <div>
+                  <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary mr-2">{r.type}</span>
+                  <span className="text-sm text-slate-700">{r.desc}</span>
+                </div>
+                <div className="text-right shrink-0 ml-4">
+                  <span className={'font-semibold text-sm ' + (r.score.startsWith('-') ? 'text-rose-500' : 'text-emerald-600')}>{r.score}</span>
+                  <p className="text-xs text-slate-400">{r.date}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* 积分兑换 */}
+      {activeTab === 'exchange' && (
+        <div className="space-y-4">
+          <p className="text-sm text-slate-600">当前学分：<span className="text-primary font-bold">1,280分</span> · 100分 = 10元抵扣</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              { name: '课程优惠券 ¥50', cost: '500学分', type: '纯学分兑换', tag: '热门' },
+              { name: '赛事报名折扣 9折', cost: '300学分', type: '纯学分兑换', tag: '' },
+              { name: 'AI启蒙课免费试听', cost: '200学分', type: '纯学分兑换', tag: '新品' },
+              { name: '研学体验优惠券', cost: '800学分', type: '纯学分兑换', tag: '' },
+              { name: 'AI教具体验装', cost: '1000学分+¥99', type: '学分+现金', tag: '' },
+              { name: '认证服务费5折', cost: '1000学分', type: '纯学分兑换', tag: '限量' },
+            ].map((item, i) => (
+              <div key={i} className="card p-5 hover:shadow-md hover:border-primary/30 transition">
+                <div className="flex items-start justify-between">
+                  <h3 className="font-semibold text-bingo-dark text-sm">{item.name}</h3>
+                  {item.tag && <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 shrink-0">{item.tag}</span>}
+                </div>
+                <p className="text-xs text-slate-500 mt-1">{item.type}</p>
+                <div className="flex items-center justify-between mt-3">
+                  <span className="text-primary font-bold text-sm">{item.cost}</span>
+                  <button type="button" className="text-xs px-3 py-1.5 rounded-lg bg-primary text-white hover:bg-cyan-600">立即兑换</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 排行榜 */}
+      {activeTab === 'rank' && (
+        <div className="card overflow-hidden">
+          <div className="px-4 py-3 bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-100">
+            <p className="font-semibold text-bingo-dark">本月学分排行榜</p>
+            <p className="text-xs text-slate-500 mt-1">月度「学分之星」可获免费赛事报名资格或研学优惠券</p>
+          </div>
+          <ul className="divide-y divide-slate-100">
+            {[
+              { rank: 1, name: '李同学', score: 2860, badge: '🥇' },
+              { rank: 2, name: '王同学', score: 2410, badge: '🥈' },
+              { rank: 3, name: '张同学', score: 2050, badge: '🥉' },
+              { rank: 4, name: '陈同学', score: 1740, badge: '' },
+              { rank: 5, name: '赵同学', score: 1520, badge: '' },
+            ].map((r, i) => (
+              <li key={i} className="px-4 py-3 flex items-center gap-3">
+                <span className="w-6 text-center text-sm font-bold text-slate-500">{r.badge || r.rank}</span>
+                <span className="flex-1 text-sm text-slate-700">{r.name}</span>
+                <span className="font-bold text-primary text-sm">{r.score.toLocaleString()} 分</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {/* B端机构学分管理 */}
+      <div className="mt-4 card p-5 border-primary/20 bg-slate-50">
+        <h3 className="font-semibold text-bingo-dark mb-2">B端 · 机构学分管理</h3>
+        <p className="text-sm text-slate-600 mb-3">加盟/合作机构可自定义旗下学员学分任务与兑换权益，赋能机构学员激励与留存</p>
+        <div className="flex gap-3">
+          <Link to="/franchise" className="btn-primary text-sm px-4 py-2">机构学分后台</Link>
+          <button type="button" className="rounded-lg border border-primary text-primary px-4 py-2 text-sm">学分规则说明</button>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 // 个人中心：用户信息、订单/学习/赛事/认证、分享与推广、佣金结算、团队推广(教师/机构)
 export default function Profile() {
@@ -19,6 +213,9 @@ export default function Profile() {
           <Link to="/login" className="ml-auto rounded-lg border border-primary text-primary px-4 py-2 text-sm">编辑资料</Link>
         </div>
       </section>
+
+      {/* 缤果学分银行 */}
+      <ScoreBank />
 
       {/* C端服务入口 */}
       <section className="mb-10">

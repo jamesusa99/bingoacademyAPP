@@ -124,6 +124,33 @@ export default function Community() {
         </div>
       </section>
 
+      {/* 缤果学分 · 社群打卡入口 */}
+      <section className="mb-10">
+        <h2 className="section-title mb-1">🏅 社群打卡领学分</h2>
+        <p className="text-slate-600 text-sm mb-4">在社群完成打卡与互动，积累缤果学分，兑换学习资料与直播课门票</p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+          {[
+            { action: '每日学习打卡', score: '+10分', note: '连续7天额外 +30分' },
+            { action: '提交社群作业', score: '+10分', note: '每日限1次' },
+            { action: '精选答疑/心得', score: '+20分', note: '管理员精选后到账' },
+            { action: '邀请新用户入群', score: '+50分', note: '新用户完成首次打卡触发' },
+          ].map((s, i) => (
+            <div key={i} className="card p-5 border-primary/20 hover:shadow-md transition">
+              <p className="text-sm font-medium text-slate-700">{s.action}</p>
+              <p className="text-primary font-bold text-lg mt-1">{s.score}</p>
+              <p className="text-xs text-slate-400 mt-1">{s.note}</p>
+            </div>
+          ))}
+        </div>
+        <div className="card p-5 bg-cyan-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <p className="font-medium text-bingo-dark">老带新·双向领学分</p>
+            <p className="text-sm text-slate-600 mt-0.5">邀请好友入群并完成首次打卡，双方各得50学分+社群专属折扣</p>
+          </div>
+          <Link to="/profile#score-bank" className="btn-primary text-sm px-4 py-2">查看我的学分</Link>
+        </div>
+      </section>
+
       <section>
         <h2 className="section-title">学习社栏目</h2>
         <div className="grid md:grid-cols-2 gap-4 mb-8">

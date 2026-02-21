@@ -72,6 +72,37 @@ export default function Mall() {
               ))}
             </div>
           </section>
+
+          {/* 缤果学分 · C端学分兑换专区 */}
+          <section className="mb-8">
+            <h2 className="section-title mb-1">🏅 学分兑换专区</h2>
+            <p className="text-slate-600 text-sm mb-4">用缤果学分兑换学习工具、课程券、实物商品；购买商品也可获赠学分</p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { name: '学习工具月卡', cost: '300学分', tag: '纯学分', popular: true },
+                { name: '课程优惠券 ¥50', cost: '500学分', tag: '纯学分', popular: false },
+                { name: 'AI教具体验装', cost: '1000学分+¥99', tag: '学分+现金', popular: false },
+                { name: '赛事报名9折券', cost: '300学分', tag: '纯学分', popular: true },
+                { name: '研学体验优惠券', cost: '800学分', tag: '纯学分', popular: false },
+                { name: '认证服务5折', cost: '1000学分', tag: '限量', popular: false },
+              ].map((item, i) => (
+                <div key={i} className={'card p-5 hover:shadow-md hover:border-primary/30 transition ' + (item.popular ? 'border-primary/30' : '')}>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="font-semibold text-sm text-bingo-dark">{item.name}</h3>
+                    <span className={'text-[10px] px-2 py-0.5 rounded-full ' + (item.tag === '纯学分' ? 'bg-primary/10 text-primary' : item.tag === '限量' ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-600')}>{item.tag}</span>
+                  </div>
+                  <div className="flex items-center justify-between mt-3">
+                    <span className="text-primary font-bold text-sm">{item.cost}</span>
+                    <button type="button" className="text-xs px-3 py-1.5 rounded-lg bg-primary text-white hover:bg-cyan-600">兑换</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 card p-4 bg-amber-50 border-amber-200/50 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-sm text-slate-700">购买任意商品可获赠对应学分，好评后额外 +10分</p>
+              <Link to="/profile#score-bank" className="text-sm text-primary font-medium hover:underline">查看我的学分 →</Link>
+            </div>
+          </section>
           <div className="mb-6">
             <Link to="/mall/materials" className="btn-primary">进入学材物资中心 →</Link>
           </div>
