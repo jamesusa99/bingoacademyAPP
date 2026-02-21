@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-// 缤纷成果 - 小小AI创业家（优秀学员）、10万奖金（获奖者）、成果展示
+// 缤纷成果 - 双端分层：C端（学员成果）/ B端（机构/加盟/生态成果）
 const outstandingStudents = [
   { name: '张小明', photo: 'https://ui-avatars.com/api/?name=张小明&background=0891b2&color=fff&size=120' },
   { name: '李思涵', photo: 'https://ui-avatars.com/api/?name=李思涵&background=0891b2&color=fff&size=120' },
@@ -36,14 +36,35 @@ function Avatar({ src, name, alt }) {
 }
 
 export default function Showcase() {
+  const [tab, setTab] = useState('c')
+
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold text-bingo-dark mb-2">缤纷成果</h1>
-      <p className="text-slate-600 mb-6">成果分类 → 成果列表 → 成果详情；图文/短视频展示、点赞/评论/分享，作品关联课程/工具购买，定制化成果服务，详情页分享转化可赚佣金</p>
+      <p className="text-slate-600 mb-6">成果分类 → 成果列表 → 成果详情；图文/短视频展示、点赞/评论/分享，作品关联课程/工具购买，分享转化可赚佣金</p>
 
-      {/* 成果分类 */}
+      {/* 双端切换标签 */}
+      <div className="flex gap-2 mb-8">
+        <button
+          onClick={() => setTab('c')}
+          className={'px-6 py-2 rounded-full text-sm font-medium transition ' + (tab === 'c' ? 'bg-primary text-white shadow' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}
+        >
+          C端 · 学员成果
+        </button>
+        <button
+          onClick={() => setTab('b')}
+          className={'px-6 py-2 rounded-full text-sm font-medium transition ' + (tab === 'b' ? 'bg-primary text-white shadow' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}
+        >
+          B端 · 机构/生态成果
+        </button>
+      </div>
+
+      {/* ===== C端：学员成果 ===== */}
+      {tab === 'c' && (
+        <>
+      {/* C端成果分类 */}
       <section className="mb-8">
-        <h2 className="section-title">成果分类</h2>
+        <h2 className="section-title">C端成果分类</h2>
         <div className="flex flex-wrap gap-3">
           <Link to="/showcase/works" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">学员作品</Link>
           <Link to="/showcase/awards" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">赛事获奖</Link>
@@ -51,7 +72,43 @@ export default function Showcase() {
           <Link to="/showcase/materials" className="card px-5 py-3 hover:shadow-md hover:border-primary/30">教材教具</Link>
         </div>
       </section>
+        </>
+      )}
 
+      {/* ===== B端：机构/生态成果 ===== */}
+      {tab === 'b' && (
+        <section className="mb-8">
+          <h2 className="section-title">B端成果分类</h2>
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            <div className="card p-6 hover:shadow-md hover:border-primary/30 transition">
+              <h3 className="font-semibold text-primary mb-2">加盟案例专题</h3>
+              <p className="text-sm text-slate-600">各地加盟校区运营数据、招生成效、盈利案例展示，附加盟咨询入口</p>
+              <Link to="/franchise" className="text-sm text-primary mt-3 inline-block">了解加盟合作 →</Link>
+            </div>
+            <div className="card p-6 hover:shadow-md hover:border-primary/30 transition">
+              <h3 className="font-semibold text-primary mb-2">机构合作成效</h3>
+              <p className="text-sm text-slate-600">与缤果合作的教培机构、学校落地数据看板，课程引入、师训与学员成果</p>
+              <a href="/#/b" className="text-sm text-primary mt-3 inline-block">申请合作 →</a>
+            </div>
+            <div className="card p-6 hover:shadow-md hover:border-primary/30 transition">
+              <h3 className="font-semibold text-primary mb-2">AI OEM合作成果</h3>
+              <p className="text-sm text-slate-600">课程/教具/工具定制成果展示，品牌联名与技术输出案例，轻量化公信力展示</p>
+              <a href="/#/oem" className="text-sm text-primary mt-3 inline-block">了解OEM合作 →</a>
+            </div>
+          </div>
+          <div className="card p-5 bg-gradient-to-r from-cyan-50 to-sky-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="font-medium text-bingo-dark">加盟优势提炼 · 扶持政策一览</p>
+              <p className="text-sm text-slate-600 mt-1">品牌授权 · 课程体系 · 赛事资源 · 师训支持 · 运营赋能</p>
+            </div>
+            <Link to="/franchise" className="btn-primary shrink-0">立即咨询加盟</Link>
+          </div>
+        </section>
+      )}
+
+      {/* C端专属：学员成果详情 */}
+      {tab === 'c' && (
+      <>
       <section className="mb-10">
         <h2 className="section-title">小小AI创业家</h2>
         <div className="card p-6 border-primary/20">
@@ -92,7 +149,7 @@ export default function Showcase() {
         </div>
       </section>
 
-      <section>
+      <section className="mb-10">
         <h2 className="section-title">成果列表与详情</h2>
         <p className="text-slate-600 text-sm mb-4">详情页支持：图文/短视频展示、点赞/评论/分享；作品关联课程/工具购买入口；定制化成果服务提交入口；分享按钮，分享后产生转化可赚佣金</p>
         <div className="grid md:grid-cols-2 gap-6">
@@ -104,6 +161,50 @@ export default function Showcase() {
               </div>
             )
           })}
+        </div>
+      </section>
+
+      </>
+      )}
+
+      {/* 荣誉与公益：两端共用 */}
+      <section id="honor" className="mb-10 border-t pt-8">
+        <h2 className="section-title mb-1">品牌背书 · 荣誉与公益</h2>
+        <p className="text-slate-600 text-sm mb-6">缤果AI学院荣誉展示、行业动态与公益项目，强化品牌公信力</p>
+        <div className="card overflow-hidden mb-6">
+          <ul className="divide-y divide-slate-100">
+            {[
+              { type: '荣誉', text: '缤果AI学院获「年度AI教育创新机构」称号', date: '2025-01' },
+              { type: '热点', text: '教育部发文推进中小学AI教育，素养与伦理并重', date: '2025-02' },
+              { type: '荣誉', text: '缤果学员在全国青少年AI挑战赛中获一等奖', date: '2025-01' },
+              { type: '行业', text: '青少年AI赛事白名单扩容，科创素养成升学加分项', date: '2025-02' },
+              { type: '热点', text: '多省市将AI素养纳入综合素质评价', date: '2025-01' },
+              { type: '行业', text: '产教融合政策加码，企业与院校合作AI实训', date: '2024-12' },
+            ].map((r, i) => (
+              <li key={i} className="px-4 py-3 flex flex-wrap items-center gap-2 hover:bg-slate-50 transition">
+                <span className={'text-xs px-2 py-0.5 rounded ' + (r.type === '荣誉' ? 'bg-amber-100 text-amber-800' : r.type === '热点' ? 'bg-red-50 text-red-700' : 'bg-slate-100 text-slate-600')}>
+                  {r.type}
+                </span>
+                <span className="text-slate-700 text-sm flex-1">{r.text}</span>
+                <span className="text-slate-400 text-xs">{r.date}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <h3 className="text-base font-semibold text-bingo-dark mb-3">公益项目</h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            { title: '公益助学活动', desc: '捐赠教材/教具、免费公益课，面向青少年/弱势群体' },
+            { title: '公益赛事', desc: '公益主题AI赛事，提升品牌影响力' },
+            { title: '公益打卡', desc: '用户参与打卡，平台捐赠公益基金' },
+            { title: '公益成果展示', desc: '强化品牌公信力，带动潜在C端消费' },
+          ].map((item, i) => (
+            <div key={i} className="card p-6 hover:shadow-md hover:border-primary/30 transition">
+              <h3 className="font-semibold text-primary">{item.title}</h3>
+              <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
+              <button type="button" className="text-sm text-primary mt-3 hover:underline">参与报名 →</button>
+            </div>
+          ))}
         </div>
       </section>
     </div>

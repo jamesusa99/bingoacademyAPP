@@ -20,18 +20,41 @@ export default function Profile() {
         </div>
       </section>
 
-      {/* 基础服务入口 */}
+      {/* C端服务入口 */}
       <section className="mb-10">
-        <h2 className="section-title">我的服务</h2>
+        <h2 className="section-title">C端 · 我的服务</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           <Link to="/profile#orders" className="card p-4 text-center hover:shadow-md transition">我的订单</Link>
           <Link to="/profile/study" className="card p-4 text-center hover:shadow-md transition">学习中心</Link>
           <Link to="/profile/works" className="card p-4 text-center hover:shadow-md transition">个人作品</Link>
           <Link to="/profile#events" className="card p-4 text-center hover:shadow-md transition">我的赛事</Link>
           <Link to="/profile#cert" className="card p-4 text-center hover:shadow-md transition">我的认证</Link>
-          <Link to="/growth" className="card p-4 text-center hover:shadow-md transition">我的能力档案</Link>
+          <Link to="/courses#growth-plan" className="card p-4 text-center hover:shadow-md transition">我的能力档案</Link>
           <Link to="/profile#messages" className="card p-4 text-center hover:shadow-md transition">消息通知</Link>
           <Link to="/profile#settings" className="card p-4 text-center hover:shadow-md transition">设置</Link>
+        </div>
+      </section>
+
+      {/* B端合作入口（新增） */}
+      <section className="mb-10">
+        <h2 className="section-title">B端 · 合作/加盟管理</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <Link to="/franchise" className="card p-4 text-center hover:shadow-md hover:border-primary/30 transition bg-gradient-to-br from-cyan-50 to-sky-50">
+            <div className="font-semibold text-primary">加盟申请</div>
+            <div className="text-xs text-slate-500 mt-1">加盟进度查询</div>
+          </Link>
+          <Link to="/events?tab=b" className="card p-4 text-center hover:shadow-md hover:border-primary/30 transition bg-gradient-to-br from-cyan-50 to-sky-50">
+            <div className="font-semibold text-primary">赛事DIY定制</div>
+            <div className="text-xs text-slate-500 mt-1">定制进度查询</div>
+          </Link>
+          <a href="/#/b" className="card p-4 text-center hover:shadow-md hover:border-primary/30 transition bg-gradient-to-br from-cyan-50 to-sky-50">
+            <div className="font-semibold text-primary">合作管理</div>
+            <div className="text-xs text-slate-500 mt-1">机构合作进度</div>
+          </a>
+          <Link to="/mall?b=1" className="card p-4 text-center hover:shadow-md hover:border-primary/30 transition bg-gradient-to-br from-cyan-50 to-sky-50">
+            <div className="font-semibold text-primary">采购订单</div>
+            <div className="text-xs text-slate-500 mt-1">加盟方专属采购</div>
+          </Link>
         </div>
       </section>
 
@@ -235,9 +258,15 @@ export default function Profile() {
       </section>
 
       <section>
-        <h2 className="section-title">B端合作入口</h2>
-        <p className="text-slate-600 text-sm mb-3">学校/机构、加盟商、赛事合作方请使用独立账号登录</p>
-        <a href="/#/b" className="btn-primary">前往B端登录</a>
+        <h2 className="section-title">老带新 · 邀请有礼</h2>
+        <div className="card p-6 bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200/50">
+          <p className="font-medium text-bingo-dark mb-2">邀请新用户注册，双方均可获得专属福利</p>
+          <p className="text-sm text-slate-600 mb-4">推荐好友报名课程/赛事，可额外获得佣金奖励，机构推荐新机构合作享返佣</p>
+          <div className="flex gap-3">
+            <button type="button" className="btn-primary text-sm px-4 py-2">生成邀请海报</button>
+            <Link to="/profile#promo" className="rounded-lg border border-primary text-primary px-4 py-2 text-sm hover:bg-primary/10">进入推广中心</Link>
+          </div>
+        </div>
       </section>
     </div>
   )

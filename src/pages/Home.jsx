@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const BANNERS = [
   { title: '课程促销', to: '/courses', desc: '精品课限时优惠' },
   { title: '赛事报名', to: '/events', desc: '权威赛事火热报名中' },
-  { title: '荣誉与公益', to: '/charity', desc: '荣誉展示与公益报道' },
+  { title: '品牌荣誉', to: '/showcase#honor', desc: '荣誉展示与公益报道' },
   { title: '产教融合合作', to: '/career', desc: '企业实训与就业对接' },
   { title: '推广赚佣金', to: '/profile#promo', desc: '分享课程/商品赚佣金活动专场' },
 ]
@@ -69,7 +69,7 @@ export default function Home() {
         <div className="card p-6 bg-gradient-to-r from-cyan-50 to-sky-50 border-primary/20 flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-slate-600">测一测孩子的AI素养与潜力，根据结果智能推荐课程与学习路径。</p>
-            <Link to="/growth" className="text-primary font-medium mt-2 inline-block">去测评 →</Link>
+            <Link to="/courses#growth-plan" className="text-primary font-medium mt-2 inline-block">去测评 →</Link>
           </div>
           <Link to="/courses" className="btn-primary shrink-0">查看推荐课程</Link>
         </div>
@@ -184,8 +184,8 @@ export default function Home() {
             <div className="font-semibold text-primary mt-1">作品与获奖展示</div>
             <p className="text-sm text-slate-600 mt-1">分享转化可赚佣金</p>
           </Link>
-          <Link to="/charity" className="card p-5 hover:shadow-md transition">
-            <div className="text-sm text-slate-500">公益案例</div>
+          <Link to="/showcase#honor" className="card p-5 hover:shadow-md transition">
+            <div className="text-sm text-slate-500">品牌荣誉</div>
             <div className="font-semibold text-primary mt-1">荣誉与公益</div>
             <p className="text-sm text-slate-600 mt-1">参与得公益积分</p>
           </Link>

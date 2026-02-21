@@ -211,13 +211,51 @@ export default function Courses() {
         <p className="text-slate-600 text-sm mb-4">每个基础工具均有独立介绍与购买页；购买记录可进入个人中心的「我的订单」（后续接入订单系统）</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
           {toolItems.map((item, i) => (
-            <Link key={item.id} to={`/tools/detail/${item.id}`} className="card p-6 hover:shadow-md hover:border-primary/30 transition">
+            <Link key={item.id} to={'/tools/detail/' + item.id} className="card p-6 hover:shadow-md hover:border-primary/30 transition">
               <h3 className="font-semibold text-primary">{item.title}</h3>
               <p className="text-sm text-slate-600 mt-1">{item.desc}</p>
               <p className="text-xs text-slate-500 mt-2">价格：{item.price}</p>
               <span className="text-sm text-primary mt-3 inline-block">查看详情 →</span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* 个性化成长计划（原「成长计划」板块整合至此） */}
+      <section id="growth-plan" className="mb-10 border-t pt-8">
+        <h2 className="section-title mb-1">个性化成长计划</h2>
+        <p className="text-slate-600 text-sm mb-6">AI能力测评 → 学习方案生成 → 阶段套餐 → 学习跟踪，打通「测评-选课-学习-认证」全链路</p>
+        <div className="card p-6 bg-gradient-to-r from-cyan-50 to-sky-50 border-primary/20 flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div>
+            <h3 className="font-semibold text-bingo-dark">AI能力测评 · 推荐适合您的课程</h3>
+            <p className="text-slate-600 text-sm mt-1">测一测孩子的AI素养与潜力，根据结果智能推荐课程与学习路径。</p>
+          </div>
+          <button type="button" className="btn-primary shrink-0">去测评</button>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="card p-6">
+            <h3 className="font-semibold text-primary">分阶段成长套餐</h3>
+            <p className="text-sm text-slate-600 mt-1">入门→进阶→精通，配套教材、课程、教具，套餐佣金可分享</p>
+          </div>
+          <div className="card p-6">
+            <h3 className="font-semibold text-primary">个性化成长规划</h3>
+            <p className="text-sm text-slate-600 mt-1">AI测评+定制学习方案，按计划推荐对应课程，专属规划咨询入口</p>
+          </div>
+          <div className="card p-6">
+            <h3 className="font-semibold text-primary">成长打卡 · 积分奖励</h3>
+            <p className="text-sm text-slate-600 mt-1">积分可兑换教材/教具、课程优惠券；成长进度可分享获赠试学时长</p>
+          </div>
+          <div className="card p-6">
+            <h3 className="font-semibold text-primary">长期导师跟进</h3>
+            <p className="text-sm text-slate-600 mt-1">1v1导师指导，形成AI创作作品集与个人能力档案，衔接认证中心</p>
+          </div>
+        </div>
+        <div className="mt-4 card p-5 bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200/50 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div className="text-sm text-slate-500">成长计划专属优惠</div>
+            <p className="font-medium text-bingo-dark mt-1">按成长计划报名对应课程，享额外专属折扣</p>
+          </div>
+          <Link to="/cert" className="rounded-lg border border-primary text-primary px-4 py-2 text-sm hover:bg-primary/10">关联认证中心 →</Link>
         </div>
       </section>
     </div>
