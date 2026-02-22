@@ -10,16 +10,16 @@ const BANNERS = [
 ]
 
 const PAIN_POINTS = [
-  '孩子总玩AI工具，会不会耽误学习？',
-  'AI时代，到底该学什么才不被淘汰？',
-  '学校没有AI课，我们该从哪里入手？',
-  '孩子对AI感兴趣，但不知道如何系统学？',
-  '担心孩子只会用AI，不会思考与创造？',
-  '竞赛、升学、素养，AI教育该怎么选？',
-  'AI工具那么多，哪些适合青少年？',
-  '如何判断孩子适不适合走AI/科创路线？',
-  '家长自己不懂AI，怎么引导孩子？',
-  '学完AI课程，如何证明能力、对接升学？',
+  { q: '孩子总玩AI工具，会不会耽误学习？', to: '/courses', hint: '→ AI精品课' },
+  { q: 'AI时代，到底该学什么才不被淘汰？', to: '/courses', hint: '→ AI精品课' },
+  { q: '学校没有AI课，我们该从哪里入手？', to: '/courses', hint: '→ AI精品课' },
+  { q: '孩子对AI感兴趣，但不知道如何系统学？', to: '/courses#growth-plan', hint: '→ 个性化成长计划' },
+  { q: '担心孩子只会用AI，不会思考与创造？', to: '/research', hint: '→ 科学研学' },
+  { q: '竞赛、升学、素养，AI教育该怎么选？', to: '/events', hint: '→ 赛事中心' },
+  { q: 'AI工具那么多，哪些适合青少年？', to: '/courses', hint: '→ AI精品课' },
+  { q: '如何判断孩子适不适合走AI/科创路线？', to: '/courses#growth-plan', hint: '→ AI能力测评' },
+  { q: '家长自己不懂AI，怎么引导孩子？', to: '/community', hint: '→ AI学习社' },
+  { q: '学完AI课程，如何证明能力、对接升学？', to: '/cert', hint: '→ 认证中心' },
 ]
 
 const HOT_COURSES = [
@@ -62,9 +62,15 @@ export default function Home() {
         </h2>
         <p className="text-slate-600 text-center mb-6">让我猜猜您面对AI遇到的问题</p>
         <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-          {PAIN_POINTS.map((q, i) => (
-            <li key={i} className="card px-4 py-3 text-slate-700 hover:border-primary/30 hover:shadow-sm transition">
-              {q}
+          {PAIN_POINTS.map((item, i) => (
+            <li key={i}>
+              <Link
+                to={item.to}
+                className="card px-4 py-3 flex items-center justify-between gap-2 hover:border-primary/40 hover:shadow-sm hover:bg-primary/5 transition group"
+              >
+                <span className="text-slate-700 group-hover:text-bingo-dark">{item.q}</span>
+                <span className="text-primary text-xs shrink-0 font-medium opacity-0 group-hover:opacity-100 transition">{item.hint}</span>
+              </Link>
             </li>
           ))}
         </ul>
