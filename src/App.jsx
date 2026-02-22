@@ -15,6 +15,11 @@ import ToolDetail from './pages/ToolDetail'
 import Research from './pages/Research'
 import Career from './pages/Career'
 import Events from './pages/Events'
+import EventOrganizer from './pages/EventOrganizer'
+import EventGallery from './pages/EventGallery'
+import EventAITest from './pages/EventAITest'
+import EventWhitelist from './pages/EventWhitelist'
+import EventBingguo from './pages/EventBingguo'
 import Certification from './pages/Certification'
 import Mall from './pages/Mall'
 import Franchise from './pages/Franchise'
@@ -46,6 +51,11 @@ export default function App() {
         <Route path="/research" element={<Research />} />
         <Route path="/career" element={<Career />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/events/organizer" element={<EventOrganizer />} />
+        <Route path="/events/gallery" element={<EventGallery />} />
+        <Route path="/events/ai-test" element={<EventAITest />} />
+        <Route path="/events/whitelist" element={<EventWhitelist />} />
+        <Route path="/events/bingguo-ai" element={<EventBingguo />} />
         <Route path="/cert" element={<Certification />} />
         <Route path="/mall" element={<Mall />} />
         <Route path="/mall/materials" element={<Materials />} />
