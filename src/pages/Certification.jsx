@@ -1000,118 +1000,226 @@ function TeacherCert({ onNav }) {
 function CertOverview({ onNav }) {
   const [tab, setTab] = useState('overview')
   const [partnerSubmitted, setPartnerSubmitted] = useState(false)
-  const [openFaq, setOpenFaq] = useState(null)
+
+  // 四位一体架构节点
+  const ARCH_NODES = [
+    {
+      key: 'inst', icon: '🏫', title: '机构认证', sub: '核心基础', nav: true,
+      color: 'border-primary/30 bg-primary/5 hover:bg-primary/10',
+      tagColor: 'bg-primary/15 text-primary',
+      desc: '九星·四阶课程体系授权，是认证体系的基础保障',
+      highlight: '提升招生转化率30%+',
+    },
+    {
+      key: 'teacher', icon: '👨‍🏫', title: '教师认证', sub: '质量支撑', nav: true,
+      color: 'border-emerald-200/60 bg-emerald-50/50 hover:bg-emerald-50',
+      tagColor: 'bg-emerald-100 text-emerald-700',
+      desc: '三类教师认证，保障教学质量，支撑机构认证可信度',
+      highlight: '认证教师优先机构推荐',
+    },
+    {
+      key: 'student', icon: '🎓', title: '学员认证', sub: '成果输出', nav: true,
+      color: 'border-indigo-200/60 bg-indigo-50/50 hover:bg-indigo-50',
+      tagColor: 'bg-indigo-100 text-indigo-700',
+      desc: '四阶学员认证，认证机构+发牌中心双重背书',
+      highlight: '可用于升学综评·赛事加分',
+    },
+    {
+      key: null, icon: '👨‍👩‍👧', title: '家长能力认证', sub: '生态共建', nav: false,
+      color: 'border-rose-200/60 bg-rose-50/50 hover:bg-rose-50',
+      tagColor: 'bg-rose-100 text-rose-700',
+      desc: '人工智能训练师·家庭教育师等正规社会认证，打造家校协同生态',
+      highlight: '持证家长可参与AI教育共建',
+    },
+  ]
+
+  // 认证周期
+  const CERT_TIMES = [
+    { type: '机构认证', icon: '🏫', color: 'bg-primary/5 border-primary/20',
+      times: ['启智阶（1-3星）：4-5 周', '基础阶（4-6星）：5-6 周', '精研阶（7-8星）：6-7 周', '智创阶（9星）：7-8 周'] },
+    { type: '教师认证', icon: '👨‍🏫', color: 'bg-emerald-50 border-emerald-200/60',
+      times: ['基础教师认证：2-3 周', '高级教师认证：3-4 周', '培训师认证：4-5 周'] },
+    { type: '学员认证', icon: '🎓', color: 'bg-indigo-50 border-indigo-200/60',
+      times: ['L1 AI通识（1-2星）：1-2 周', 'L2 AI创造力（3-6星）：1-2 周', 'L3 AI科创研究（7-8星）：2 周', 'L4 AI卓越创新（9星）：2-3 周'] },
+    { type: '家长能力认证', icon: '👨‍👩‍👧', color: 'bg-rose-50 border-rose-200/60',
+      times: ['人工智能训练师：4-6 周', '心理健康咨询师：按国家标准', '家庭教育师：3-5 周'] },
+  ]
+
+  // 证书用途
+  const CERT_USES = [
+    { type: '机构证书', icon: '🏫', color: 'bg-sky-50 border-sky-200/60',
+      uses: ['招生宣传材料中使用', '机构合作洽谈展示', '政府项目申报背书', '品牌建设与授牌展示', '九星课程独家授权凭证'] },
+    { type: '教师证书', icon: '👨‍🏫', color: 'bg-emerald-50 border-emerald-200/60',
+      uses: ['职业晋升与薪资谈判', '缤果认证机构求职', '教研活动参与资格', '定向机构推荐就业'] },
+    { type: '学员证书', icon: '🎓', color: 'bg-indigo-50 border-indigo-200/60',
+      uses: ['升学综评申报材料', '白名单赛事报名加分', '强基计划/自主招生背书', '海外升学作品集Portfolio'] },
+    { type: '家长能力证书', icon: '👨‍👩‍👧', color: 'bg-rose-50 border-rose-200/60',
+      uses: ['参与AI教育达人共建', '家校协同活动资格认定', '机构家长口碑赋能材料', '国家认可社会职业资格'] },
+  ]
+
+  // 等级联动对应
+  const LEVEL_MAP = [
+    {
+      stage: '启智阶', tag: 'bg-emerald-100 text-emerald-700', stars: '⭐ 一星—三星',
+      inst: '启智阶认证（1-3星）', teacher: '基础教师认证', student: '启智阶学员认证（L1）',
+      parent: '家长入门了解课程', course: '1-3星课程',
+    },
+    {
+      stage: '基础阶', tag: 'bg-sky-100 text-sky-700', stars: '⭐⭐ 四星—六星',
+      inst: '基础阶认证（4-6星）', teacher: '基础教师认证', student: '基础阶学员认证（L2）',
+      parent: '家庭教育师认证入门', course: '4-6星课程',
+    },
+    {
+      stage: '精研阶', tag: 'bg-violet-100 text-violet-700', stars: '⭐⭐⭐ 七星—八星',
+      inst: '精研阶认证（7-8星）', teacher: '高级教师认证', student: '精研阶学员认证（L3）',
+      parent: '人工智能训练师认证', course: '7-8星课程',
+    },
+    {
+      stage: '智创阶', tag: 'bg-amber-100 text-amber-700', stars: '⭐⭐⭐⭐ 九星', recommended: true,
+      inst: '智创阶认证（9星）', teacher: '高级教师+培训师认证', student: '智创阶学员认证（L4）',
+      parent: '全类别家长能力认证', course: '9星全课程',
+    },
+  ]
+
+  // 发牌机构
+  const ISSUANCE_ORGS = [
+    { name: 'XX人工智能教育协会', type: '行业协会', region: '全国', field: '全国机构认证审核·学员证书监督', logo: '🤝', color: 'bg-primary/5 border-primary/20' },
+    { name: 'XX师范大学教育学院', type: '教育机构', region: '华东区', field: '华东地区教师认证考核·培训背书', logo: '🎓', color: 'bg-sky-50 border-sky-200/60' },
+    { name: 'XX省教育科学研究院', type: '政府部门', region: '省级', field: '省级学员认证背书·政策对接', logo: '🏛️', color: 'bg-indigo-50 border-indigo-200/60' },
+    { name: 'XX创新教育联盟', type: '行业协会', region: '华南区', field: '华南地区机构认证推广·联合评审', logo: '🔗', color: 'bg-emerald-50 border-emerald-200/60' },
+    { name: 'XX职业技术教育学会', type: '教育机构', region: '全国', field: '职业教育·家长能力认证背书与标准', logo: '📋', color: 'bg-rose-50 border-rose-200/60' },
+    { name: '缤果AI学院认证委员会', type: '平台委员会', region: '全国', field: '总负责：授牌颁证·体系维护·纠纷处理', logo: '⭐', color: 'bg-amber-50 border-amber-200/60' },
+  ]
 
   return (
     <div>
-      <NavBreadcrumb items={[{ label: tab === 'issuance' ? '发牌中心' : '认证项目总览' }]} onNav={onNav} />
-      <div className="flex gap-2 mb-6 flex-wrap">
-        {[['overview', '认证项目总览'], ['issuance', '发牌中心体系']].map(([k, l]) => (
+      <NavBreadcrumb items={[{ label: tab === 'issuance' ? '发牌中心体系' : '认证项目总览' }]} onNav={onNav} />
+
+      {/* 标签切换 */}
+      <div className="flex gap-2 mb-7 flex-wrap">
+        {[['overview', '📊 认证项目总览'], ['issuance', '🏛️ 发牌中心体系']].map(([k, l]) => (
           <button key={k} onClick={() => setTab(k)}
-            className={'px-5 py-2 rounded-full text-sm font-medium transition ' + (tab === k ? 'bg-primary text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}>{l}</button>
+            className={'px-5 py-2 rounded-full text-sm font-medium transition ' +
+              (tab === k ? 'bg-primary text-white shadow' : 'bg-slate-100 text-slate-600 hover:bg-slate-200')}>{l}</button>
         ))}
       </div>
 
+      {/* ══ 认证项目总览 ══ */}
       {tab === 'overview' && (
-        <div className="space-y-7">
-          {/* 体系架构图 */}
+        <div className="space-y-8">
+
+          {/* 1. 四位一体架构图 */}
           <div className="card p-6">
-            <h3 className="font-semibold text-bingo-dark mb-4">四位一体认证架构</h3>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-4 py-2">
-              {[
-                { icon: '🏫', title: '机构认证', sub: '核心', desc: '提供课程与师资，是认证体系的基础保障', key: 'inst' },
-                { icon: '👨‍🏫', title: '教师认证', sub: '支撑', desc: '保障教学质量，支撑机构认证的可信度', key: 'teacher' },
-                { icon: '🎓', title: '学员认证', sub: '成果', desc: '体现教学效果，实现认证价值的最终输出', key: 'student' },
-              ].map((n, i) => (
-                <React.Fragment key={n.key}>
-                  <button onClick={() => onNav(n.key)}
-                    className="card p-5 w-full md:w-40 text-center hover:shadow-md hover:border-primary/30 hover:bg-primary/5 transition group">
-                    <div className="text-3xl mb-2">{n.icon}</div>
-                    <p className="font-bold text-bingo-dark group-hover:text-primary">{n.title}</p>
-                    <span className="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full">{n.sub}</span>
-                    <p className="text-[11px] text-slate-500 mt-2 leading-snug">{n.desc}</p>
+            <h3 className="font-bold text-bingo-dark text-lg mb-1">四位一体认证架构</h3>
+            <p className="text-slate-500 text-xs mb-5">机构认证（基础）× 教师认证（支撑）× 学员认证（成果）× 家长能力认证（生态），四维联动构建完整AI教育认证生态</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {ARCH_NODES.map(n => (
+                <div key={n.title}
+                  className={'rounded-2xl p-5 border cursor-pointer transition ' + n.color}
+                  onClick={() => n.nav && n.key && onNav(n.key)}>
+                  <div className="flex items-start justify-between mb-3">
+                    <span className="text-3xl">{n.icon}</span>
+                    <span className={'text-[10px] px-2 py-0.5 rounded-full font-medium ' + n.tagColor}>{n.sub}</span>
+                  </div>
+                  <h4 className="font-bold text-bingo-dark text-sm mb-1">{n.title}</h4>
+                  <p className="text-xs text-slate-500 leading-relaxed mb-3">{n.desc}</p>
+                  <p className="text-xs text-emerald-600 font-medium">✓ {n.highlight}</p>
+                  {n.nav && n.key && (
                     <p className="text-[10px] text-primary mt-2">点击进入 →</p>
-                  </button>
-                  {i < 2 && <div className="text-2xl text-slate-300 hidden md:block">⟺</div>}
-                </React.Fragment>
+                  )}
+                </div>
               ))}
+            </div>
+            {/* 联动说明 */}
+            <div className="mt-5 bg-slate-50 rounded-xl p-4 flex flex-wrap gap-4 justify-center text-center text-xs text-slate-500">
+              <div className="flex flex-col items-center gap-1"><span className="text-xl">🏫</span><span>机构认证<br/>授权课程体系</span></div>
+              <span className="text-slate-300 text-lg self-center">→</span>
+              <div className="flex flex-col items-center gap-1"><span className="text-xl">👨‍🏫</span><span>教师认证<br/>保障教学质量</span></div>
+              <span className="text-slate-300 text-lg self-center">→</span>
+              <div className="flex flex-col items-center gap-1"><span className="text-xl">🎓</span><span>学员认证<br/>输出成果证书</span></div>
+              <span className="text-slate-300 text-lg self-center">+</span>
+              <div className="flex flex-col items-center gap-1"><span className="text-xl">👨‍👩‍👧</span><span>家长认证<br/>家校协同共建</span></div>
+              <span className="text-slate-300 text-lg self-center">→</span>
+              <div className="flex flex-col items-center gap-1"><span className="text-xl">🏛️</span><span>发牌中心<br/>权威背书监督</span></div>
             </div>
           </div>
 
-          {/* 等级对应关系表 */}
-          <div className="overflow-x-auto">
-            <h3 className="font-semibold text-bingo-dark mb-4">三大认证等级对应关系</h3>
-            <table className="w-full text-sm border-collapse min-w-[640px]">
-              <thead>
-                <tr className="bg-slate-50">
-                  <th className="text-left py-3 px-4 text-slate-600 font-medium">认证阶段</th>
-                  <th className="text-left py-3 px-4 text-slate-600 font-medium">机构认证</th>
-                  <th className="text-left py-3 px-4 text-slate-600 font-medium">教师认证</th>
-                  <th className="text-left py-3 px-4 text-slate-600 font-medium">学员认证</th>
-                  <th className="text-left py-3 px-4 text-slate-600 font-medium">对应课程</th>
-                </tr>
-              </thead>
-              <tbody>
-                {FOUR_STAGES.map((s, i) => (
-                  <tr key={s.key} className={'border-t border-slate-100 ' + (s.recommended ? 'bg-amber-50/50' : '')}>
-                    <td className="py-3 px-4">
-                      <span className={'text-xs font-bold px-2 py-0.5 rounded-full ' + s.tag}>{s.name}</span>
-                    </td>
-                    <td className="py-3 px-4 text-xs text-slate-700">{s.name}认证（{s.stars}）</td>
-                    <td className="py-3 px-4 text-xs text-slate-700">{s.teacherLevel}</td>
-                    <td className="py-3 px-4 text-xs text-slate-700">{s.studentLevel}</td>
-                    <td className="py-3 px-4 text-xs text-slate-700">{s.range}</td>
+          {/* 2. 四大认证等级联动对应表 */}
+          <div>
+            <h3 className="font-bold text-bingo-dark mb-1">四大认证等级联动对应关系</h3>
+            <p className="text-slate-500 text-xs mb-4">四个认证维度按四阶体系完整对应，机构/教师/学员/家长认证联动推进</p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm border-collapse min-w-[720px]">
+                <thead>
+                  <tr className="bg-slate-50 border-b border-slate-200">
+                    <th className="text-left py-3 px-4 text-slate-600 font-semibold text-xs">认证阶段</th>
+                    <th className="text-left py-3 px-4 text-sky-700 font-semibold text-xs">🏫 机构认证</th>
+                    <th className="text-left py-3 px-4 text-emerald-700 font-semibold text-xs">👨‍🏫 教师认证</th>
+                    <th className="text-left py-3 px-4 text-indigo-700 font-semibold text-xs">🎓 学员认证</th>
+                    <th className="text-left py-3 px-4 text-rose-700 font-semibold text-xs">👨‍👩‍👧 家长认证</th>
+                    <th className="text-left py-3 px-4 text-slate-500 font-semibold text-xs">对应课程</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {LEVEL_MAP.map((row, i) => (
+                    <tr key={i} className={'border-t border-slate-100 ' + (row.recommended ? 'bg-amber-50/50' : i % 2 === 0 ? '' : 'bg-slate-50/50')}>
+                      <td className="py-3 px-4">
+                        <div>
+                          <span className={'text-xs font-bold px-2 py-0.5 rounded-full ' + row.tag}>{row.stage}</span>
+                          {row.recommended && <span className="ml-1 text-[9px] bg-amber-500 text-white px-1.5 py-0.5 rounded-full">推荐</span>}
+                          <p className="text-[10px] text-slate-400 mt-0.5">{row.stars}</p>
+                        </div>
+                      </td>
+                      <td className="py-3 px-4 text-xs text-slate-700">{row.inst}</td>
+                      <td className="py-3 px-4 text-xs text-slate-700">{row.teacher}</td>
+                      <td className="py-3 px-4 text-xs text-slate-700">{row.student}</td>
+                      <td className="py-3 px-4 text-xs text-rose-600">{row.parent}</td>
+                      <td className="py-3 px-4 text-xs text-slate-500 font-medium">{row.course}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
 
-          {/* 认证时间周期表 */}
+          {/* 3. 认证时间周期 */}
           <div className="card p-6 bg-slate-50">
-            <h3 className="font-semibold text-bingo-dark mb-4">认证时间周期</h3>
-            <div className="grid sm:grid-cols-3 gap-4 mb-4">
-              {[
-                { type: '机构认证', icon: '🏫', times: ['启智阶：4-5周', '基础阶：5-6周', '精研阶：6-7周', '智创阶：7-8周'] },
-                { type: '教师认证', icon: '👨‍🏫', times: ['基础教师：2-3周', '高级教师：3-4周', '培训师：4-5周'] },
-                { type: '学员认证', icon: '🎓', times: ['L1（1-2星）：1-2周', 'L2（3-6星）：1-2周', 'L3（7-8星）：2周', 'L4（9星）：2-3周'] },
-              ].map((item, i) => (
-                <div key={i} className="bg-white rounded-xl p-4 border border-slate-100">
+            <h3 className="font-bold text-bingo-dark mb-1">认证时间周期</h3>
+            <p className="text-slate-500 text-xs mb-4">各认证类型标准认证周期，提供加急通道（需额外费用），请联系商务顾问</p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {CERT_TIMES.map((item, i) => (
+                <div key={i} className={'bg-white rounded-xl p-4 border ' + item.color}>
                   <p className="font-semibold text-sm text-bingo-dark mb-3">{item.icon} {item.type}</p>
                   <ul className="space-y-1.5">
                     {item.times.map((t, j) => (
-                      <li key={j} className="text-xs text-slate-600 flex items-center gap-1.5">
-                        <span className="w-1 h-1 rounded-full bg-slate-400 shrink-0" />{t}
+                      <li key={j} className="text-xs text-slate-600 flex items-start gap-1.5">
+                        <span className="w-1 h-1 rounded-full bg-slate-300 shrink-0 mt-1.5" />{t}
                       </li>
                     ))}
                   </ul>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-slate-500">提供加急通道（需额外费用），满足紧急认证需求，请联系商务顾问</p>
           </div>
 
-          {/* 证书用途分类 */}
+          {/* 4. 证书用途说明 */}
           <div className="card p-6">
-            <h3 className="font-semibold text-bingo-dark mb-4">证书用途说明</h3>
-            <div className="space-y-4">
-              {[
-                { type: '机构证书', icon: '🏫', color: 'bg-sky-50 border-sky-200/60', uses: ['招生宣传材料中使用', '机构合作洽谈展示', '政府项目申报背书', '品牌建设与授牌展示'] },
-                { type: '教师证书', icon: '👨‍🏫', color: 'bg-emerald-50 border-emerald-200/60', uses: ['职业晋升与薪资谈判', '缤果认证机构求职', '教研活动参与资格', '定向机构推荐就业'] },
-                { type: '学员证书', icon: '🎓', color: 'bg-violet-50 border-violet-200/60', uses: ['升学综评申报材料', '白名单赛事报名加分', '强基计划/自主招生背书', '海外升学作品集Portfolio'] },
-              ].map((c, i) => (
-                <div key={i} className={'card p-4 border ' + c.color}>
+            <h3 className="font-bold text-bingo-dark mb-1">证书用途说明</h3>
+            <p className="text-slate-500 text-xs mb-5">四类证书覆盖机构招生·教师就业·学员升学·家长共建全场景</p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {CERT_USES.map((c, i) => (
+                <div key={i} className={'card p-5 border ' + c.color}>
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-lg">{c.icon}</span>
+                    <span className="text-xl">{c.icon}</span>
                     <p className="font-semibold text-bingo-dark text-sm">{c.type}</p>
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-2">
+                  <ul className="space-y-1.5">
                     {c.uses.map((u, j) => (
-                      <div key={j} className="flex items-center gap-2 text-xs text-slate-600">
-                        <span className="text-emerald-500">✓</span>{u}
-                      </div>
+                      <li key={j} className="flex items-center gap-2 text-xs text-slate-600">
+                        <span className="text-emerald-500 shrink-0">✓</span>{u}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               ))}
             </div>
@@ -1119,22 +1227,55 @@ function CertOverview({ onNav }) {
         </div>
       )}
 
+      {/* ══ 发牌中心体系 ══ */}
       {tab === 'issuance' && (
-        <div className="space-y-7">
-          <div>
-            <h2 className="text-2xl font-bold text-bingo-dark mb-1">发牌中心体系</h2>
-            <p className="text-slate-600 text-sm">缤果认证体系的监督与背书核心，确保认证公平公正，提升整体权威性</p>
+        <div className="space-y-8">
+
+          {/* Banner */}
+          <div className="card p-6 bg-gradient-to-r from-bingo-dark to-slate-800 text-white">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="text-xs text-cyan-300 mb-1 tracking-wider">缤果AI学院 · 认证中心</p>
+                <h2 className="text-2xl font-bold mb-2">发牌中心体系</h2>
+                <p className="text-white/80 text-sm mb-4 max-w-xl">
+                  作为认证体系独立监督机构，负责认证审核监督、质量把关与纠纷处理，为四位一体认证体系（机构·教师·学员·家长）提供权威背书，确保每一张认证证书的含金量。
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {['认证审核监督', '定期质量复查', '品牌联合推广', '纠纷独立处理', '家长认证背书'].map((r, i) => (
+                    <span key={i} className="text-[11px] bg-white/15 text-white px-3 py-1 rounded-full">{r}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-3 text-center min-w-[200px]">
+                {[
+                  { num: '50+', label: '合作发牌机构' },
+                  { num: '200+', label: '已认证机构' },
+                  { num: '15,000+', label: '认证学员' },
+                  { num: '4类', label: '认证维度' },
+                ].map((s, i) => (
+                  <div key={i} className="bg-white/10 rounded-xl p-3">
+                    <p className="text-xl font-bold text-cyan-300">{s.num}</p>
+                    <p className="text-[10px] text-white/70 mt-0.5">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* 发牌中心介绍 */}
-          <div className="card p-6 bg-gradient-to-r from-bingo-dark to-slate-800 text-white">
-            <h3 className="text-xl font-bold mb-2">发牌中心 · 职责与定位</h3>
-            <p className="text-white/80 text-sm mb-4">作为认证体系的独立监督机构，负责认证审核监督、质量把关与纠纷处理，确保每一张认证证书的含金量</p>
-            <div className="grid sm:grid-cols-3 gap-3">
-              {['认证审核监督', '定期质量复查', '品牌联合推广'].map((r, i) => (
-                <div key={i} className="bg-white/15 rounded-xl p-3 flex items-center gap-2">
-                  <span className="text-cyan-400 text-lg">✓</span>
-                  <span className="text-sm">{r}</span>
+          {/* 职责说明 */}
+          <div>
+            <h3 className="font-bold text-bingo-dark mb-4">发牌中心核心职责</h3>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { icon: '🔍', title: '认证审核监督', desc: '独立审核机构/教师/学员/家长各类认证申请，确保材料真实合规', color: 'bg-sky-50 border-sky-200/60' },
+                { icon: '📋', title: '质量定期复查', desc: '每年对已认证机构和教师进行复审，保证认证体系持续高质量', color: 'bg-emerald-50 border-emerald-200/60' },
+                { icon: '🤝', title: '品牌联合推广', desc: '联合合作机构共同推广认证品牌，扩大认证影响力与行业覆盖', color: 'bg-violet-50 border-violet-200/60' },
+                { icon: '⚖️', title: '纠纷处理仲裁', desc: '独立处理认证纠纷投诉，保障认证公平公正，维护各方权益', color: 'bg-amber-50 border-amber-200/60' },
+              ].map((item, i) => (
+                <div key={i} className={'card p-5 border ' + item.color}>
+                  <span className="text-2xl mb-2 block">{item.icon}</span>
+                  <h4 className="font-semibold text-bingo-dark text-sm mb-1">{item.title}</h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -1142,17 +1283,11 @@ function CertOverview({ onNav }) {
 
           {/* 合作发牌机构 */}
           <div>
-            <h3 className="font-semibold text-bingo-dark mb-4">合作发牌机构</h3>
+            <h3 className="font-bold text-bingo-dark mb-1">合作发牌机构</h3>
+            <p className="text-slate-500 text-xs mb-4">覆盖行业协会、高等院校、政府部门、平台委员会，多维度权威背书</p>
             <div className="grid md:grid-cols-3 gap-4">
-              {[
-                { name: 'XX人工智能教育协会', type: '行业协会', region: '全国', field: '负责全国机构认证审核与学员证书监督', logo: '🤝' },
-                { name: 'XX师范大学教育学院', type: '教育机构', region: '华东区', field: '负责华东地区教师认证考核与培训', logo: '🎓' },
-                { name: 'XX省教育科学研究院', type: '政府部门', region: '省级', field: '负责省级学员认证背书与政策对接', logo: '🏛️' },
-                { name: 'XX创新教育联盟', type: '行业协会', region: '华南区', field: '负责华南地区机构认证推广与联合评审', logo: '🔗' },
-                { name: 'XX职业技术教育学会', type: '教育机构', region: '全国', field: '职业教育方向认证背书与标准制定', logo: '📋' },
-                { name: '缤果AI学院认证委员会', type: '平台委员会', region: '全国', field: '总负责：授牌颁证、体系维护、纠纷处理', logo: '⭐' },
-              ].map((d, i) => (
-                <div key={i} className="card p-5 hover:shadow-md hover:border-primary/30 transition">
+              {ISSUANCE_ORGS.map((d, i) => (
+                <div key={i} className={'card p-5 hover:shadow-md transition border ' + d.color}>
                   <div className="flex items-center gap-3 mb-3">
                     <span className="text-2xl">{d.logo}</span>
                     <div>
@@ -1169,73 +1304,111 @@ function CertOverview({ onNav }) {
             </div>
           </div>
 
-          {/* 监督投诉 */}
+          {/* 家长能力认证与发牌中心联动说明 */}
+          <div className="card p-6 bg-gradient-to-r from-rose-50 to-pink-50 border-rose-200/60">
+            <div className="flex items-start gap-4">
+              <span className="text-3xl shrink-0">👨‍👩‍👧</span>
+              <div>
+                <h3 className="font-bold text-bingo-dark mb-1">家长能力认证 × 发牌中心</h3>
+                <p className="text-sm text-slate-600 mb-3">
+                  家长能力认证（人工智能训练师·心理健康咨询师·家庭教育师）由发牌中心联合国家认可机构颁发，证书具有正规社会认证资质，持证家长可作为AI教育达人参与共建，助力机构打造家校协同教育生态。
+                </p>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  {['国家认可资质', '发牌中心背书', '参与AI教育共建', '机构口碑赋能'].map((t, i) => (
+                    <span key={i} className="bg-rose-100 text-rose-700 px-2.5 py-1 rounded-full border border-rose-200">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 监督投诉渠道 */}
           <div className="card p-6 bg-slate-50">
-            <h3 className="font-semibold text-bingo-dark mb-4">监督与投诉渠道</h3>
-            <div className="grid sm:grid-cols-2 gap-4 mb-4">
+            <h3 className="font-bold text-bingo-dark mb-4">监督与投诉渠道</h3>
+            <div className="grid sm:grid-cols-3 gap-4 mb-4">
               <div className="bg-white rounded-xl p-4 border border-slate-100">
                 <p className="font-semibold text-sm text-bingo-dark mb-1">📝 在线投诉表单</p>
-                <p className="text-xs text-slate-500 mb-3">填写投诉内容并上传证据材料，3个工作日内响应</p>
+                <p className="text-xs text-slate-500 mb-3">填写内容并上传证据材料，3个工作日内响应</p>
                 <button type="button" className="text-xs btn-primary px-4 py-2">提交投诉</button>
               </div>
               <div className="bg-white rounded-xl p-4 border border-slate-100">
-                <p className="font-semibold text-sm text-bingo-dark mb-1">📞 监督电话</p>
+                <p className="font-semibold text-sm text-bingo-dark mb-1">📞 监督热线</p>
                 <p className="text-xs text-slate-500 mb-1">工作日 9:00-18:00</p>
                 <p className="text-sm font-bold text-primary">400-XXX-XXXX</p>
+              </div>
+              <div className="bg-white rounded-xl p-4 border border-slate-100">
+                <p className="font-semibold text-sm text-bingo-dark mb-1">✉️ 邮件投诉</p>
+                <p className="text-xs text-slate-500 mb-1">5个工作日内书面回复</p>
+                <p className="text-sm font-bold text-primary">cert@bingoacademy.cn</p>
               </div>
             </div>
             <p className="text-xs text-slate-500">承诺：所有投诉 3 个工作日内响应，重大投诉 1 个工作日内启动调查</p>
           </div>
 
-          {/* 合作申请 */}
-          <div className="max-w-xl">
-            <h3 className="font-semibold text-bingo-dark mb-4">发牌中心合作申请</h3>
-            <div className="card p-5 bg-primary/5 border-primary/20 mb-5">
-              <h4 className="font-semibold text-bingo-dark text-sm mb-2">合作优势</h4>
-              <ul className="space-y-1">
-                {['品牌联合推广，提升机构知名度', '认证收益分成，长期稳定收益', '行业资源对接，扩大合作网络'].map((a, i) => (
-                  <li key={i} className="text-xs text-slate-600 flex items-center gap-1.5">
-                    <span className="text-primary">✓</span>{a}
+          {/* 发牌中心合作申请 */}
+          <div className="grid lg:grid-cols-2 gap-6">
+            <div className="card p-6 bg-primary/5 border-primary/20">
+              <h3 className="font-bold text-bingo-dark mb-3">发牌中心合作优势</h3>
+              <ul className="space-y-2.5 mb-5">
+                {[
+                  '品牌联合推广，提升机构知名度与行业影响力',
+                  '认证收益合理分成，建立长期稳定合作收益',
+                  '行业资源互通，扩大双方合作网络与用户规模',
+                  '参与认证标准共建，提升机构在行业中的话语权',
+                  '家长能力认证联合颁发，共同开拓家校协同市场',
+                ].map((a, i) => (
+                  <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                    <span className="text-primary mt-0.5 shrink-0">✓</span>{a}
                   </li>
                 ))}
               </ul>
+              <div className="grid grid-cols-2 gap-3 text-center text-xs">
+                {[['4-6周', '平均合作周期'], ['2个工作日', '经理响应时效'], ['3类', '合作意向可选']].slice(0, 2).map((s, i) => (
+                  <div key={i} className="bg-white rounded-xl p-3 border border-primary/10">
+                    <p className="font-bold text-primary text-base">{s[0]}</p>
+                    <p className="text-slate-500 mt-0.5">{s[1]}</p>
+                  </div>
+                ))}
+              </div>
             </div>
+
             {partnerSubmitted ? (
-              <div className="card p-8 text-center">
-                <div className="text-4xl mb-3">🎉</div>
-                <p className="font-bold text-bingo-dark mb-1">申请已提交！</p>
-                <p className="text-slate-500 text-sm mb-4">专属客户经理将在 2 个工作日内对接，平均合作周期 4-6 周</p>
-                <button onClick={() => setPartnerSubmitted(false)} className="btn-primary px-6 py-2.5 text-sm">返回</button>
+              <div className="card p-8 text-center flex flex-col items-center justify-center">
+                <div className="text-5xl mb-3">🎉</div>
+                <p className="font-bold text-bingo-dark text-lg mb-1">申请已提交！</p>
+                <p className="text-slate-500 text-sm mb-5">专属客户经理将在 2 个工作日内对接，平均合作周期 4-6 周</p>
+                <button onClick={() => setPartnerSubmitted(false)} className="btn-primary px-6 py-2.5 text-sm">返回重填</button>
               </div>
             ) : (
               <form onSubmit={e => { e.preventDefault(); setPartnerSubmitted(true) }} className="card p-6 space-y-4">
-                <h4 className="font-bold text-bingo-dark">合作申请表单</h4>
+                <h3 className="font-bold text-bingo-dark">发牌中心合作申请</h3>
                 {[
-                  { label: '机构名称 *', ph: '请输入机构全称' },
-                  { label: '联系人 *', ph: '负责人姓名' },
-                  { label: '联系电话 *', ph: '手机号' },
+                  { label: '机构名称 *', ph: '请输入机构全称', type: 'text' },
+                  { label: '联系人 *', ph: '负责人姓名', type: 'text' },
+                  { label: '联系电话 *', ph: '手机号码', type: 'tel' },
                 ].map((f, i) => (
                   <div key={i}>
-                    <label className="text-sm font-medium text-slate-700 mb-1.5 block">{f.label}</label>
-                    <input required type="text" placeholder={f.ph}
-                      className="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-primary" />
+                    <label className="text-xs font-medium text-slate-700 mb-1.5 block">{f.label}</label>
+                    <input required type={f.type} placeholder={f.ph}
+                      className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary" />
                   </div>
                 ))}
                 <div>
-                  <label className="text-sm font-medium text-slate-700 mb-1.5 block">合作意向</label>
-                  <select className="w-full border border-slate-200 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-primary bg-white">
+                  <label className="text-xs font-medium text-slate-700 mb-1.5 block">合作意向</label>
+                  <select className="w-full border border-slate-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-primary bg-white">
                     <option>负责区域认证审核</option>
                     <option>联合背书颁发</option>
                     <option>品牌联合推广</option>
+                    <option>家长能力认证合作</option>
                   </select>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-slate-700 mb-1.5 block">资质证明</label>
+                  <label className="text-xs font-medium text-slate-700 mb-1.5 block">资质证明</label>
                   <div className="border-2 border-dashed border-slate-200 rounded-xl p-4 text-center text-slate-400 text-sm cursor-pointer hover:border-primary/40 transition">
-                    点击上传营业执照/资质证书
+                    点击上传营业执照 / 资质证书
                   </div>
                 </div>
-                <button type="submit" className="btn-primary w-full py-3 text-sm">提交合作申请</button>
+                <button type="submit" className="btn-primary w-full py-3 text-sm font-bold">提交合作申请</button>
               </form>
             )}
           </div>
