@@ -8,6 +8,7 @@ export const mainNavGroups = [
     { path: '/events', label: '赛事中心' },
     { path: '/community', label: 'AI学习社' },
   ],
+  [{ path: '/career', label: '数智职业' }],
   [{ path: '/cert', label: '认证中心' }],
   [{ path: '/mall', label: 'AI智能商城' }],
   [{ path: '/profile', label: '个人中心' }],

@@ -42,6 +42,7 @@ export default function Layout({ children }) {
             {mainNav.slice(0, 6).map(({ path, label }) => (
               <Link key={path} to={path} className="px-2 py-1 text-xs rounded bg-white/10">{label}</Link>
             ))}
+            <Link to="/career" className="px-2 py-1 text-xs rounded bg-white/10">数智职业</Link>
             <Link to="/mall" className="px-2 py-1 text-xs rounded bg-white/10">AI智能商城</Link>
             <Link to="/profile" className="px-2 py-1 text-xs rounded bg-primary">个人中心</Link>
             <Link to="/login" className="px-2 py-1 text-xs rounded bg-white/10">登录</Link>
@@ -65,6 +66,7 @@ export default function Layout({ children }) {
               <Link to="/research" className="block hover:text-white">科学研学</Link>
               <Link to="/community" className="block hover:text-white">AI学习社</Link>
               <Link to="/showcase#honor" className="block hover:text-white">荣誉与公益</Link>
+              <Link to="/career" className="block hover:text-white">数智职业</Link>
               <Link to="/mall" className="block hover:text-white">AI智能商城</Link>
               <Link to="/profile" className="block hover:text-white">个人中心</Link>
             </div>
