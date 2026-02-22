@@ -1290,15 +1290,14 @@ export default function Certification() {
         </div>
       </section>
 
-      {/* 四大核心入口 */}
+      {/* 核心认证入口 */}
       <section className="mb-10">
         <h2 className="section-title mb-4">核心认证体系</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
           {[
             { key: 'inst', icon: '🏫', title: '机构认证', sub: '重点推荐', desc: '九星·四阶认证，赋能教培机构打造品牌竞争力', highlight: '提升招生转化率30%+', badge: '核心', badgeColor: 'bg-primary/15 text-primary border-primary/30' },
             { key: 'student', icon: '🎓', title: '学员认证', sub: '双背书体系', desc: '四阶学员认证，认证机构+发牌中心双重背书', highlight: '可用于升学综评·赛事加分', badge: '新增双背书', badgeColor: 'bg-indigo-100 text-indigo-700 border-indigo-200' },
             { key: 'teacher', icon: '👨‍🏫', title: '教师认证', sub: '师资赋能', desc: '三类教师认证，保障教学质量，定向就业推荐', highlight: '认证教师优先机构推荐', badge: '含慧师计划', badgeColor: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
-            { key: 'overview', icon: '📊', title: '认证总览', sub: '体系导览', desc: '三位一体认证架构总览，等级对应表+发牌中心', highlight: '含发牌中心合作申请', badge: '含发牌中心', badgeColor: 'bg-amber-100 text-amber-700 border-amber-200' },
           ].map(n => (
             <button key={n.key} onClick={() => navTo(n.key)}
               className="card p-6 text-left hover:shadow-lg hover:border-primary/30 hover:bg-primary/5 transition group">
@@ -1313,6 +1312,39 @@ export default function Certification() {
               <p className="text-xs text-primary mt-3 group-hover:underline">进入 {n.title} →</p>
             </button>
           ))}
+        </div>
+        <div className="grid sm:grid-cols-2 gap-5">
+          {/* 认证总览 */}
+          <button onClick={() => navTo('overview')}
+            className="card p-6 text-left hover:shadow-lg hover:border-amber-300/40 hover:bg-amber-50/30 transition group">
+            <div className="flex items-start justify-between mb-3">
+              <span className="text-3xl">📊</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full border font-medium bg-amber-100 text-amber-700 border-amber-200">含发牌中心</span>
+            </div>
+            <h3 className="font-bold text-bingo-dark text-lg mb-0.5 group-hover:text-amber-700 transition">认证总览</h3>
+            <p className="text-xs text-amber-600 font-medium mb-2">体系导览</p>
+            <p className="text-xs text-slate-600 mb-3 leading-relaxed">三位一体认证架构总览，等级对应表+发牌中心</p>
+            <p className="text-xs text-emerald-600 font-medium">✓ 含发牌中心合作申请</p>
+            <p className="text-xs text-amber-600 mt-3 group-hover:underline">进入 认证总览 →</p>
+          </button>
+          {/* 家长能力认证 */}
+          <div className="card p-6 bg-gradient-to-br from-rose-50 to-pink-50 border-rose-200/60 hover:shadow-lg hover:border-rose-300/60 transition">
+            <div className="flex items-start justify-between mb-3">
+              <span className="text-3xl">👨‍👩‍👧</span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full border font-medium bg-rose-100 text-rose-700 border-rose-200">社会认证</span>
+            </div>
+            <h3 className="font-bold text-bingo-dark text-lg mb-0.5">家长能力认证</h3>
+            <p className="text-xs text-rose-600 font-medium mb-2">家庭赋能 · 社会认证</p>
+            <p className="text-xs text-slate-600 mb-3 leading-relaxed">
+              涵盖人工智能训练师、心理健康咨询师、家庭教育师等正规社会认证，发牌中心权威背书
+            </p>
+            <p className="text-xs text-emerald-600 font-medium mb-1">✓ 持证家长可作为达人参与 AI 教育共建</p>
+            <p className="text-xs text-emerald-600 font-medium mb-3">✓ 打造家校协同教育生态，助力机构口碑升级</p>
+            <button onClick={() => navTo('overview')}
+              className="text-xs text-rose-600 font-medium hover:underline">
+              进入 家长能力认证 →
+            </button>
+          </div>
         </div>
       </section>
 

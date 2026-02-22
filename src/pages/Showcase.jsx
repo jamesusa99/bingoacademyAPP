@@ -20,13 +20,6 @@ const AWARD_CASES = [
   { name: '陈雨桐', grade: '初中1年级', event: '国际青少年AI创新赛', award: '亚太区金奖', path: '国际赛专项→5个月', city: '广州', tag: '国际赛' },
 ]
 
-const AWARD_STATS = [
-  { label: '科创类获奖', value: '480+人次' },
-  { label: 'AI设计类', value: '320+人次' },
-  { label: '编程类', value: '260+人次' },
-  { label: '国际赛事', value: '140+人次' },
-  { label: '一等奖占比', value: '38%' },
-]
 
 // C端 — 升学赋能
 const ADMISSION_CASES = [
@@ -267,16 +260,6 @@ function CSection({ onLead }) {
             <p className="text-sm text-slate-700 mb-3">AI赛事种类多，白名单/国际赛怎么冲？孩子学AI，如何拿到官方认可的竞赛奖项？</p>
             <p className="text-xs text-primary font-bold mb-1">解决方案</p>
             <p className="text-sm text-slate-700">缤果竞赛培优课 + 白名单赛事通关营，从集训到报名到备赛一站式辅导，专属教练全程带队</p>
-          </div>
-
-          {/* 获奖数据看板 */}
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
-            {AWARD_STATS.map((s, i) => (
-              <div key={i} className="card p-4 text-center hover:shadow-md hover:border-amber-300/40 transition">
-                <p className="text-lg font-bold text-amber-600">{s.value}</p>
-                <p className="text-xs text-slate-500 mt-0.5">{s.label}</p>
-              </div>
-            ))}
           </div>
 
           {/* 赛事资质背书 */}
