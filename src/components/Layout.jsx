@@ -51,16 +51,13 @@ export default function Layout({ children }) {
       </header>
       <main className="flex-1">{children}</main>
 
-      {/* 全站 AI 测评悬浮入口 */}
-      <Link
-        to="/events/ai-test"
-        title="AI能力测评"
-        className="fixed bottom-24 right-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 text-white shadow-lg hover:from-violet-600 hover:to-indigo-700 hover:scale-105 transition-all flex flex-col items-center justify-center gap-0.5"
-        aria-label="AI能力测评"
-      >
-        <span className="text-xl leading-none">🧠</span>
-        <span className="text-[9px] font-medium leading-tight">测评</span>
-      </Link>
+      {/* 全站 AI 测评悬浮按钮（与赛事中心样式一致） */}
+      <div className="fixed right-4 bottom-20 z-40">
+        <Link to="/events/ai-test"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white text-primary text-sm font-medium shadow-lg hover:bg-slate-50 transition border border-primary/20">
+          🧠 AI测评
+        </Link>
+      </div>
 
       <ChatPopup />
       <footer className="bg-bingo-dark text-slate-400 text-sm py-8 border-t border-cyan-500/20 bg-gradient-to-r from-[#0f172a] to-[#1e293b]">

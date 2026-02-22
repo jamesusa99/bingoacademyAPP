@@ -193,15 +193,11 @@ export default function Events() {
       </section>
 
       {/* ── 快速行动区（固定悬浮） ── */}
-      <div className="fixed right-4 bottom-20 z-40 flex flex-col gap-2">
+      <div className="fixed right-4 bottom-32 z-40 flex flex-col gap-2">
         <button onClick={() => setShowForm(true)}
           className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-primary text-white text-sm font-medium shadow-lg hover:bg-cyan-600 transition">
           🏆 我要办赛
         </button>
-        <Link to="/events/ai-test"
-          className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white text-primary text-sm font-medium shadow-lg hover:bg-slate-50 transition border border-primary/20">
-          🧠 AI测评
-        </Link>
       </div>
 
       {/* ── 快速提交表单弹窗 ── */}
