@@ -261,87 +261,280 @@ export default function Community() {
 
   // ── 一级首页 ──
   if (section === 'home') return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      {/* Banner */}
-      <section className="mb-10">
-        <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-bingo-dark via-slate-800 to-cyan-900 text-white p-8 sm:p-12">
-          <div className="relative z-10 max-w-2xl">
-            <p className="text-xs text-cyan-300 mb-2 tracking-wider">Bingo Academy · AI学习社专场</p>
-            <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-2">AI赋能成长，科创点亮升学</h1>
-            <p className="text-slate-300 text-sm mb-1">争当缤果超级学霸，解锁荣誉与成长</p>
-            <div className="flex flex-wrap gap-2 mb-6 mt-3">
-              {['高校合作实训', '竞赛升学双赋能', '权威认证课程', '社群打卡赢学分', '缤果学霸荣誉体系'].map((v, i) => (
-                <span key={i} className="text-xs px-3 py-1 rounded-full bg-white/15 text-white/90">{v}</span>
-              ))}
+    <div>
+      {/* ════ Banner ════ */}
+      <section className="bg-gradient-to-br from-bingo-dark via-slate-800 to-cyan-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <p className="text-xs text-cyan-300 mb-3 tracking-widest font-medium">Bingo Academy · AI学习社专场</p>
+          <h1 className="text-3xl sm:text-4xl font-bold leading-tight mb-3">
+            缤果AI学习社——告别AI焦虑<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300">让孩子从「用AI」到「创AI」</span>
+          </h1>
+          <p className="text-slate-300 text-sm mb-4">大咖带学 · 学霸同行 · 打卡督学 · 成果可见，AI学习不盲目、不放弃、有收获</p>
+          {/* 痛点滚动条 */}
+          <div className="bg-white/10 rounded-xl px-4 py-2.5 mb-5 text-sm text-orange-200 border border-white/10">
+            {['想学AI不知道从哪开始？自学易走弯路、浪费时间！',
+              '学了不会用、没成果、没法对接竞赛/升学！',
+              '没人带、没人问、没氛围，三分钟热度难坚持！'][Math.floor(Date.now() / 3000) % 3]}
+          </div>
+          <div className="flex flex-wrap gap-3 mb-5">
+            <button onClick={() => setShowApply(true)}
+              className="bg-orange-500 hover:bg-orange-400 text-white px-7 py-3 rounded-xl text-sm font-bold transition shadow-lg">
+              立即加入学习社
+            </button>
+            <button onClick={() => setSection('scholar')}
+              className="bg-gradient-to-r from-amber-400 to-orange-500 hover:opacity-90 text-white px-6 py-3 rounded-xl text-sm font-medium transition">
+              ⭐ 查看学霸荣誉
+            </button>
+            <button onClick={() => setSection('checkin')}
+              className="bg-white/15 hover:bg-white/25 text-white px-6 py-3 rounded-xl text-sm font-medium transition">
+              🏅 打卡领学分
+            </button>
+          </div>
+          <p className="text-white/40 text-xs">缤果AI教研团队全程护航 · 已服务10,000+青少年</p>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
+
+        {/* ════ 三大核心营销板块（横向滚动黄金区） ════ */}
+        <section className="mb-10">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="section-title mb-0">核心亮点 · 三大必看板块</h2>
+            <span className="text-xs text-slate-400 hidden sm:block">← 左右滑动查看</span>
+          </div>
+          <div className="flex gap-4 overflow-x-auto pb-3 snap-x snap-mandatory" style={{scrollbarWidth:'none'}}>
+
+            {/* 卡片1：缤果牛人社 */}
+            <div onClick={() => setSection('mentors')}
+              className="snap-start shrink-0 w-[300px] sm:w-[340px] cursor-pointer rounded-2xl p-6 bg-gradient-to-br from-bingo-dark to-slate-700 text-white hover:shadow-2xl transition group flex flex-col justify-between min-h-[240px]">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex -space-x-2">
+                    {['陈', '王', '徐', '王'].map((n, i) => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-primary/60 border-2 border-white/30 flex items-center justify-center text-xs font-bold text-white">{n}</div>
+                    ))}
+                  </div>
+                  <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full font-medium">精英圈</span>
+                </div>
+                <h3 className="font-bold text-xl mb-1 group-hover:text-cyan-300 transition">缤果牛人社</h3>
+                <p className="text-[11px] text-orange-200 font-medium mb-2">自学无方向、没人答疑、路径易走偏？</p>
+                <p className="text-slate-300 text-xs leading-relaxed mb-3">
+                  汇聚AI科创名师、全国竞赛金牌教练、科技特长生升学指导专家，1v1答疑+学习路径规划+作业点评，帮孩子<strong className="text-white">少走2年弯路</strong>
+                </p>
+                <div className="space-y-1 text-xs">
+                  {['张老师：全国AI竞赛金牌教练，指导500+获奖', '陈教授：电子科技大学博士导师，20年AI研究'].map((b, i) => (
+                    <div key={i} className="flex items-center gap-1.5 text-slate-300"><span className="text-cyan-400">✓</span>{b}</div>
+                  ))}
+                </div>
+              </div>
+              <button className="mt-5 w-full bg-primary/80 hover:bg-primary text-white py-2.5 rounded-xl text-sm font-bold transition">
+                进入牛人社 → 找大咖带学
+              </button>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <button onClick={() => setSection('scholar')} className="bg-gradient-to-r from-amber-400 to-orange-500 hover:opacity-90 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition">⭐ 查看缤果学霸荣誉</button>
-              <button onClick={() => setSection('checkin')} className="bg-white/15 hover:bg-white/25 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition">🏅 社群打卡领学分</button>
-              <button onClick={() => setSection('courses')} className="bg-white/15 hover:bg-white/25 text-white px-6 py-2.5 rounded-xl text-sm font-medium transition">📚 浏览精品课程</button>
+
+            {/* 卡片2：缤果超级AI学霸（视觉重点） */}
+            <div onClick={() => setSection('scholar')}
+              className="snap-start shrink-0 w-[300px] sm:w-[340px] cursor-pointer rounded-2xl p-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white hover:shadow-2xl transition group flex flex-col justify-between min-h-[240px]">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl">⭐</span>
+                  <span className="text-[10px] bg-white/30 text-white px-2 py-0.5 rounded-full font-bold">🔥 HOT · 核心荣誉</span>
+                </div>
+                <h3 className="font-bold text-xl mb-1">缤果超级AI学霸</h3>
+                <p className="text-[11px] text-orange-100 font-medium mb-2">学AI没动力、没榜样、看不到成果？</p>
+                <p className="text-orange-100 text-xs leading-relaxed mb-3">
+                  展示历届真实学霸案例：竞赛获奖·特长生录取·AI作品落地，学霸路径<strong className="text-white">可查看、可复制</strong>，让孩子有目标有动力
+                </p>
+                <div className="bg-white/20 rounded-xl p-3 text-xs space-y-1">
+                  <p className="text-white font-medium">📊 学霸数据背书</p>
+                  <p className="text-orange-100">89% 学霸获省级以上竞赛奖项</p>
+                  <p className="text-orange-100">60% 成功入选科技特长生</p>
+                </div>
+              </div>
+              <button className="mt-5 w-full bg-white text-orange-500 py-2.5 rounded-xl text-sm font-bold hover:bg-white/90 transition">
+                看学霸案例 → 复制成长路径
+              </button>
+            </div>
+
+            {/* 卡片3：社群打卡积分 */}
+            <div onClick={() => setSection('checkin')}
+              className="snap-start shrink-0 w-[300px] sm:w-[340px] cursor-pointer rounded-2xl p-6 bg-gradient-to-br from-emerald-500 to-teal-600 text-white hover:shadow-2xl transition group flex flex-col justify-between min-h-[240px]">
+              <div>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-3xl">🏅</span>
+                  <span className="text-[10px] bg-white/20 text-white px-2 py-0.5 rounded-full font-medium">天天有奖</span>
+                </div>
+                <h3 className="font-bold text-xl mb-1 group-hover:text-emerald-200 transition">社群打卡积分</h3>
+                <p className="text-[11px] text-emerald-100 font-medium mb-2">AI学习三分钟热度，难以坚持怎么办？</p>
+                <p className="text-emerald-100 text-xs leading-relaxed mb-3">
+                  游戏化打卡积分体系，每日/每周完成打卡即赚积分，可兑换<strong className="text-white">课程优惠券·赛事报名费·AI教具·大咖1v1辅导</strong>
+                </p>
+                <div className="flex flex-wrap gap-2 text-xs">
+                  {[['📅', '日均打卡率 78%'], ['💰', '累计发放积分 100万+'], ['🎁', '福利兑换 5大类']].map(([icon, text], i) => (
+                    <span key={i} className="bg-white/15 text-white px-2.5 py-1 rounded-full">{icon} {text}</span>
+                  ))}
+                </div>
+              </div>
+              <button className="mt-5 w-full bg-white text-emerald-600 py-2.5 rounded-xl text-sm font-bold hover:bg-white/90 transition">
+                立即打卡 → 赚积分兑福利
+              </button>
             </div>
           </div>
-          <div className="absolute right-6 bottom-6 text-9xl opacity-10 select-none">🤖</div>
-        </div>
-      </section>
+        </section>
 
-      {/* 九大导航入口 */}
-      <section className="mb-10">
-        <h2 className="section-title mb-4">功能导航</h2>
-        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {navItems.map(n => (
-            <button key={n.key} onClick={() => setSection(n.key)}
-              className={'card p-4 flex flex-col items-center gap-2 hover:shadow-md transition group relative ' + (n.hot ? 'border-amber-300/60 bg-amber-50/50 hover:border-amber-400' : 'hover:border-primary/30 hover:bg-primary/5')}>
-              {n.hot && <span className="absolute -top-1.5 -right-1.5 text-[9px] bg-amber-500 text-white px-1.5 py-0.5 rounded-full font-bold">HOT</span>}
-              <span className="text-2xl">{n.icon}</span>
-              <span className={'text-xs font-medium text-center leading-tight ' + (n.hot ? 'text-amber-700' : 'text-slate-700 group-hover:text-primary')}>{n.label}</span>
-            </button>
-          ))}
-          {/* 第9+1个：报名咨询 */}
-          <button onClick={() => setSection('consult')}
-            className="card p-4 flex flex-col items-center gap-2 hover:shadow-md hover:border-primary/30 hover:bg-primary/5 transition group">
-            <span className="text-2xl">📋</span>
-            <span className="text-xs font-medium text-slate-700 group-hover:text-primary text-center leading-tight">报名咨询</span>
-          </button>
-        </div>
-      </section>
-
-      {/* 成果亮点轮播 */}
-      <section className="mb-10">
-        <h2 className="section-title mb-4">精彩成果展示</h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            { icon: '🏆', title: '竞赛获奖', num: '120+', desc: '学员参加全国AI创新大赛，获省级及以上奖项' },
-            { icon: '🎓', title: '名校升学', num: '35+', desc: '学员以科创特长生/综评身份成功升学名校' },
-            { icon: '📁', title: '实操作品', num: '2000+', desc: '学员完成AI项目、机器人作品、数据分析报告' },
-            { icon: '⭐', title: '缤果学霸', num: '86', desc: '累计评选各等级学霸，打造科创榜样生态' },
-          ].map((s, i) => (
-            <div key={i} className="card p-6 text-center hover:shadow-md hover:border-primary/30 transition">
-              <div className="text-3xl mb-2">{s.icon}</div>
-              <p className="text-2xl font-bold text-primary">{s.num}</p>
-              <p className="font-semibold text-bingo-dark text-sm mt-1">{s.title}</p>
-              <p className="text-xs text-slate-500 mt-1">{s.desc}</p>
+        {/* ════ AI焦虑解决方案专区 ════ */}
+        <section className="mb-10">
+          <h2 className="section-title mb-2">你遇到的AI焦虑，我们一套全解决</h2>
+          <p className="text-slate-500 text-sm mb-5">由缤果AI教研团队全程护航（清华/北航AI专业导师·10年+青少年教育经验教师组成），方案可落地、学习可坚持、成果可验证</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+            {[
+              { icon: '🧭', pain: '自学无方向', solution: '体系化学习路径 + 牛人社大咖1v1规划，拒绝盲目跟风', key: 'mentors', btnLabel: '找大咖规划', color: 'border-sky-200/60 bg-sky-50/50' },
+              { icon: '💬', pain: '没人答疑', solution: '大咖实时答疑 + 社群同伴交流，疑问当天解决不堆积', key: 'mentors', btnLabel: '进入牛人社', color: 'border-violet-200/60 bg-violet-50/50' },
+              { icon: '🎮', pain: '难坚持', solution: '打卡积分激励 + 社群督学，游戏化方式让学习有动力', key: 'checkin', btnLabel: '去打卡积分', color: 'border-emerald-200/60 bg-emerald-50/50' },
+              { icon: '🏆', pain: '没成果', solution: '竞赛对接 + 作品展示 + 学霸引路，有目标有反馈', key: 'scholar', btnLabel: '看学霸案例', color: 'border-amber-200/60 bg-amber-50/50' },
+            ].map((item, i) => (
+              <div key={i} className={'card p-5 border hover:shadow-md transition ' + item.color}>
+                <div className="text-2xl mb-2">{item.icon}</div>
+                <p className="text-xs text-orange-600 font-bold mb-1">解决「{item.pain}」</p>
+                <p className="text-sm text-slate-700 leading-relaxed mb-3">{item.solution}</p>
+                <button onClick={() => setSection(item.key)}
+                  className="text-xs text-primary font-medium hover:underline">{item.btnLabel} →</button>
+              </div>
+            ))}
+          </div>
+          <div className="card p-5 bg-gradient-to-r from-bingo-dark to-slate-700 text-white flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <p className="font-bold text-base mb-1">定制专属AI学习路径</p>
+              <p className="text-slate-300 text-xs">免费获取大咖1v1规划，3分钟了解孩子AI潜力与成长路径</p>
             </div>
-          ))}
-        </div>
-      </section>
+            <button onClick={() => setShowApply(true)}
+              className="bg-orange-500 hover:bg-orange-400 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition shrink-0">
+              免费预约大咖规划
+            </button>
+          </div>
+        </section>
 
-      {/* 快速留资 */}
-      <section className="card p-6 bg-cyan-50 border-primary/20 flex flex-wrap gap-6 items-start">
-        <div className="flex-1 min-w-[200px]">
-          <h3 className="font-bold text-bingo-dark mb-1">免费领取科创学习资料</h3>
-          <p className="text-sm text-slate-600 mb-1">提交后立即发送研学手册至手机</p>
-          <p className="text-xs text-primary">留资可参与缤果学霸报名预约 →</p>
-        </div>
-        <form onSubmit={e => e.preventDefault()} className="flex flex-wrap gap-2 items-end flex-1 min-w-[280px]">
-          <input className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary flex-1 min-w-[100px]" placeholder="姓名" />
-          <input className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary flex-1 min-w-[120px]" placeholder="手机号" type="tel" />
-          <button type="submit" className="btn-primary text-sm px-5 py-2 shrink-0">免费领取</button>
-        </form>
-      </section>
+        {/* ════ 学习社专属权益 ════ */}
+        <section className="mb-10">
+          <h2 className="section-title mb-2">学习社专属权益 · 只给懂AI、爱学习的你</h2>
+          <p className="text-slate-500 text-sm mb-5">免费成员无门槛加入，高级会员解锁更多专属资源</p>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {/* 免费权益 */}
+            <div className="card p-6 bg-gradient-to-br from-slate-50 to-cyan-50 border-primary/20">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-xl">🎁</span>
+                <h3 className="font-bold text-bingo-dark">免费成员权益</h3>
+                <span className="text-[10px] bg-primary/15 text-primary px-2 py-0.5 rounded-full">所有人可加入</span>
+              </div>
+              <ul className="space-y-2.5 mb-5">
+                {[
+                  '社群打卡领基础学分（每日+5~10分）',
+                  '学习社栏目浏览，阅读AI科创内容',
+                  '精品课程基础浏览权限',
+                  '参与学霸评选报名（需满足条件）',
+                  '每月1次免费大咖答疑机会',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                    <span className="text-primary mt-0.5 shrink-0">✓</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => setShowApply(true)}
+                className="w-full bg-primary hover:bg-cyan-600 text-white py-2.5 rounded-xl text-sm font-bold transition">
+                立即免费加入
+              </button>
+            </div>
+            {/* 高级权益 */}
+            <div className="card p-6 bg-gradient-to-br from-amber-50 to-orange-50 border-amber-300/60">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-xl">⭐</span>
+                <h3 className="font-bold text-bingo-dark">学霸会员专属权益</h3>
+                <span className="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200">解锁更多</span>
+              </div>
+              <ul className="space-y-2.5 mb-5">
+                {[
+                  '打卡学分翻倍（每日+20分，快速冲学霸）',
+                  '1v1大咖答疑专属通道（月内无限次）',
+                  '学霸专属学习路径规划报告',
+                  '优先参与线下研学/实训营名额',
+                  '直接入驻牛人社，获得品牌背书展示',
+                  '学霸证书+实物奖励+续报课程优惠',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+                    <span className="text-amber-500 mt-0.5 shrink-0">★</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => setSection('scholar')}
+                className="w-full bg-amber-500 hover:bg-amber-600 text-white py-2.5 rounded-xl text-sm font-bold transition">
+                冲击学霸·解锁专属权益
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* ════ 功能导航 ════ */}
+        <section className="mb-10">
+          <h2 className="section-title mb-4">全部功能入口</h2>
+          <div className="grid grid-cols-3 sm:grid-cols-5 gap-3">
+            {navItems.map(n => (
+              <button key={n.key} onClick={() => setSection(n.key)}
+                className={'card p-4 flex flex-col items-center gap-2 hover:shadow-md transition group relative ' +
+                  (n.hot ? 'border-amber-300/60 bg-amber-50/50 hover:border-amber-400' : 'hover:border-primary/30 hover:bg-primary/5')}>
+                {n.hot && <span className="absolute -top-1.5 -right-1.5 text-[9px] bg-amber-500 text-white px-1.5 py-0.5 rounded-full font-bold">HOT</span>}
+                <span className="text-2xl">{n.icon}</span>
+                <span className={'text-xs font-medium text-center leading-tight ' +
+                  (n.hot ? 'text-amber-700' : 'text-slate-700 group-hover:text-primary')}>{n.label}</span>
+              </button>
+            ))}
+            <button onClick={() => setSection('consult')}
+              className="card p-4 flex flex-col items-center gap-2 hover:shadow-md hover:border-primary/30 hover:bg-primary/5 transition group">
+              <span className="text-2xl">📋</span>
+              <span className="text-xs font-medium text-slate-700 group-hover:text-primary text-center leading-tight">报名咨询</span>
+            </button>
+          </div>
+        </section>
+
+        {/* ════ 精彩成果展示 ════ */}
+        <section className="mb-10">
+          <h2 className="section-title mb-4">精彩成果展示</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { icon: '🏆', title: '竞赛获奖', num: '120+', desc: '学员参加全国AI创新大赛，获省级及以上奖项' },
+              { icon: '🎓', title: '名校升学', num: '35+', desc: '学员以科创特长生/综评身份成功升学名校' },
+              { icon: '📁', title: '实操作品', num: '2000+', desc: '学员完成AI项目、机器人作品、数据分析报告' },
+              { icon: '⭐', title: '缤果学霸', num: '86', desc: '累计评选各等级学霸，打造科创榜样生态' },
+            ].map((s, i) => (
+              <div key={i} className="card p-6 text-center hover:shadow-md hover:border-primary/30 transition">
+                <div className="text-3xl mb-2">{s.icon}</div>
+                <p className="text-2xl font-bold text-primary">{s.num}</p>
+                <p className="font-semibold text-bingo-dark text-sm mt-1">{s.title}</p>
+                <p className="text-xs text-slate-500 mt-1">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ════ 快速留资 ════ */}
+        <section className="card p-6 bg-cyan-50 border-primary/20 flex flex-wrap gap-6 items-start mb-4">
+          <div className="flex-1 min-w-[200px]">
+            <h3 className="font-bold text-bingo-dark mb-1">免费领取科创学习资料</h3>
+            <p className="text-sm text-slate-600 mb-1">提交后立即发送研学手册至手机</p>
+            <p className="text-xs text-primary">留资可参与缤果学霸报名预约 →</p>
+          </div>
+          <form onSubmit={e => e.preventDefault()} className="flex flex-wrap gap-2 items-end flex-1 min-w-[280px]">
+            <input className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary flex-1 min-w-[100px]" placeholder="姓名" />
+            <input className="border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-primary flex-1 min-w-[120px]" placeholder="手机号" type="tel" />
+            <button type="submit" className="btn-primary text-sm px-5 py-2 shrink-0">免费领取</button>
+          </form>
+        </section>
+
+      </div>
 
       {/* 悬浮侧边栏 */}
       <div className="fixed right-4 bottom-20 z-40 flex flex-col gap-2">
-        <button onClick={() => setSection('checkin')} className="bg-primary text-white text-xs px-3 py-2.5 rounded-2xl shadow-lg hover:bg-cyan-600 transition">🏅 打卡</button>
+        <button onClick={() => setSection('checkin')} className="bg-emerald-500 text-white text-xs px-3 py-2.5 rounded-2xl shadow-lg hover:bg-emerald-600 transition">🏅 打卡</button>
         <button onClick={() => setSection('scholar')} className="bg-amber-500 text-white text-xs px-3 py-2.5 rounded-2xl shadow-lg hover:bg-amber-600 transition">⭐ 学霸</button>
         <button onClick={() => setShowProgress(true)} className="bg-white border border-slate-200 text-slate-600 text-xs px-3 py-2.5 rounded-2xl shadow-lg hover:bg-slate-50 transition">🔍 进度</button>
       </div>

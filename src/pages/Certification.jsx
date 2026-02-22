@@ -1016,7 +1016,7 @@ function CertOverview({ onNav }) {
         <div className="space-y-7">
           {/* 体系架构图 */}
           <div className="card p-6">
-            <h3 className="font-semibold text-bingo-dark mb-4">三位一体认证架构</h3>
+            <h3 className="font-semibold text-bingo-dark mb-4">四位一体认证架构</h3>
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 py-2">
               {[
                 { icon: '🏫', title: '机构认证', sub: '核心', desc: '提供课程与师资，是认证体系的基础保障', key: 'inst' },
@@ -1323,7 +1323,7 @@ export default function Certification() {
             </div>
             <h3 className="font-bold text-bingo-dark text-lg mb-0.5 group-hover:text-amber-700 transition">认证总览</h3>
             <p className="text-xs text-amber-600 font-medium mb-2">体系导览</p>
-            <p className="text-xs text-slate-600 mb-3 leading-relaxed">三位一体认证架构总览，等级对应表+发牌中心</p>
+            <p className="text-xs text-slate-600 mb-3 leading-relaxed">四位一体认证架构总览，等级对应表+发牌中心</p>
             <p className="text-xs text-emerald-600 font-medium">✓ 含发牌中心合作申请</p>
             <p className="text-xs text-amber-600 mt-3 group-hover:underline">进入 认证总览 →</p>
           </button>
